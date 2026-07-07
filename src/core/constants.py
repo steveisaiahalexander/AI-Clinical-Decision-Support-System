@@ -62,3 +62,11 @@ FIGURE_SIZE = (10, 6)
 TOP_FEATURES = 20
 
 TOP_PREDICTIONS = 5
+
+# ======================================================
+# FEATURE ENGINEERING
+# ======================================================
+
+CORRELATION_THRESHOLD = 0.95
+
+TOP_FEATURES = 20
