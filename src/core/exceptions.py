@@ -70,3 +70,9 @@ class ExplainabilityError(ClinicalDecisionSupportError):
 
 class ConfigurationError(ClinicalDecisionSupportError):
     """Raised when application configuration is invalid."""
+
+
+class DataValidationError(ClinicalDecisionSupportError):
+    """
+    Raised when dataset validation fails.
+    """

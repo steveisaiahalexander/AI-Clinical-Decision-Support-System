@@ -5,7 +5,8 @@ train = DatasetLoader.load_training_dataset()
 
 DatasetLoader.dataset_summary(train)
 
-logger.info("Columns:")
+logger.info("First 10 Columns:")
+print(train.iloc[:, :10].head())
 
-for col in train.columns:
-    print(col)
+logger.info(f"Target Column: {train.columns[-1]}")
+logger.info(f"Dataset Shape: {train.shape}")
