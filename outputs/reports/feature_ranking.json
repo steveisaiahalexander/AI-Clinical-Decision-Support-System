@@ -1,0 +1,1226 @@
+{
+    "generated_at": "2026-08-28 23:33:14",
+    "total_features": 174,
+    "top_feature": "symptom_dark_stools",
+    "average_rank": 1.3333333333333333,
+    "ranking": [
+        {
+            "Feature": "symptom_dark_stools",
+            "RF Rank": 1,
+            "MI Rank": 1,
+            "Permutation Rank": 2,
+            "Average Rank": 1.3333333333333333
+        },
+        {
+            "Feature": "symptom_loss_of_appetite",
+            "RF Rank": 2,
+            "MI Rank": 2,
+            "Permutation Rank": 1,
+            "Average Rank": 1.6666666666666667
+        },
+        {
+            "Feature": "symptom_headache",
+            "RF Rank": 4,
+            "MI Rank": 10,
+            "Permutation Rank": 3,
+            "Average Rank": 5.666666666666667
+        },
+        {
+            "Feature": "symptom_numbness",
+            "RF Rank": 3,
+            "MI Rank": 13,
+            "Permutation Rank": 8,
+            "Average Rank": 8.0
+        },
+        {
+            "Feature": "symptom_seizures_symptom",
+            "RF Rank": 18,
+            "MI Rank": 17,
+            "Permutation Rank": 6,
+            "Average Rank": 13.666666666666666
+        },
+        {
+            "Feature": "symptom_night_sweats",
+            "RF Rank": 7,
+            "MI Rank": 4,
+            "Permutation Rank": 36,
+            "Average Rank": 15.666666666666666
+        },
+        {
+            "Feature": "symptom_melena",
+            "RF Rank": 28,
+            "MI Rank": 5,
+            "Permutation Rank": 17,
+            "Average Rank": 16.666666666666668
+        },
+        {
+            "Feature": "symptom_exertional_chest_pain",
+            "RF Rank": 29,
+            "MI Rank": 18,
+            "Permutation Rank": 4,
+            "Average Rank": 17.0
+        },
+        {
+            "Feature": "symptom_hot_flashes",
+            "RF Rank": 5,
+            "MI Rank": 20,
+            "Permutation Rank": 33,
+            "Average Rank": 19.333333333333332
+        },
+        {
+            "Feature": "symptom_myalgia",
+            "RF Rank": 8,
+            "MI Rank": 48,
+            "Permutation Rank": 7,
+            "Average Rank": 21.0
+        },
+        {
+            "Feature": "symptom_photosensitivity_symptom",
+            "RF Rank": 14,
+            "MI Rank": 19,
+            "Permutation Rank": 34,
+            "Average Rank": 22.333333333333332
+        },
+        {
+            "Feature": "symptom_dysphagia",
+            "RF Rank": 21,
+            "MI Rank": 24,
+            "Permutation Rank": 23,
+            "Average Rank": 22.666666666666668
+        },
+        {
+            "Feature": "symptom_heat_intolerance_symptom",
+            "RF Rank": 35,
+            "MI Rank": 14,
+            "Permutation Rank": 22,
+            "Average Rank": 23.666666666666668
+        },
+        {
+            "Feature": "symptom_facial_puffiness",
+            "RF Rank": 11,
+            "MI Rank": 45,
+            "Permutation Rank": 21,
+            "Average Rank": 25.666666666666668
+        },
+        {
+            "Feature": "symptom_polyphagia",
+            "RF Rank": 42,
+            "MI Rank": 21,
+            "Permutation Rank": 20,
+            "Average Rank": 27.666666666666668
+        },
+        {
+            "Feature": "symptom_constipation",
+            "RF Rank": 44,
+            "MI Rank": 9,
+            "Permutation Rank": 42,
+            "Average Rank": 31.666666666666668
+        },
+        {
+            "Feature": "symptom_muscle_cramps_symptom",
+            "RF Rank": 41,
+            "MI Rank": 27,
+            "Permutation Rank": 38,
+            "Average Rank": 35.333333333333336
+        },
+        {
+            "Feature": "symptom_morning_stiffness",
+            "RF Rank": 20,
+            "MI Rank": 84,
+            "Permutation Rank": 5,
+            "Average Rank": 36.333333333333336
+        },
+        {
+            "Feature": "symptom_unintentional_weight_loss",
+            "RF Rank": 13,
+            "MI Rank": 82,
+            "Permutation Rank": 18,
+            "Average Rank": 37.666666666666664
+        },
+        {
+            "Feature": "symptom_focal_weakness",
+            "RF Rank": 66,
+            "MI Rank": 28,
+            "Permutation Rank": 19,
+            "Average Rank": 37.666666666666664
+        },
+        {
+            "Feature": "symptom_abdominal_bloating",
+            "RF Rank": 79,
+            "MI Rank": 8,
+            "Permutation Rank": 27,
+            "Average Rank": 38.0
+        },
+        {
+            "Feature": "symptom_reduced_range_of_motion",
+            "RF Rank": 12,
+            "MI Rank": 92,
+            "Permutation Rank": 13,
+            "Average Rank": 39.0
+        },
+        {
+            "Feature": "symptom_wheezing",
+            "RF Rank": 23,
+            "MI Rank": 80,
+            "Permutation Rank": 14,
+            "Average Rank": 39.0
+        },
+        {
+            "Feature": "symptom_gi_bleeding",
+            "RF Rank": 70,
+            "MI Rank": 39,
+            "Permutation Rank": 9,
+            "Average Rank": 39.333333333333336
+        },
+        {
+            "Feature": "symptom_vomiting",
+            "RF Rank": 64,
+            "MI Rank": 7,
+            "Permutation Rank": 49,
+            "Average Rank": 40.0
+        },
+        {
+            "Feature": "symptom_orthopnea_symptom",
+            "RF Rank": 43,
+            "MI Rank": 66,
+            "Permutation Rank": 11,
+            "Average Rank": 40.0
+        },
+        {
+            "Feature": "symptom_weight_gain_symptom",
+            "RF Rank": 61,
+            "MI Rank": 3,
+            "Permutation Rank": 61,
+            "Average Rank": 41.666666666666664
+        },
+        {
+            "Feature": "symptom_panic_attacks",
+            "RF Rank": 9,
+            "MI Rank": 97,
+            "Permutation Rank": 24,
+            "Average Rank": 43.333333333333336
+        },
+        {
+            "Feature": "symptom_exercise_dyspnea",
+            "RF Rank": 36,
+            "MI Rank": 56,
+            "Permutation Rank": 39,
+            "Average Rank": 43.666666666666664
+        },
+        {
+            "Feature": "symptom_dizziness",
+            "RF Rank": 88,
+            "MI Rank": 33,
+            "Permutation Rank": 16,
+            "Average Rank": 45.666666666666664
+        },
+        {
+            "Feature": "symptom_social_withdrawal",
+            "RF Rank": 10,
+            "MI Rank": 90,
+            "Permutation Rank": 37,
+            "Average Rank": 45.666666666666664
+        },
+        {
+            "Feature": "symptom_paroxysmal_nocturnal_dyspnea",
+            "RF Rank": 81,
+            "MI Rank": 32,
+            "Permutation Rank": 26,
+            "Average Rank": 46.333333333333336
+        },
+        {
+            "Feature": "symptom_tremor_symptom",
+            "RF Rank": 53,
+            "MI Rank": 59,
+            "Permutation Rank": 28,
+            "Average Rank": 46.666666666666664
+        },
+        {
+            "Feature": "symptom_chills",
+            "RF Rank": 52,
+            "MI Rank": 60,
+            "Permutation Rank": 29,
+            "Average Rank": 47.0
+        },
+        {
+            "Feature": "symptom_nasal_congestion",
+            "RF Rank": 39,
+            "MI Rank": 71,
+            "Permutation Rank": 32,
+            "Average Rank": 47.333333333333336
+        },
+        {
+            "Feature": "symptom_diarrhea",
+            "RF Rank": 93,
+            "MI Rank": 36,
+            "Permutation Rank": 15,
+            "Average Rank": 48.0
+        },
+        {
+            "Feature": "symptom_bradycardia",
+            "RF Rank": 50,
+            "MI Rank": 75,
+            "Permutation Rank": 25,
+            "Average Rank": 50.0
+        },
+        {
+            "Feature": "symptom_sore_throat",
+            "RF Rank": 32,
+            "MI Rank": 52,
+            "Permutation Rank": 70,
+            "Average Rank": 51.333333333333336
+        },
+        {
+            "Feature": "symptom_shortness_of_breath",
+            "RF Rank": 22,
+            "MI Rank": 70,
+            "Permutation Rank": 63,
+            "Average Rank": 51.666666666666664
+        },
+        {
+            "Feature": "symptom_orthopnea",
+            "RF Rank": 27,
+            "MI Rank": 74,
+            "Permutation Rank": 57,
+            "Average Rank": 52.666666666666664
+        },
+        {
+            "Feature": "symptom_insomnia",
+            "RF Rank": 15,
+            "MI Rank": 96,
+            "Permutation Rank": 47,
+            "Average Rank": 52.666666666666664
+        },
+        {
+            "Feature": "symptom_cold_intolerance_symptom",
+            "RF Rank": 65,
+            "MI Rank": 37,
+            "Permutation Rank": 56,
+            "Average Rank": 52.666666666666664
+        },
+        {
+            "Feature": "symptom_loss_of_smell",
+            "RF Rank": 48,
+            "MI Rank": 63,
+            "Permutation Rank": 48,
+            "Average Rank": 53.0
+        },
+        {
+            "Feature": "symptom_weight_loss_unintentional",
+            "RF Rank": 85,
+            "MI Rank": 15,
+            "Permutation Rank": 60,
+            "Average Rank": 53.333333333333336
+        },
+        {
+            "Feature": "symptom_low_mood",
+            "RF Rank": 6,
+            "MI Rank": 112,
+            "Permutation Rank": 43,
+            "Average Rank": 53.666666666666664
+        },
+        {
+            "Feature": "symptom_muscle_weakness_msk",
+            "RF Rank": 63,
+            "MI Rank": 86,
+            "Permutation Rank": 12,
+            "Average Rank": 53.666666666666664
+        },
+        {
+            "Feature": "symptom_early_satiety",
+            "RF Rank": 69,
+            "MI Rank": 26,
+            "Permutation Rank": 66,
+            "Average Rank": 53.666666666666664
+        },
+        {
+            "Feature": "symptom_syncope",
+            "RF Rank": 59,
+            "MI Rank": 64,
+            "Permutation Rank": 40,
+            "Average Rank": 54.333333333333336
+        },
+        {
+            "Feature": "symptom_compulsions",
+            "RF Rank": 26,
+            "MI Rank": 104,
+            "Permutation Rank": 35,
+            "Average Rank": 55.0
+        },
+        {
+            "Feature": "symptom_polydipsia",
+            "RF Rank": 62,
+            "MI Rank": 50,
+            "Permutation Rank": 55,
+            "Average Rank": 55.666666666666664
+        },
+        {
+            "Feature": "symptom_pallor",
+            "RF Rank": 45,
+            "MI Rank": 113,
+            "Permutation Rank": 10,
+            "Average Rank": 56.0
+        },
+        {
+            "Feature": "symptom_loss_of_taste",
+            "RF Rank": 58,
+            "MI Rank": 77,
+            "Permutation Rank": 41,
+            "Average Rank": 58.666666666666664
+        },
+        {
+            "Feature": "symptom_peripheral_edema",
+            "RF Rank": 67,
+            "MI Rank": 34,
+            "Permutation Rank": 77,
+            "Average Rank": 59.333333333333336
+        },
+        {
+            "Feature": "symptom_spasticity",
+            "RF Rank": 112,
+            "MI Rank": 35,
+            "Permutation Rank": 31,
+            "Average Rank": 59.333333333333336
+        },
+        {
+            "Feature": "symptom_fever",
+            "RF Rank": 60,
+            "MI Rank": 38,
+            "Permutation Rank": 81,
+            "Average Rank": 59.666666666666664
+        },
+        {
+            "Feature": "symptom_photophobia",
+            "RF Rank": 118,
+            "MI Rank": 16,
+            "Permutation Rank": 46,
+            "Average Rank": 60.0
+        },
+        {
+            "Feature": "symptom_palpitations",
+            "RF Rank": 86,
+            "MI Rank": 51,
+            "Permutation Rank": 44,
+            "Average Rank": 60.333333333333336
+        },
+        {
+            "Feature": "symptom_arthralgia",
+            "RF Rank": 80,
+            "MI Rank": 30,
+            "Permutation Rank": 72,
+            "Average Rank": 60.666666666666664
+        },
+        {
+            "Feature": "symptom_runny_nose",
+            "RF Rank": 25,
+            "MI Rank": 106,
+            "Permutation Rank": 52,
+            "Average Rank": 61.0
+        },
+        {
+            "Feature": "symptom_bone_pain",
+            "RF Rank": 16,
+            "MI Rank": 110,
+            "Permutation Rank": 59,
+            "Average Rank": 61.666666666666664
+        },
+        {
+            "Feature": "symptom_resting_tachycardia",
+            "RF Rank": 82,
+            "MI Rank": 53,
+            "Permutation Rank": 51,
+            "Average Rank": 62.0
+        },
+        {
+            "Feature": "symptom_hemoptysis",
+            "RF Rank": 24,
+            "MI Rank": 88,
+            "Permutation Rank": 76,
+            "Average Rank": 62.666666666666664
+        },
+        {
+            "Feature": "symptom_nausea",
+            "RF Rank": 113,
+            "MI Rank": 12,
+            "Permutation Rank": 67,
+            "Average Rank": 64.0
+        },
+        {
+            "Feature": "symptom_obsessions",
+            "RF Rank": 17,
+            "MI Rank": 103,
+            "Permutation Rank": 78,
+            "Average Rank": 66.0
+        },
+        {
+            "Feature": "symptom_suicidal_ideation",
+            "RF Rank": 19,
+            "MI Rank": 109,
+            "Permutation Rank": 73,
+            "Average Rank": 67.0
+        },
+        {
+            "Feature": "symptom_shortness_of_breath_on_exertion",
+            "RF Rank": 57,
+            "MI Rank": 116,
+            "Permutation Rank": 30,
+            "Average Rank": 67.66666666666667
+        },
+        {
+            "Feature": "symptom_anhedonia",
+            "RF Rank": 31,
+            "MI Rank": 87,
+            "Permutation Rank": 87,
+            "Average Rank": 68.33333333333333
+        },
+        {
+            "Feature": "symptom_ecchymosis",
+            "RF Rank": 46,
+            "MI Rank": 115,
+            "Permutation Rank": 50,
+            "Average Rank": 70.33333333333333
+        },
+        {
+            "Feature": "symptom_pleuritic_chest_pain",
+            "RF Rank": 38,
+            "MI Rank": 83,
+            "Permutation Rank": 94,
+            "Average Rank": 71.66666666666667
+        },
+        {
+            "Feature": "symptom_hematemesis",
+            "RF Rank": 98,
+            "MI Rank": 11,
+            "Permutation Rank": 110,
+            "Average Rank": 73.0
+        },
+        {
+            "Feature": "symptom_cold_extremities",
+            "RF Rank": 77,
+            "MI Rank": 23,
+            "Permutation Rank": 119,
+            "Average Rank": 73.0
+        },
+        {
+            "Feature": "symptom_confusion_symptom",
+            "RF Rank": 105,
+            "MI Rank": 57,
+            "Permutation Rank": 58,
+            "Average Rank": 73.33333333333333
+        },
+        {
+            "Feature": "symptom_fatigue",
+            "RF Rank": 56,
+            "MI Rank": 55,
+            "Permutation Rank": 109,
+            "Average Rank": 73.33333333333333
+        },
+        {
+            "Feature": "symptom_dry_cough",
+            "RF Rank": 37,
+            "MI Rank": 78,
+            "Permutation Rank": 106,
+            "Average Rank": 73.66666666666667
+        },
+        {
+            "Feature": "symptom_joint_pain_symptom",
+            "RF Rank": 71,
+            "MI Rank": 31,
+            "Permutation Rank": 121,
+            "Average Rank": 74.33333333333333
+        },
+        {
+            "Feature": "symptom_heartburn",
+            "RF Rank": 106,
+            "MI Rank": 41,
+            "Permutation Rank": 79,
+            "Average Rank": 75.33333333333333
+        },
+        {
+            "Feature": "symptom_cyanosis",
+            "RF Rank": 73,
+            "MI Rank": 61,
+            "Permutation Rank": 93,
+            "Average Rank": 75.66666666666667
+        },
+        {
+            "Feature": "symptom_enthesitis",
+            "RF Rank": 54,
+            "MI Rank": 111,
+            "Permutation Rank": 64,
+            "Average Rank": 76.33333333333333
+        },
+        {
+            "Feature": "symptom_sinus_pain",
+            "RF Rank": 30,
+            "MI Rank": 93,
+            "Permutation Rank": 107,
+            "Average Rank": 76.66666666666667
+        },
+        {
+            "Feature": "symptom_chest_tightness",
+            "RF Rank": 49,
+            "MI Rank": 81,
+            "Permutation Rank": 103,
+            "Average Rank": 77.66666666666667
+        },
+        {
+            "Feature": "symptom_bitter_regurgitation",
+            "RF Rank": 102,
+            "MI Rank": 6,
+            "Permutation Rank": 125,
+            "Average Rank": 77.66666666666667
+        },
+        {
+            "Feature": "symptom_productive_cough",
+            "RF Rank": 34,
+            "MI Rank": 98,
+            "Permutation Rank": 104,
+            "Average Rank": 78.66666666666667
+        },
+        {
+            "Feature": "symptom_muscle_weakness",
+            "RF Rank": 124,
+            "MI Rank": 22,
+            "Permutation Rank": 90,
+            "Average Rank": 78.66666666666667
+        },
+        {
+            "Feature": "symptom_leg_swelling",
+            "RF Rank": 83,
+            "MI Rank": 73,
+            "Permutation Rank": 82,
+            "Average Rank": 79.33333333333333
+        },
+        {
+            "Feature": "symptom_jaundice_symptom",
+            "RF Rank": 110,
+            "MI Rank": 42,
+            "Permutation Rank": 86,
+            "Average Rank": 79.33333333333333
+        },
+        {
+            "Feature": "symptom_cough",
+            "RF Rank": 40,
+            "MI Rank": 94,
+            "Permutation Rank": 105,
+            "Average Rank": 79.66666666666667
+        },
+        {
+            "Feature": "symptom_polyuria",
+            "RF Rank": 74,
+            "MI Rank": 40,
+            "Permutation Rank": 126,
+            "Average Rank": 80.0
+        },
+        {
+            "Feature": "symptom_tendon_tenderness",
+            "RF Rank": 33,
+            "MI Rank": 91,
+            "Permutation Rank": 117,
+            "Average Rank": 80.33333333333333
+        },
+        {
+            "Feature": "symptom_speech_difficulty",
+            "RF Rank": 132,
+            "MI Rank": 25,
+            "Permutation Rank": 84,
+            "Average Rank": 80.33333333333333
+        },
+        {
+            "Feature": "symptom_photosensitive_rash_derm",
+            "RF Rank": 87,
+            "MI Rank": 102,
+            "Permutation Rank": 53,
+            "Average Rank": 80.66666666666667
+        },
+        {
+            "Feature": "symptom_anxiety_symptom",
+            "RF Rank": 51,
+            "MI Rank": 130,
+            "Permutation Rank": 62,
+            "Average Rank": 81.0
+        },
+        {
+            "Feature": "symptom_memory_loss_symptom",
+            "RF Rank": 121,
+            "MI Rank": 49,
+            "Permutation Rank": 75,
+            "Average Rank": 81.66666666666667
+        },
+        {
+            "Feature": "symptom_digital_ulcers",
+            "RF Rank": 78,
+            "MI Rank": 114,
+            "Permutation Rank": 54,
+            "Average Rank": 82.0
+        },
+        {
+            "Feature": "symptom_hyperpigmentation",
+            "RF Rank": 108,
+            "MI Rank": 101,
+            "Permutation Rank": 45,
+            "Average Rank": 84.66666666666667
+        },
+        {
+            "Feature": "symptom_neck_pain",
+            "RF Rank": 47,
+            "MI Rank": 85,
+            "Permutation Rank": 123,
+            "Average Rank": 85.0
+        },
+        {
+            "Feature": "symptom_vision_blur",
+            "RF Rank": 131,
+            "MI Rank": 29,
+            "Permutation Rank": 97,
+            "Average Rank": 85.66666666666667
+        },
+        {
+            "Feature": "symptom_gait_instability_symptom",
+            "RF Rank": 116,
+            "MI Rank": 47,
+            "Permutation Rank": 95,
+            "Average Rank": 86.0
+        },
+        {
+            "Feature": "symptom_hair_loss_symptom",
+            "RF Rank": 90,
+            "MI Rank": 46,
+            "Permutation Rank": 122,
+            "Average Rank": 86.0
+        },
+        {
+            "Feature": "symptom_phonophobia",
+            "RF Rank": 129,
+            "MI Rank": 65,
+            "Permutation Rank": 65,
+            "Average Rank": 86.33333333333333
+        },
+        {
+            "Feature": "symptom_double_vision",
+            "RF Rank": 133,
+            "MI Rank": 43,
+            "Permutation Rank": 85,
+            "Average Rank": 87.0
+        },
+        {
+            "Feature": "symptom_chest_pain",
+            "RF Rank": 96,
+            "MI Rank": 79,
+            "Permutation Rank": 89,
+            "Average Rank": 88.0
+        },
+        {
+            "Feature": "symptom_claudication",
+            "RF Rank": 114,
+            "MI Rank": 58,
+            "Permutation Rank": 92,
+            "Average Rank": 88.0
+        },
+        {
+            "Feature": "symptom_abdominal_pain",
+            "RF Rank": 95,
+            "MI Rank": 44,
+            "Permutation Rank": 127,
+            "Average Rank": 88.66666666666667
+        },
+        {
+            "Feature": "symptom_fatigue_on_exertion",
+            "RF Rank": 94,
+            "MI Rank": 76,
+            "Permutation Rank": 101,
+            "Average Rank": 90.33333333333333
+        },
+        {
+            "Feature": "symptom_exercise_intolerance",
+            "RF Rank": 84,
+            "MI Rank": 95,
+            "Permutation Rank": 100,
+            "Average Rank": 93.0
+        },
+        {
+            "Feature": "symptom_vertigo",
+            "RF Rank": 127,
+            "MI Rank": 54,
+            "Permutation Rank": 98,
+            "Average Rank": 93.0
+        },
+        {
+            "Feature": "symptom_clammy_skin",
+            "RF Rank": 92,
+            "MI Rank": 89,
+            "Permutation Rank": 102,
+            "Average Rank": 94.33333333333333
+        },
+        {
+            "Feature": "symptom_spine_rigidity",
+            "RF Rank": 68,
+            "MI Rank": 100,
+            "Permutation Rank": 116,
+            "Average Rank": 94.66666666666667
+        },
+        {
+            "Feature": "symptom_tingling",
+            "RF Rank": 126,
+            "MI Rank": 67,
+            "Permutation Rank": 96,
+            "Average Rank": 96.33333333333333
+        },
+        {
+            "Feature": "symptom_easy_bruising",
+            "RF Rank": 104,
+            "MI Rank": 119,
+            "Permutation Rank": 69,
+            "Average Rank": 97.33333333333333
+        },
+        {
+            "Feature": "symptom_low_back_pain",
+            "RF Rank": 76,
+            "MI Rank": 99,
+            "Permutation Rank": 120,
+            "Average Rank": 98.33333333333333
+        },
+        {
+            "Feature": "symptom_ataxia_symptom",
+            "RF Rank": 101,
+            "MI Rank": 68,
+            "Permutation Rank": 129,
+            "Average Rank": 99.33333333333333
+        },
+        {
+            "Feature": "symptom_migraine_symptom",
+            "RF Rank": 135,
+            "MI Rank": 69,
+            "Permutation Rank": 99,
+            "Average Rank": 101.0
+        },
+        {
+            "Feature": "symptom_joint_swelling",
+            "RF Rank": 75,
+            "MI Rank": 105,
+            "Permutation Rank": 124,
+            "Average Rank": 101.33333333333333
+        },
+        {
+            "Feature": "symptom_paresthesia",
+            "RF Rank": 134,
+            "MI Rank": 62,
+            "Permutation Rank": 108,
+            "Average Rank": 101.33333333333333
+        },
+        {
+            "Feature": "symptom_splenomegaly_symptom",
+            "RF Rank": 99,
+            "MI Rank": 122,
+            "Permutation Rank": 83,
+            "Average Rank": 101.33333333333333
+        },
+        {
+            "Feature": "symptom_pruritus",
+            "RF Rank": 107,
+            "MI Rank": 132,
+            "Permutation Rank": 74,
+            "Average Rank": 104.33333333333333
+        },
+        {
+            "Feature": "symptom_hypersomnia",
+            "RF Rank": 55,
+            "MI Rank": 123,
+            "Permutation Rank": 136,
+            "Average Rank": 104.66666666666667
+        },
+        {
+            "Feature": "symptom_limp",
+            "RF Rank": 72,
+            "MI Rank": 127,
+            "Permutation Rank": 115,
+            "Average Rank": 104.66666666666667
+        },
+        {
+            "Feature": "symptom_night_sweats_heme",
+            "RF Rank": 120,
+            "MI Rank": 117,
+            "Permutation Rank": 80,
+            "Average Rank": 105.66666666666667
+        },
+        {
+            "Feature": "symptom_livedo_reticularis",
+            "RF Rank": 122,
+            "MI Rank": 133,
+            "Permutation Rank": 71,
+            "Average Rank": 108.66666666666667
+        },
+        {
+            "Feature": "symptom_rash_maculopapular",
+            "RF Rank": 89,
+            "MI Rank": 120,
+            "Permutation Rank": 118,
+            "Average Rank": 109.0
+        },
+        {
+            "Feature": "symptom_skin_thickening",
+            "RF Rank": 109,
+            "MI Rank": 131,
+            "Permutation Rank": 88,
+            "Average Rank": 109.33333333333333
+        },
+        {
+            "Feature": "symptom_hypopigmentation",
+            "RF Rank": 97,
+            "MI Rank": 121,
+            "Permutation Rank": 111,
+            "Average Rank": 109.66666666666667
+        },
+        {
+            "Feature": "symptom_facial_droop",
+            "RF Rank": 130,
+            "MI Rank": 72,
+            "Permutation Rank": 128,
+            "Average Rank": 110.0
+        },
+        {
+            "Feature": "symptom_alopecia_patchy",
+            "RF Rank": 103,
+            "MI Rank": 118,
+            "Permutation Rank": 112,
+            "Average Rank": 111.0
+        },
+        {
+            "Feature": "symptom_rash_psoriasiform",
+            "RF Rank": 119,
+            "MI Rank": 124,
+            "Permutation Rank": 91,
+            "Average Rank": 111.33333333333333
+        },
+        {
+            "Feature": "symptom_urticaria",
+            "RF Rank": 115,
+            "MI Rank": 107,
+            "Permutation Rank": 113,
+            "Average Rank": 111.66666666666667
+        },
+        {
+            "Feature": "symptom_fatigue_anemia",
+            "RF Rank": 91,
+            "MI Rank": 125,
+            "Permutation Rank": 133,
+            "Average Rank": 116.33333333333333
+        },
+        {
+            "Feature": "symptom_frequent_nosebleeds",
+            "RF Rank": 100,
+            "MI Rank": 128,
+            "Permutation Rank": 131,
+            "Average Rank": 119.66666666666667
+        },
+        {
+            "Feature": "rare_symptom_butterfly_rash",
+            "RF Rank": 138,
+            "MI Rank": 162,
+            "Permutation Rank": 68,
+            "Average Rank": 122.66666666666667
+        },
+        {
+            "Feature": "symptom_petechiae",
+            "RF Rank": 128,
+            "MI Rank": 129,
+            "Permutation Rank": 114,
+            "Average Rank": 123.66666666666667
+        },
+        {
+            "Feature": "symptom_prolonged_bleeding",
+            "RF Rank": 111,
+            "MI Rank": 137,
+            "Permutation Rank": 134,
+            "Average Rank": 127.33333333333333
+        },
+        {
+            "Feature": "rare_symptom_digital_clubbing",
+            "RF Rank": 139,
+            "MI Rank": 108,
+            "Permutation Rank": 137,
+            "Average Rank": 128.0
+        },
+        {
+            "Feature": "symptom_lymph_node_swelling",
+            "RF Rank": 123,
+            "MI Rank": 126,
+            "Permutation Rank": 135,
+            "Average Rank": 128.0
+        },
+        {
+            "Feature": "symptom_telangiectasia",
+            "RF Rank": 117,
+            "MI Rank": 141,
+            "Permutation Rank": 132,
+            "Average Rank": 130.0
+        },
+        {
+            "Feature": "symptom_recurrent_infections",
+            "RF Rank": 125,
+            "MI Rank": 135,
+            "Permutation Rank": 130,
+            "Average Rank": 130.0
+        },
+        {
+            "Feature": "rare_symptom_malar_rash",
+            "RF Rank": 152,
+            "MI Rank": 140,
+            "Permutation Rank": 138,
+            "Average Rank": 143.33333333333334
+        },
+        {
+            "Feature": "rare_symptom_oral_ulcers",
+            "RF Rank": 153,
+            "MI Rank": 146,
+            "Permutation Rank": 141,
+            "Average Rank": 146.66666666666666
+        },
+        {
+            "Feature": "rare_symptom_hematuria",
+            "RF Rank": 137,
+            "MI Rank": 163,
+            "Permutation Rank": 142,
+            "Average Rank": 147.33333333333334
+        },
+        {
+            "Feature": "rare_symptom_hemolytic_anemia_rare",
+            "RF Rank": 146,
+            "MI Rank": 143,
+            "Permutation Rank": 153,
+            "Average Rank": 147.33333333333334
+        },
+        {
+            "Feature": "rare_symptom_skin_calcifications_rare",
+            "RF Rank": 145,
+            "MI Rank": 139,
+            "Permutation Rank": 161,
+            "Average Rank": 148.33333333333334
+        },
+        {
+            "Feature": "rare_symptom_erythema_nodosum",
+            "RF Rank": 161,
+            "MI Rank": 144,
+            "Permutation Rank": 140,
+            "Average Rank": 148.33333333333334
+        },
+        {
+            "Feature": "rare_symptom_bloody_sputum_rare",
+            "RF Rank": 166,
+            "MI Rank": 136,
+            "Permutation Rank": 144,
+            "Average Rank": 148.66666666666666
+        },
+        {
+            "Feature": "rare_symptom_neuropathic_pain_rare",
+            "RF Rank": 148,
+            "MI Rank": 155,
+            "Permutation Rank": 145,
+            "Average Rank": 149.33333333333334
+        },
+        {
+            "Feature": "rare_symptom_spastic_paraparesis_rare",
+            "RF Rank": 144,
+            "MI Rank": 160,
+            "Permutation Rank": 148,
+            "Average Rank": 150.66666666666666
+        },
+        {
+            "Feature": "rare_symptom_raynaud_phenomenon",
+            "RF Rank": 150,
+            "MI Rank": 164,
+            "Permutation Rank": 139,
+            "Average Rank": 151.0
+        },
+        {
+            "Feature": "rare_symptom_bronchiectasis_rare",
+            "RF Rank": 168,
+            "MI Rank": 138,
+            "Permutation Rank": 149,
+            "Average Rank": 151.66666666666666
+        },
+        {
+            "Feature": "rare_symptom_hyperextensible_skin_rare",
+            "RF Rank": 143,
+            "MI Rank": 148,
+            "Permutation Rank": 166,
+            "Average Rank": 152.33333333333334
+        },
+        {
+            "Feature": "rare_symptom_portal_hypertension_signs_rare",
+            "RF Rank": 155,
+            "MI Rank": 151,
+            "Permutation Rank": 152,
+            "Average Rank": 152.66666666666666
+        },
+        {
+            "Feature": "rare_symptom_bone_fractures_pathologic_rare",
+            "RF Rank": 136,
+            "MI Rank": 167,
+            "Permutation Rank": 155,
+            "Average Rank": 152.66666666666666
+        },
+        {
+            "Feature": "rare_symptom_steatorrhea_rare",
+            "RF Rank": 159,
+            "MI Rank": 150,
+            "Permutation Rank": 150,
+            "Average Rank": 153.0
+        },
+        {
+            "Feature": "rare_symptom_kyphoscoliosis_rare",
+            "RF Rank": 163,
+            "MI Rank": 134,
+            "Permutation Rank": 163,
+            "Average Rank": 153.33333333333334
+        },
+        {
+            "Feature": "rare_symptom_pancytopenia_rare",
+            "RF Rank": 147,
+            "MI Rank": 161,
+            "Permutation Rank": 154,
+            "Average Rank": 154.0
+        },
+        {
+            "Feature": "rare_symptom_respiratory_failure_rare",
+            "RF Rank": 140,
+            "MI Rank": 149,
+            "Permutation Rank": 173,
+            "Average Rank": 154.0
+        },
+        {
+            "Feature": "rare_symptom_optic_neuritis_rare",
+            "RF Rank": 172,
+            "MI Rank": 145,
+            "Permutation Rank": 147,
+            "Average Rank": 154.66666666666666
+        },
+        {
+            "Feature": "rare_symptom_proteinuria",
+            "RF Rank": 157,
+            "MI Rank": 165,
+            "Permutation Rank": 143,
+            "Average Rank": 155.0
+        },
+        {
+            "Feature": "rare_symptom_developmental_delay_rare",
+            "RF Rank": 142,
+            "MI Rank": 156,
+            "Permutation Rank": 170,
+            "Average Rank": 156.0
+        },
+        {
+            "Feature": "rare_symptom_bone_marrow_failure_rare",
+            "RF Rank": 165,
+            "MI Rank": 147,
+            "Permutation Rank": 156,
+            "Average Rank": 156.0
+        },
+        {
+            "Feature": "rare_symptom_dysautonomia_rare",
+            "RF Rank": 141,
+            "MI Rank": 169,
+            "Permutation Rank": 160,
+            "Average Rank": 156.66666666666666
+        },
+        {
+            "Feature": "rare_symptom_hepatosplenomegaly_rare",
+            "RF Rank": 171,
+            "MI Rank": 142,
+            "Permutation Rank": 157,
+            "Average Rank": 156.66666666666666
+        },
+        {
+            "Feature": "rare_symptom_foot_drop_rare",
+            "RF Rank": 174,
+            "MI Rank": 153,
+            "Permutation Rank": 146,
+            "Average Rank": 157.66666666666666
+        },
+        {
+            "Feature": "rare_symptom_arrhythmia_persistent_rare",
+            "RF Rank": 158,
+            "MI Rank": 158,
+            "Permutation Rank": 158,
+            "Average Rank": 158.0
+        },
+        {
+            "Feature": "rare_symptom_massive_splenomegaly_rare",
+            "RF Rank": 160,
+            "MI Rank": 166,
+            "Permutation Rank": 151,
+            "Average Rank": 159.0
+        },
+        {
+            "Feature": "rare_symptom_tall_stature_rare",
+            "RF Rank": 162,
+            "MI Rank": 152,
+            "Permutation Rank": 165,
+            "Average Rank": 159.66666666666666
+        },
+        {
+            "Feature": "rare_symptom_bulbar_symptoms_rare",
+            "RF Rank": 154,
+            "MI Rank": 154,
+            "Permutation Rank": 172,
+            "Average Rank": 160.0
+        },
+        {
+            "Feature": "rare_symptom_cardiomyopathy_rare",
+            "RF Rank": 156,
+            "MI Rank": 168,
+            "Permutation Rank": 159,
+            "Average Rank": 161.0
+        },
+        {
+            "Feature": "rare_symptom_lens_dislocation_rare",
+            "RF Rank": 149,
+            "MI Rank": 171,
+            "Permutation Rank": 164,
+            "Average Rank": 161.33333333333334
+        },
+        {
+            "Feature": "rare_symptom_macroglossia_rare",
+            "RF Rank": 151,
+            "MI Rank": 172,
+            "Permutation Rank": 168,
+            "Average Rank": 163.66666666666666
+        },
+        {
+            "Feature": "rare_symptom_hearing_loss_early_onset_rare",
+            "RF Rank": 164,
+            "MI Rank": 159,
+            "Permutation Rank": 169,
+            "Average Rank": 164.0
+        },
+        {
+            "Feature": "rare_symptom_joint_hypermobility_rare",
+            "RF Rank": 169,
+            "MI Rank": 157,
+            "Permutation Rank": 167,
+            "Average Rank": 164.33333333333334
+        },
+        {
+            "Feature": "rare_symptom_angiokeratomas_rare",
+            "RF Rank": 170,
+            "MI Rank": 170,
+            "Permutation Rank": 162,
+            "Average Rank": 167.33333333333334
+        },
+        {
+            "Feature": "rare_symptom_renal_cysts_rare",
+            "RF Rank": 167,
+            "MI Rank": 174,
+            "Permutation Rank": 174,
+            "Average Rank": 171.66666666666666
+        },
+        {
+            "Feature": "rare_symptom_proximal_muscle_weakness_rare",
+            "RF Rank": 173,
+            "MI Rank": 173,
+            "Permutation Rank": 171,
+            "Average Rank": 172.33333333333334
+        }
+    ]
+}

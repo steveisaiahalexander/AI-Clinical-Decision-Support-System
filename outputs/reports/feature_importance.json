@@ -1,0 +1,704 @@
+{
+    "generated_at": "2026-08-28 22:58:18",
+    "total_features": 174,
+    "top_feature": "symptom_dark_stools",
+    "top_importance": 0.009316803684092819,
+    "features": [
+        {
+            "Feature": "symptom_dark_stools",
+            "Importance": 0.009316803684092819
+        },
+        {
+            "Feature": "symptom_loss_of_appetite",
+            "Importance": 0.008680717001481864
+        },
+        {
+            "Feature": "symptom_numbness",
+            "Importance": 0.008556834242641666
+        },
+        {
+            "Feature": "symptom_headache",
+            "Importance": 0.008519696769714364
+        },
+        {
+            "Feature": "symptom_hot_flashes",
+            "Importance": 0.008412129565535845
+        },
+        {
+            "Feature": "symptom_low_mood",
+            "Importance": 0.00833697361703508
+        },
+        {
+            "Feature": "symptom_night_sweats",
+            "Importance": 0.00832046575995167
+        },
+        {
+            "Feature": "symptom_myalgia",
+            "Importance": 0.008204933620191349
+        },
+        {
+            "Feature": "symptom_panic_attacks",
+            "Importance": 0.008195072059810297
+        },
+        {
+            "Feature": "symptom_social_withdrawal",
+            "Importance": 0.008124047106022658
+        },
+        {
+            "Feature": "symptom_facial_puffiness",
+            "Importance": 0.008108311747005083
+        },
+        {
+            "Feature": "symptom_reduced_range_of_motion",
+            "Importance": 0.008101072301949178
+        },
+        {
+            "Feature": "symptom_unintentional_weight_loss",
+            "Importance": 0.008071806469601022
+        },
+        {
+            "Feature": "symptom_photosensitivity_symptom",
+            "Importance": 0.008021265986130389
+        },
+        {
+            "Feature": "symptom_insomnia",
+            "Importance": 0.007966729619662855
+        },
+        {
+            "Feature": "symptom_bone_pain",
+            "Importance": 0.007952008482751136
+        },
+        {
+            "Feature": "symptom_obsessions",
+            "Importance": 0.007948768353683064
+        },
+        {
+            "Feature": "symptom_seizures_symptom",
+            "Importance": 0.007921732145209987
+        },
+        {
+            "Feature": "symptom_suicidal_ideation",
+            "Importance": 0.007873226511677768
+        },
+        {
+            "Feature": "symptom_morning_stiffness",
+            "Importance": 0.00784916359936246
+        },
+        {
+            "Feature": "symptom_dysphagia",
+            "Importance": 0.007844033573259915
+        },
+        {
+            "Feature": "symptom_shortness_of_breath",
+            "Importance": 0.007835193155254815
+        },
+        {
+            "Feature": "symptom_wheezing",
+            "Importance": 0.00781423739856289
+        },
+        {
+            "Feature": "symptom_hemoptysis",
+            "Importance": 0.007804757749855312
+        },
+        {
+            "Feature": "symptom_runny_nose",
+            "Importance": 0.007766098472905438
+        },
+        {
+            "Feature": "symptom_compulsions",
+            "Importance": 0.007755392801407204
+        },
+        {
+            "Feature": "symptom_orthopnea",
+            "Importance": 0.007754106306435372
+        },
+        {
+            "Feature": "symptom_melena",
+            "Importance": 0.007750452679087877
+        },
+        {
+            "Feature": "symptom_exertional_chest_pain",
+            "Importance": 0.0077433781351944776
+        },
+        {
+            "Feature": "symptom_sinus_pain",
+            "Importance": 0.007727568220143056
+        },
+        {
+            "Feature": "symptom_anhedonia",
+            "Importance": 0.007722244911448918
+        },
+        {
+            "Feature": "symptom_sore_throat",
+            "Importance": 0.007698925516943966
+        },
+        {
+            "Feature": "symptom_tendon_tenderness",
+            "Importance": 0.007682757590923271
+        },
+        {
+            "Feature": "symptom_productive_cough",
+            "Importance": 0.007681616480193487
+        },
+        {
+            "Feature": "symptom_heat_intolerance_symptom",
+            "Importance": 0.007680888082840177
+        },
+        {
+            "Feature": "symptom_exercise_dyspnea",
+            "Importance": 0.0076774966512165995
+        },
+        {
+            "Feature": "symptom_dry_cough",
+            "Importance": 0.007665322108831728
+        },
+        {
+            "Feature": "symptom_pleuritic_chest_pain",
+            "Importance": 0.007645225688593319
+        },
+        {
+            "Feature": "symptom_nasal_congestion",
+            "Importance": 0.007620924506913578
+        },
+        {
+            "Feature": "symptom_cough",
+            "Importance": 0.007613878391601831
+        },
+        {
+            "Feature": "symptom_muscle_cramps_symptom",
+            "Importance": 0.0076091887246958955
+        },
+        {
+            "Feature": "symptom_polyphagia",
+            "Importance": 0.0075935335819867856
+        },
+        {
+            "Feature": "symptom_orthopnea_symptom",
+            "Importance": 0.007575542336074538
+        },
+        {
+            "Feature": "symptom_constipation",
+            "Importance": 0.007541681758390881
+        },
+        {
+            "Feature": "symptom_pallor",
+            "Importance": 0.0075335199334137706
+        },
+        {
+            "Feature": "symptom_ecchymosis",
+            "Importance": 0.007529778151146123
+        },
+        {
+            "Feature": "symptom_neck_pain",
+            "Importance": 0.00751846137731534
+        },
+        {
+            "Feature": "symptom_loss_of_smell",
+            "Importance": 0.007515010730879759
+        },
+        {
+            "Feature": "symptom_chest_tightness",
+            "Importance": 0.007512983698320207
+        },
+        {
+            "Feature": "symptom_bradycardia",
+            "Importance": 0.0075122492495857205
+        },
+        {
+            "Feature": "symptom_anxiety_symptom",
+            "Importance": 0.007494021858144141
+        },
+        {
+            "Feature": "symptom_chills",
+            "Importance": 0.007492118749444549
+        },
+        {
+            "Feature": "symptom_tremor_symptom",
+            "Importance": 0.007489494453761827
+        },
+        {
+            "Feature": "symptom_enthesitis",
+            "Importance": 0.007483326317074704
+        },
+        {
+            "Feature": "symptom_hypersomnia",
+            "Importance": 0.007482206982285795
+        },
+        {
+            "Feature": "symptom_fatigue",
+            "Importance": 0.007481501556624256
+        },
+        {
+            "Feature": "symptom_shortness_of_breath_on_exertion",
+            "Importance": 0.007473542866235208
+        },
+        {
+            "Feature": "symptom_loss_of_taste",
+            "Importance": 0.007438682451419828
+        },
+        {
+            "Feature": "symptom_syncope",
+            "Importance": 0.007437010767017534
+        },
+        {
+            "Feature": "symptom_fever",
+            "Importance": 0.007418120753893147
+        },
+        {
+            "Feature": "symptom_weight_gain_symptom",
+            "Importance": 0.007404233260965103
+        },
+        {
+            "Feature": "symptom_polydipsia",
+            "Importance": 0.007399603088408435
+        },
+        {
+            "Feature": "symptom_muscle_weakness_msk",
+            "Importance": 0.0073543875402555135
+        },
+        {
+            "Feature": "symptom_vomiting",
+            "Importance": 0.007348136333440424
+        },
+        {
+            "Feature": "symptom_cold_intolerance_symptom",
+            "Importance": 0.007330870656602234
+        },
+        {
+            "Feature": "symptom_focal_weakness",
+            "Importance": 0.007324271799391771
+        },
+        {
+            "Feature": "symptom_peripheral_edema",
+            "Importance": 0.007324117961255313
+        },
+        {
+            "Feature": "symptom_spine_rigidity",
+            "Importance": 0.007310344832501309
+        },
+        {
+            "Feature": "symptom_early_satiety",
+            "Importance": 0.007288181241720783
+        },
+        {
+            "Feature": "symptom_gi_bleeding",
+            "Importance": 0.007281085379354932
+        },
+        {
+            "Feature": "symptom_joint_pain_symptom",
+            "Importance": 0.007280867202026645
+        },
+        {
+            "Feature": "symptom_limp",
+            "Importance": 0.0072703558246249265
+        },
+        {
+            "Feature": "symptom_cyanosis",
+            "Importance": 0.007251509185144662
+        },
+        {
+            "Feature": "symptom_polyuria",
+            "Importance": 0.007246865745095638
+        },
+        {
+            "Feature": "symptom_joint_swelling",
+            "Importance": 0.00722425299487947
+        },
+        {
+            "Feature": "symptom_low_back_pain",
+            "Importance": 0.007216849885902474
+        },
+        {
+            "Feature": "symptom_cold_extremities",
+            "Importance": 0.007208865868385397
+        },
+        {
+            "Feature": "symptom_digital_ulcers",
+            "Importance": 0.007194593976671021
+        },
+        {
+            "Feature": "symptom_abdominal_bloating",
+            "Importance": 0.007183752943215876
+        },
+        {
+            "Feature": "symptom_arthralgia",
+            "Importance": 0.007164194635700478
+        },
+        {
+            "Feature": "symptom_paroxysmal_nocturnal_dyspnea",
+            "Importance": 0.007158689034037523
+        },
+        {
+            "Feature": "symptom_resting_tachycardia",
+            "Importance": 0.007153868492752587
+        },
+        {
+            "Feature": "symptom_leg_swelling",
+            "Importance": 0.007146590436339187
+        },
+        {
+            "Feature": "symptom_exercise_intolerance",
+            "Importance": 0.007138930814654932
+        },
+        {
+            "Feature": "symptom_weight_loss_unintentional",
+            "Importance": 0.007126290866028782
+        },
+        {
+            "Feature": "symptom_palpitations",
+            "Importance": 0.007122153771905364
+        },
+        {
+            "Feature": "symptom_photosensitive_rash_derm",
+            "Importance": 0.007114393742555373
+        },
+        {
+            "Feature": "symptom_dizziness",
+            "Importance": 0.0071134008594983785
+        },
+        {
+            "Feature": "symptom_rash_maculopapular",
+            "Importance": 0.007111037040151006
+        },
+        {
+            "Feature": "symptom_hair_loss_symptom",
+            "Importance": 0.007086586082745257
+        },
+        {
+            "Feature": "symptom_fatigue_anemia",
+            "Importance": 0.007077356485671691
+        },
+        {
+            "Feature": "symptom_clammy_skin",
+            "Importance": 0.0070550956449833115
+        },
+        {
+            "Feature": "symptom_diarrhea",
+            "Importance": 0.007050286471533031
+        },
+        {
+            "Feature": "symptom_fatigue_on_exertion",
+            "Importance": 0.007030452989675957
+        },
+        {
+            "Feature": "symptom_abdominal_pain",
+            "Importance": 0.006983894151504109
+        },
+        {
+            "Feature": "symptom_chest_pain",
+            "Importance": 0.006965491271606767
+        },
+        {
+            "Feature": "symptom_hypopigmentation",
+            "Importance": 0.006955714240551667
+        },
+        {
+            "Feature": "symptom_hematemesis",
+            "Importance": 0.006955462598186586
+        },
+        {
+            "Feature": "symptom_splenomegaly_symptom",
+            "Importance": 0.006950379524585727
+        },
+        {
+            "Feature": "symptom_frequent_nosebleeds",
+            "Importance": 0.006935431063220504
+        },
+        {
+            "Feature": "symptom_ataxia_symptom",
+            "Importance": 0.006914295659599
+        },
+        {
+            "Feature": "symptom_bitter_regurgitation",
+            "Importance": 0.006911551519538598
+        },
+        {
+            "Feature": "symptom_alopecia_patchy",
+            "Importance": 0.006908647465537012
+        },
+        {
+            "Feature": "symptom_easy_bruising",
+            "Importance": 0.006897363855112571
+        },
+        {
+            "Feature": "symptom_confusion_symptom",
+            "Importance": 0.006885756012251975
+        },
+        {
+            "Feature": "symptom_heartburn",
+            "Importance": 0.006881189037918272
+        },
+        {
+            "Feature": "symptom_pruritus",
+            "Importance": 0.00687404623410795
+        },
+        {
+            "Feature": "symptom_hyperpigmentation",
+            "Importance": 0.006872900407644347
+        },
+        {
+            "Feature": "symptom_skin_thickening",
+            "Importance": 0.006862811830067981
+        },
+        {
+            "Feature": "symptom_jaundice_symptom",
+            "Importance": 0.0068496258715577425
+        },
+        {
+            "Feature": "symptom_prolonged_bleeding",
+            "Importance": 0.006846536857366906
+        },
+        {
+            "Feature": "symptom_spasticity",
+            "Importance": 0.006837779404680841
+        },
+        {
+            "Feature": "symptom_nausea",
+            "Importance": 0.006826177094886204
+        },
+        {
+            "Feature": "symptom_claudication",
+            "Importance": 0.006815165155152394
+        },
+        {
+            "Feature": "symptom_urticaria",
+            "Importance": 0.00681174916870759
+        },
+        {
+            "Feature": "symptom_gait_instability_symptom",
+            "Importance": 0.0067974864411160475
+        },
+        {
+            "Feature": "symptom_telangiectasia",
+            "Importance": 0.006751116903912718
+        },
+        {
+            "Feature": "symptom_photophobia",
+            "Importance": 0.006743543528168668
+        },
+        {
+            "Feature": "symptom_rash_psoriasiform",
+            "Importance": 0.006712087178299499
+        },
+        {
+            "Feature": "symptom_night_sweats_heme",
+            "Importance": 0.006708750883902132
+        },
+        {
+            "Feature": "symptom_memory_loss_symptom",
+            "Importance": 0.006692528735080741
+        },
+        {
+            "Feature": "symptom_livedo_reticularis",
+            "Importance": 0.0066676751647346075
+        },
+        {
+            "Feature": "symptom_lymph_node_swelling",
+            "Importance": 0.006662051233170411
+        },
+        {
+            "Feature": "symptom_muscle_weakness",
+            "Importance": 0.006645087264361211
+        },
+        {
+            "Feature": "symptom_recurrent_infections",
+            "Importance": 0.006637355258403621
+        },
+        {
+            "Feature": "symptom_tingling",
+            "Importance": 0.006618791046516796
+        },
+        {
+            "Feature": "symptom_vertigo",
+            "Importance": 0.006590024700345029
+        },
+        {
+            "Feature": "symptom_petechiae",
+            "Importance": 0.006552516350826686
+        },
+        {
+            "Feature": "symptom_phonophobia",
+            "Importance": 0.006530850224314566
+        },
+        {
+            "Feature": "symptom_facial_droop",
+            "Importance": 0.006521479378465725
+        },
+        {
+            "Feature": "symptom_vision_blur",
+            "Importance": 0.006479151683300202
+        },
+        {
+            "Feature": "symptom_speech_difficulty",
+            "Importance": 0.0064638965097523066
+        },
+        {
+            "Feature": "symptom_double_vision",
+            "Importance": 0.006454634577985691
+        },
+        {
+            "Feature": "symptom_paresthesia",
+            "Importance": 0.006431639011880045
+        },
+        {
+            "Feature": "symptom_migraine_symptom",
+            "Importance": 0.006423745632756291
+        },
+        {
+            "Feature": "rare_symptom_bone_fractures_pathologic_rare",
+            "Importance": 0.00037065207470053006
+        },
+        {
+            "Feature": "rare_symptom_hematuria",
+            "Importance": 0.00036961879664291586
+        },
+        {
+            "Feature": "rare_symptom_butterfly_rash",
+            "Importance": 0.00036320488933243907
+        },
+        {
+            "Feature": "rare_symptom_digital_clubbing",
+            "Importance": 0.0003626508379267265
+        },
+        {
+            "Feature": "rare_symptom_respiratory_failure_rare",
+            "Importance": 0.0003576410822161164
+        },
+        {
+            "Feature": "rare_symptom_dysautonomia_rare",
+            "Importance": 0.000323165246272261
+        },
+        {
+            "Feature": "rare_symptom_developmental_delay_rare",
+            "Importance": 0.0003207275025581797
+        },
+        {
+            "Feature": "rare_symptom_hyperextensible_skin_rare",
+            "Importance": 0.0003194953532264973
+        },
+        {
+            "Feature": "rare_symptom_spastic_paraparesis_rare",
+            "Importance": 0.0003006919448688892
+        },
+        {
+            "Feature": "rare_symptom_skin_calcifications_rare",
+            "Importance": 0.0002959741448548203
+        },
+        {
+            "Feature": "rare_symptom_hemolytic_anemia_rare",
+            "Importance": 0.00028545533539087295
+        },
+        {
+            "Feature": "rare_symptom_pancytopenia_rare",
+            "Importance": 0.00028291404191574366
+        },
+        {
+            "Feature": "rare_symptom_neuropathic_pain_rare",
+            "Importance": 0.0002678016359854005
+        },
+        {
+            "Feature": "rare_symptom_lens_dislocation_rare",
+            "Importance": 0.00026400380951832294
+        },
+        {
+            "Feature": "rare_symptom_raynaud_phenomenon",
+            "Importance": 0.0002521503317968155
+        },
+        {
+            "Feature": "rare_symptom_macroglossia_rare",
+            "Importance": 0.0002511984403430273
+        },
+        {
+            "Feature": "rare_symptom_malar_rash",
+            "Importance": 0.00024544656727665357
+        },
+        {
+            "Feature": "rare_symptom_oral_ulcers",
+            "Importance": 0.00024172463428661766
+        },
+        {
+            "Feature": "rare_symptom_bulbar_symptoms_rare",
+            "Importance": 0.00023770517830814999
+        },
+        {
+            "Feature": "rare_symptom_portal_hypertension_signs_rare",
+            "Importance": 0.00022263891323931156
+        },
+        {
+            "Feature": "rare_symptom_cardiomyopathy_rare",
+            "Importance": 0.0002213192209037714
+        },
+        {
+            "Feature": "rare_symptom_proteinuria",
+            "Importance": 0.0002088447659909215
+        },
+        {
+            "Feature": "rare_symptom_arrhythmia_persistent_rare",
+            "Importance": 0.00020879309874241835
+        },
+        {
+            "Feature": "rare_symptom_steatorrhea_rare",
+            "Importance": 0.00020801485644999167
+        },
+        {
+            "Feature": "rare_symptom_massive_splenomegaly_rare",
+            "Importance": 0.00019261006513392336
+        },
+        {
+            "Feature": "rare_symptom_erythema_nodosum",
+            "Importance": 0.00019046844425178998
+        },
+        {
+            "Feature": "rare_symptom_tall_stature_rare",
+            "Importance": 0.000189625669447965
+        },
+        {
+            "Feature": "rare_symptom_kyphoscoliosis_rare",
+            "Importance": 0.00018934603509496598
+        },
+        {
+            "Feature": "rare_symptom_hearing_loss_early_onset_rare",
+            "Importance": 0.0001835129137631482
+        },
+        {
+            "Feature": "rare_symptom_bone_marrow_failure_rare",
+            "Importance": 0.0001685371225500352
+        },
+        {
+            "Feature": "rare_symptom_bloody_sputum_rare",
+            "Importance": 0.0001549806459392826
+        },
+        {
+            "Feature": "rare_symptom_renal_cysts_rare",
+            "Importance": 0.00015448210568637648
+        },
+        {
+            "Feature": "rare_symptom_bronchiectasis_rare",
+            "Importance": 0.00014278129484985883
+        },
+        {
+            "Feature": "rare_symptom_joint_hypermobility_rare",
+            "Importance": 0.00013346952554706988
+        },
+        {
+            "Feature": "rare_symptom_angiokeratomas_rare",
+            "Importance": 0.0001327681955221458
+        },
+        {
+            "Feature": "rare_symptom_hepatosplenomegaly_rare",
+            "Importance": 9.991520841769229e-05
+        },
+        {
+            "Feature": "rare_symptom_optic_neuritis_rare",
+            "Importance": 9.894323940747803e-05
+        },
+        {
+            "Feature": "rare_symptom_proximal_muscle_weakness_rare",
+            "Importance": 9.384961709708916e-05
+        },
+        {
+            "Feature": "rare_symptom_foot_drop_rare",
+            "Importance": 7.579063255728204e-05
+        }
+    ]
+}
