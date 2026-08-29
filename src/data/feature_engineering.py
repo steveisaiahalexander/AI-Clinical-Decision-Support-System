@@ -1208,3 +1208,350 @@ class FeatureEngineer:
         logger.info(
             f"Saved {output_path}"
         )
+
+    def select_top_features(
+        self,
+        ranking: pd.DataFrame,
+        n_features: int = 50,
+    ) -> list:
+        """
+        Select the top N features from the consensus ranking.
+
+        Parameters
+        ----------
+        ranking : pd.DataFrame
+            Consensus feature ranking.
+
+        n_features : int
+            Number of features to select.
+
+        Returns
+        -------
+        list
+            Selected feature names.
+        """
+
+        logger.info("=" * 50)
+        logger.info("SELECTING FINAL FEATURES")
+        logger.info("=" * 50)
+
+        if ranking.empty:
+            raise ValueError(
+                "Feature ranking is empty."
+            )
+
+        if "Feature" not in ranking.columns:
+            raise ValueError(
+                "Ranking must contain a 'Feature' column."
+            )
+
+        # -------------------------------------------------
+        # Validate requested number of features
+        # -------------------------------------------------
+
+        n_features = min(
+            n_features,
+            len(ranking)
+        )
+
+        # -------------------------------------------------
+        # Select top features
+        # -------------------------------------------------
+
+        selected_features = (
+            ranking
+            .head(n_features)["Feature"]
+            .tolist()
+        )
+
+        logger.info(
+            f"Selected {len(selected_features)} "
+            f"features from {len(ranking)} features."
+        )
+
+        logger.info(
+            "Top selected feature: "
+            f"{selected_features[0]}"
+        )
+
+        # -------------------------------------------------
+        # Display selected features
+        # -------------------------------------------------
+
+        logger.info("=" * 50)
+        logger.info("SELECTED FEATURES")
+        logger.info("=" * 50)
+
+        for index, feature in enumerate(
+            selected_features,
+            start=1
+        ):
+
+            logger.info(
+                f"{index:02d}. {feature}"
+            )
+
+        return selected_features
+
+    def apply_feature_selection(
+        self,
+        X_train: pd.DataFrame,
+        X_test: pd.DataFrame,
+        selected_features: list,
+    ):
+        """
+        Apply the selected feature list to both
+        training and testing datasets.
+
+        The same feature columns are used for both
+        datasets to guarantee feature consistency.
+        """
+
+        logger.info("=" * 50)
+        logger.info("APPLYING FINAL FEATURE SELECTION")
+        logger.info("=" * 50)
+
+        # -------------------------------------------------
+        # Check that all selected features exist
+        # -------------------------------------------------
+
+        missing_train = [
+            feature
+            for feature in selected_features
+            if feature not in X_train.columns
+        ]
+
+        missing_test = [
+            feature
+            for feature in selected_features
+            if feature not in X_test.columns
+        ]
+
+        if missing_train:
+            raise ValueError(
+                "Selected features missing from "
+                f"X_train: {missing_train}"
+            )
+
+        if missing_test:
+            raise ValueError(
+                "Selected features missing from "
+                f"X_test: {missing_test}"
+            )
+
+        # -------------------------------------------------
+        # Apply identical feature ordering
+        # -------------------------------------------------
+
+        X_train_selected = X_train[
+            selected_features
+        ].copy()
+
+        X_test_selected = X_test[
+            selected_features
+        ].copy()
+
+        # -------------------------------------------------
+        # Verify feature consistency
+        # -------------------------------------------------
+
+        if list(
+            X_train_selected.columns
+        ) != list(
+            X_test_selected.columns
+        ):
+
+            raise ValueError(
+                "Training and testing feature "
+                "columns do not match."
+            )
+
+        logger.info(
+            f"Original feature count: "
+            f"{X_train.shape[1]}"
+        )
+
+        logger.info(
+            f"Selected feature count: "
+            f"{X_train_selected.shape[1]}"
+        )
+
+        logger.info(
+            f"X_train selected shape: "
+            f"{X_train_selected.shape}"
+        )
+
+        logger.info(
+            f"X_test selected shape: "
+            f"{X_test_selected.shape}"
+        )
+
+        return (
+            X_train_selected,
+            X_test_selected,
+        )
+
+    def select_top_features(
+        self,
+        ranking: pd.DataFrame,
+        n_features: int = 50,
+    ) -> list:
+        """
+        Select the top N features from the consensus ranking.
+        """
+
+        logger.info("=" * 50)
+        logger.info("SELECTING FINAL FEATURES")
+        logger.info("=" * 50)
+
+        if ranking.empty:
+            raise ValueError(
+                "Feature ranking is empty."
+            )
+
+        if "Feature" not in ranking.columns:
+            raise ValueError(
+                "Ranking must contain a 'Feature' column."
+            )
+
+        n_features = min(
+            n_features,
+            len(ranking)
+        )
+
+        selected_features = (
+            ranking
+            .head(n_features)["Feature"]
+            .tolist()
+        )
+
+        logger.info(
+            f"Selected {len(selected_features)} "
+            f"features from {len(ranking)} features."
+        )
+
+        logger.info(
+            f"Top selected feature: "
+            f"{selected_features[0]}"
+        )
+
+        logger.info("=" * 50)
+        logger.info("SELECTED FEATURES")
+        logger.info("=" * 50)
+
+        for index, feature in enumerate(
+            selected_features,
+            start=1
+        ):
+            logger.info(
+                f"{index:02d}. {feature}"
+            )
+
+        return selected_features
+
+    def apply_feature_selection(
+        self,
+        X_train: pd.DataFrame,
+        X_test: pd.DataFrame,
+        selected_features: list,
+    ):
+        """
+        Apply selected features to training and testing data.
+        """
+
+        logger.info("=" * 50)
+        logger.info("APPLYING FINAL FEATURE SELECTION")
+        logger.info("=" * 50)
+
+        missing_train = [
+            feature
+            for feature in selected_features
+            if feature not in X_train.columns
+        ]
+
+        missing_test = [
+            feature
+            for feature in selected_features
+            if feature not in X_test.columns
+        ]
+
+        if missing_train:
+            raise ValueError(
+                f"Selected features missing from X_train: "
+                f"{missing_train}"
+            )
+
+        if missing_test:
+            raise ValueError(
+                f"Selected features missing from X_test: "
+                f"{missing_test}"
+            )
+
+        X_train_selected = X_train[
+            selected_features
+        ].copy()
+
+        X_test_selected = X_test[
+            selected_features
+        ].copy()
+
+        if list(
+            X_train_selected.columns
+        ) != list(
+            X_test_selected.columns
+        ):
+            raise ValueError(
+                "Training and testing feature "
+                "columns do not match."
+            )
+
+        logger.info(
+            f"Original feature count: "
+            f"{X_train.shape[1]}"
+        )
+
+        logger.info(
+            f"Selected feature count: "
+            f"{X_train_selected.shape[1]}"
+        )
+
+        logger.info(
+            f"X_train selected shape: "
+            f"{X_train_selected.shape}"
+        )
+
+        logger.info(
+            f"X_test selected shape: "
+            f"{X_test_selected.shape}"
+        )
+
+        return (
+            X_train_selected,
+            X_test_selected,
+        )
+
+
+    def save_selected_features(
+        self,
+        selected_features: list,
+    ):
+        """
+        Save final selected feature list.
+        """
+
+        output_path = (
+            Config.MODEL_DIR /
+            "selected_features.pkl"
+        )
+
+        joblib.dump(
+            selected_features,
+            output_path,
+        )
+
+        logger.info(
+            f"Saved selected feature list to "
+            f"{output_path}"
+        )
+
+        return output_path

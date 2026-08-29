@@ -198,22 +198,81 @@ engineer.save_feature_ranking(
 )
 
 
+
 # =====================================================
-# COMPLETION
+# PHASE 4.1
+# FINAL FEATURE SELECTION
+# =====================================================
+
+selected_features = engineer.select_top_features(
+    ranking,
+    n_features=50,
+)
+
+
+# =====================================================
+# PHASE 4.2
+# APPLY FEATURE SELECTION
+# =====================================================
+
+X_train_selected, X_test_selected = (
+    engineer.apply_feature_selection(
+        processed["X_train"],
+        processed["X_test"],
+        selected_features,
+    )
+)
+
+
+# =====================================================
+# PHASE 4.3
+# SAVE SELECTED FEATURES
+# =====================================================
+
+engineer.save_selected_features(
+    selected_features
+)
+
+
+# =====================================================
+# FINAL FEATURE SELECTION SUMMARY
 # =====================================================
 
 print()
 
 print("=" * 50)
-print("FEATURE ENGINEERING COMPLETED")
+print("FINAL FEATURE SELECTION")
 print("=" * 50)
 
 print(
-    "Final feature count:",
-    len(ranking)
+    "Original features:",
+    processed["X_train"].shape[1]
 )
 
 print(
-    "Top feature:",
-    ranking.iloc[0]["Feature"]
+    "Selected features:",
+    X_train_selected.shape[1]
 )
+
+print(
+    "Training shape:",
+    X_train_selected.shape
+)
+
+print(
+    "Testing shape:",
+    X_test_selected.shape
+)
+
+print()
+
+print("Selected feature names:")
+
+for index, feature in enumerate(
+    selected_features,
+    start=1
+):
+
+    print(
+        f"{index:02d}. {feature}"
+    )
