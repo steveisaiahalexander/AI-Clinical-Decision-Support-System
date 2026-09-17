@@ -1,0 +1,2 @@
+model,accuracy,weighted_precision,weighted_recall,weighted_f1,macro_precision,macro_recall,macro_f1
+balanced_gradient_boosting,0.457394612996896,0.5841228558759869,0.457394612996896,0.4787088974223782,0.3572949384305268,0.6075174062144747,0.38540026170444935

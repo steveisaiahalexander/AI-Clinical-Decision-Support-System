@@ -1,0 +1,15 @@
+{
+    "model": "GradientBoostingClassifier",
+    "training_samples": 79892,
+    "features": 174,
+    "classes": 30,
+    "class_balancing": "balanced_sample_weight",
+    "hyperparameters": {
+        "n_estimators": 150,
+        "learning_rate": 0.1,
+        "max_depth": 4,
+        "subsample": 0.8,
+        "random_state": 42
+    },
+    "test_set_used_during_training": false
+}

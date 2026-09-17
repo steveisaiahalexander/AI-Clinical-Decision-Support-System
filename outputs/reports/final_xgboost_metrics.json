@@ -1,0 +1,13 @@
+{
+    "model": "final_xgboost",
+    "test_samples": 19974,
+    "features": 174,
+    "accuracy": 0.7089215980775008,
+    "weighted_precision": 0.7158224606660796,
+    "weighted_recall": 0.7089215980775008,
+    "weighted_f1": 0.710605709104332,
+    "macro_precision": 0.5754697962360897,
+    "macro_recall": 0.5813489816375869,
+    "macro_f1": 0.568216796721806,
+    "test_set_used_only_for_final_evaluation": true
+}

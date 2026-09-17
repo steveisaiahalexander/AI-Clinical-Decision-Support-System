@@ -1,0 +1,24 @@
+{
+    "model": "XGBClassifier",
+    "training_samples": 79892,
+    "features": 174,
+    "classes": 30,
+    "class_balancing": "balanced_sample_weight",
+    "hyperparameters": {
+        "n_estimators": 700,
+        "learning_rate": 0.1,
+        "max_depth": 6,
+        "min_child_weight": 1,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "objective": "multi:softprob",
+        "eval_metric": "mlogloss",
+        "random_state": 42,
+        "n_jobs": -1,
+        "tree_method": "hist"
+    },
+    "validation_accuracy": 0.7009,
+    "validation_weighted_f1": 0.702,
+    "validation_macro_f1": 0.5404,
+    "test_set_used_during_training": false
+}

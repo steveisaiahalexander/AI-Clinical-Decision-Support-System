@@ -5,6 +5,7 @@ Application Constants
 Immutable constants used throughout the project.
 """
 
+
 # ======================================================
 # RANDOMNESS
 # ======================================================
@@ -15,7 +16,7 @@ RANDOM_STATE = 42
 # DATASET
 # ======================================================
 
-TARGET_COLUMN = "prognosis"
+TARGET_COLUMN = "disease"
 
 TEST_SIZE = 0.20
 
@@ -70,3 +71,31 @@ TOP_PREDICTIONS = 5
 CORRELATION_THRESHOLD = 0.95
 
 TOP_FEATURES = 20
+
+# ======================================================
+# FEATURE IMPORTANCE
+# ======================================================
+
+N_ESTIMATORS = 500
+
+TOP_FEATURES = 20
+
+IMPORTANCE_RANDOM_STATE = 42
+
+# ======================================================
+# RANDOM FOREST
+# ======================================================
+
+N_ESTIMATORS = 500
+
+IMPORTANCE_RANDOM_STATE = 42
+
+# ======================================================
+# VISUALIZATION
+# ======================================================
+
+FIGURE_WIDTH = 14
+
+FIGURE_HEIGHT = 10
+
+FIGURE_DPI = 300

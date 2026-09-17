@@ -35,9 +35,22 @@ class Config:
 
     PROCESSED_DATA_DIR = DATA_DIR / "processed"
 
+    # ------------------------------------------------------------
+    # RAW DATASETS
+    # ------------------------------------------------------------
+
     TRAIN_DATA = RAW_DATA_DIR / "Training.csv"
 
     TEST_DATA = RAW_DATA_DIR / "Testing.csv"
+
+    # ------------------------------------------------------------
+    # MODELING DATASET
+    # ------------------------------------------------------------
+
+    MODELING_DATASET = (
+        PROCESSED_DATA_DIR /
+        "modeling_dataset.pkl"
+    )
 
     # ============================================================
     # MODELS
@@ -45,11 +58,20 @@ class Config:
 
     MODEL_DIR = PROJECT_ROOT / "models"
 
-    TRAINED_MODEL = MODEL_DIR / "disease_model.pkl"
+    TRAINED_MODEL = (
+        MODEL_DIR /
+        "disease_model.pkl"
+    )
 
-    LABEL_ENCODER = MODEL_DIR / "label_encoder.pkl"
+    LABEL_ENCODER = (
+        MODEL_DIR /
+        "label_encoder.pkl"
+    )
 
-    FEATURE_COLUMNS = MODEL_DIR / "feature_columns.pkl"
+    FEATURE_COLUMNS = (
+        MODEL_DIR /
+        "feature_columns.pkl"
+    )
 
     # ============================================================
     # OUTPUTS
@@ -57,48 +79,70 @@ class Config:
 
     OUTPUT_DIR = PROJECT_ROOT / "outputs"
 
-    FIGURES_DIR = OUTPUT_DIR / "figures"
+    FIGURES_DIR = (
+        OUTPUT_DIR /
+        "figures"
+    )
 
-    REPORTS_DIR = OUTPUT_DIR / "reports"
+    REPORTS_DIR = (
+        OUTPUT_DIR /
+        "reports"
+    )
 
-    LOGS_DIR = OUTPUT_DIR / "logs"
+    LOGS_DIR = (
+        OUTPUT_DIR /
+        "logs"
+    )
 
     # ============================================================
     # NOTEBOOKS
     # ============================================================
 
-    NOTEBOOKS_DIR = PROJECT_ROOT / "notebooks"
+    NOTEBOOKS_DIR = (
+        PROJECT_ROOT /
+        "notebooks"
+    )
 
     # ============================================================
     # DOCUMENTATION
     # ============================================================
 
-    DOCS_DIR = PROJECT_ROOT / "docs"
+    DOCS_DIR = (
+        PROJECT_ROOT /
+        "docs"
+    )
 
     # ============================================================
     # API
     # ============================================================
 
-    API_DIR = PROJECT_ROOT / "api"
+    API_DIR = (
+        PROJECT_ROOT /
+        "api"
+    )
 
     # ============================================================
     # STREAMLIT
     # ============================================================
 
-    APP_DIR = PROJECT_ROOT / "app"
+    APP_DIR = (
+        PROJECT_ROOT /
+        "app"
+    )
 
     # ============================================================
     # CONFIGS
     # ============================================================
 
-    CONFIG_DIR = PROJECT_ROOT / "configs"
+    CONFIG_DIR = (
+        PROJECT_ROOT /
+        "configs"
+    )
 
     # ============================================================
     # CREATE DIRECTORIES
     # ============================================================
 
-    @classmethod
-    @classmethod
     @classmethod
     def initialize(cls):
         """
@@ -106,21 +150,24 @@ class Config:
         """
 
         runtime_dirs = [
+
             cls.PROCESSED_DATA_DIR,
+
             cls.MODEL_DIR,
+
             cls.OUTPUT_DIR,
+
             cls.FIGURES_DIR,
+
             cls.REPORTS_DIR,
+
             cls.LOGS_DIR,
+
         ]
 
         for directory in runtime_dirs:
-
-            print(f"Checking: {directory}")
 
             directory.mkdir(
                 parents=True,
                 exist_ok=True
             )
-
-            print(f"✔ Created/Exists: {directory}")

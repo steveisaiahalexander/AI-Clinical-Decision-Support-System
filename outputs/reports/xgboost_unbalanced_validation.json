@@ -1,0 +1,22 @@
+{
+    "model": "XGBoost",
+    "experiment": "unbalanced",
+    "validation_samples": 15979,
+    "features": 174,
+    "classes": 30,
+    "n_estimators": 700,
+    "learning_rate": 0.1,
+    "max_depth": 6,
+    "min_child_weight": 1,
+    "subsample": 0.8,
+    "colsample_bytree": 0.8,
+    "class_balancing": false,
+    "training_time_minutes": 10.77,
+    "accuracy": 0.7073659177670693,
+    "weighted_precision": 0.7060899966046729,
+    "weighted_recall": 0.7073659177670693,
+    "weighted_f1": 0.6991927396665745,
+    "macro_precision": 0.6411050834349317,
+    "macro_recall": 0.4786849097501498,
+    "macro_f1": 0.5259575748219434
+}

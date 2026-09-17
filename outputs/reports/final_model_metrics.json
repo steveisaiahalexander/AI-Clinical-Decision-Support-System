@@ -1,0 +1,13 @@
+{
+    "model": "final_gradient_boosting",
+    "test_samples": 19974,
+    "features": 174,
+    "accuracy": 0.5657855211775308,
+    "weighted_precision": 0.6428827757033009,
+    "weighted_recall": 0.5657855211775308,
+    "weighted_f1": 0.5773464432168364,
+    "macro_precision": 0.4280697653871664,
+    "macro_recall": 0.5879163132460917,
+    "macro_f1": 0.46845807967332187,
+    "test_set_used_only_for_final_evaluation": true
+}

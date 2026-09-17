@@ -1,0 +1,12 @@
+{
+    "model": "HistGradientBoosting",
+    "accuracy": 0.5005319481819889,
+    "weighted_precision": 0.5745521409049619,
+    "weighted_recall": 0.5005319481819889,
+    "weighted_f1": 0.512372360376018,
+    "macro_precision": 0.3731025984073393,
+    "macro_recall": 0.5309647783426793,
+    "macro_f1": 0.40913104525133387,
+    "prediction_time_seconds": 1.8272392749786377,
+    "training_time_seconds": 32.50369191169739
+}
