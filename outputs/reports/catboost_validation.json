@@ -1,0 +1,22 @@
+{
+    "model": "CatBoost",
+    "experiment": "catboost_validation",
+    "validation_samples": 15979,
+    "features": 174,
+    "classes": 30,
+    "iterations": 900,
+    "learning_rate": 0.075,
+    "depth": 6,
+    "bootstrap_type": "Bernoulli",
+    "subsample": 0.9,
+    "rsm": 0.9,
+    "class_weighting": "balanced^0.25",
+    "training_time_minutes": 16.88,
+    "accuracy": 0.6783903873834408,
+    "weighted_precision": 0.6720793638699842,
+    "weighted_recall": 0.6783903873834408,
+    "weighted_f1": 0.6736517316018438,
+    "macro_precision": 0.4793333897025568,
+    "macro_recall": 0.42593963405484114,
+    "macro_f1": 0.44301505207337305
+}

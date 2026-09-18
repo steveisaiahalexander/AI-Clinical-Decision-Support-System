@@ -1,0 +1,10 @@
+{
+    "total_samples": 100000,
+    "total_features": 174,
+    "total_diseases": 46,
+    "unique_symptom_signatures": 100000,
+    "repeated_signature_samples": 0,
+    "conflicting_signature_count": 0,
+    "conflicting_signature_samples": 0,
+    "unique_signature_ratio": 1.0
+}
