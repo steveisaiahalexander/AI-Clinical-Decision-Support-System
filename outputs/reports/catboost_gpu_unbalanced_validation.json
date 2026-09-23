@@ -1,0 +1,23 @@
+{
+    "model": "CatBoost",
+    "experiment": "gpu_unbalanced_validation",
+    "validation_samples": 15979,
+    "development_samples": 63913,
+    "features": 174,
+    "classes": 30,
+    "iterations": 700,
+    "learning_rate": 0.1,
+    "depth": 6,
+    "class_weighting": "none",
+    "task_type": "GPU",
+    "device": "0",
+    "best_iteration": 699,
+    "training_time_minutes": 0.42,
+    "accuracy": 0.6771387446022905,
+    "weighted_precision": 0.6679503868322156,
+    "weighted_recall": 0.6771387446022905,
+    "weighted_f1": 0.6657423456133323,
+    "macro_precision": 0.5047120910005968,
+    "macro_recall": 0.3918592137020499,
+    "macro_f1": 0.42360582411114295
+}
