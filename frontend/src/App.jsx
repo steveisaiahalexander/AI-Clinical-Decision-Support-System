@@ -1,9 +1,14 @@
-import { useEffect, useMemo, useState } from 'react'
-import { Activity, AlertCircle, Check, ChevronRight, LoaderCircle, Plus, Search, ShieldAlert, Sparkles, X } from 'lucide-react'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { Activity, AlertCircle, ChevronRight, LoaderCircle, Plus, Search, ShieldAlert, Sparkles, X } from 'lucide-react'
 import { fetchSymptoms, predictFromSymptoms } from './services/api.js'
 
-function labelFor(value) {
-  return value.replaceAll('_', ' ').replace(/\b\w/g, (letter) => letter.toUpperCase())
+function labelFor(value, keepSymptomSuffix = false) {
+  let label = value.replace(/^(?:rare_)?symptom_/, '').replace(/_rare$/, '')
+  if (!keepSymptomSuffix) label = label.replace(/_symptom$/, '')
+  return label
+    .replaceAll('_', ' ')
+    .replace(/\b\w/g, (letter) => letter.toUpperCase())
+    .replace(/\bGi\b/g, 'GI')
 }
 
 function App() {
@@ -15,6 +20,8 @@ function App() {
   const [analyzing, setAnalyzing] = useState(false)
   const [analysisError, setAnalysisError] = useState('')
   const [result, setResult] = useState(null)
+  const resultsRef = useRef(null)
+  const resultsTitleRef = useRef(null)
 
   async function loadSymptoms() {
     setLoadingSymptoms(true)
@@ -32,10 +39,41 @@ function App() {
 
   useEffect(() => { loadSymptoms() }, [])
 
+  useEffect(() => {
+    if (!result) return
+    resultsTitleRef.current?.focus({ preventScroll: true })
+    resultsRef.current?.scrollIntoView({
+      behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+      block: 'start',
+    })
+  }, [result])
+
+  const symptomLabels = useMemo(() => {
+    const labels = symptoms.map((symptom) => labelFor(symptom))
+    const frequencies = new Map()
+    labels.forEach((label) => frequencies.set(label, (frequencies.get(label) || 0) + 1))
+
+    return new Map(symptoms.map((symptom, index) => [
+      symptom,
+      frequencies.get(labels[index]) > 1 && /_symptom$/.test(symptom)
+        ? labelFor(symptom, true)
+        : labels[index],
+    ]))
+  }, [symptoms])
+
   const filteredSymptoms = useMemo(() => {
-    const normalized = query.trim().toLowerCase()
-    return symptoms.filter((symptom) => !selected.includes(symptom) && labelFor(symptom).toLowerCase().includes(normalized))
-  }, [query, selected, symptoms])
+    const tokens = query.trim().toLowerCase().split(/\s+/).filter(Boolean)
+    return symptoms.filter((symptom) => {
+      const label = symptomLabels.get(symptom).toLowerCase()
+      return !selected.includes(symptom) && tokens.every((token) => label.includes(token))
+    })
+  }, [query, selected, symptomLabels, symptoms])
+
+  const rankedPredictions = Array.isArray(result?.top_predictions) ? result.top_predictions : []
+  const primaryPrediction = rankedPredictions.find((prediction) => Number(prediction.rank) === 1) || rankedPredictions[0]
+  const primaryDisease = result?.predicted_disease || primaryPrediction?.disease
+  const primaryPercentage = Number(result?.predicted_percentage ?? primaryPrediction?.percentage)
+  const alternatives = rankedPredictions.filter((prediction) => prediction.disease !== primaryDisease)
 
   function addSymptom(symptom) {
     setSelected((current) => [...current, symptom])
@@ -47,6 +85,7 @@ function App() {
   function removeSymptom(symptom) {
     setSelected((current) => current.filter((item) => item !== symptom))
     setResult(null)
+    setAnalysisError('')
   }
 
   function clearSelection() {
@@ -89,7 +128,7 @@ function App() {
         <section className="assessment" aria-label="Symptom assessment">
           <div className="section-heading">
             <div><span className="step-number">01</span><h2>Choose symptoms</h2></div>
-            <span className="available-count">{loadingSymptoms ? 'Loading list' : `${symptoms.length} available`}</span>
+            <span className="available-count" role="status" aria-live="polite">{loadingSymptoms ? 'Loading list' : query.trim() ? `${filteredSymptoms.length} matches` : `${symptoms.length} available`}</span>
           </div>
 
           <div className="workspace">
@@ -97,17 +136,17 @@ function App() {
               <label className="search-label" htmlFor="symptom-search">Search symptoms</label>
               <div className="search-wrap">
                 <Search size={18} aria-hidden="true" />
-                <input id="symptom-search" type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Try “headache” or “fatigue”" autoComplete="off" />
+                <input id="symptom-search" type="search" value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Try “headache” or “fatigue”" autoComplete="off" aria-controls="symptom-options" />
                 {query && <button className="icon-button search-clear" type="button" onClick={() => setQuery('')} aria-label="Clear search"><X size={16} /></button>}
               </div>
 
-              <div className="symptom-list" aria-label="Available symptoms" aria-busy={loadingSymptoms}>
+              <div id="symptom-options" className="symptom-list" aria-label="Available symptoms" aria-busy={loadingSymptoms}>
                 {loadingSymptoms && <div className="list-state"><LoaderCircle className="spin" size={20} /><span>Loading available symptoms…</span></div>}
                 {!loadingSymptoms && symptomError && <div className="list-state error-state"><AlertCircle size={20} /><span>{symptomError}</span><button className="text-button" type="button" onClick={loadSymptoms}>Try again</button></div>}
                 {!loadingSymptoms && !symptomError && filteredSymptoms.length === 0 && <div className="list-state"><span>{query ? 'No symptoms match your search.' : symptoms.length === 0 ? 'No symptoms are available from the service.' : 'All available symptoms are selected.'}</span></div>}
                 {!loadingSymptoms && !symptomError && filteredSymptoms.map((symptom) => (
-                  <button className="symptom-option" type="button" key={symptom} onClick={() => addSymptom(symptom)}>
-                    <span>{labelFor(symptom)}</span><Plus size={17} aria-hidden="true" />
+                  <button className="symptom-option" type="button" key={symptom} onClick={() => addSymptom(symptom)} disabled={analyzing}>
+                    <span>{symptomLabels.get(symptom)}</span><Plus size={17} aria-hidden="true" />
                   </button>
                 ))}
               </div>
@@ -117,13 +156,13 @@ function App() {
             <aside className="selection-column" aria-labelledby="selected-title">
               <div className="selection-heading">
                 <div><h3 id="selected-title">Selected</h3><span className="selection-count">{selected.length}</span></div>
-                {selected.length > 0 && <button type="button" className="text-button" onClick={clearSelection}>Clear all</button>}
+                {selected.length > 0 && <button type="button" className="text-button" onClick={clearSelection} disabled={analyzing}>Clear all</button>}
               </div>
 
-              <div className={`selected-area ${selected.length === 0 ? 'is-empty' : ''}`} aria-live="polite">
+              <div className={`selected-area ${selected.length === 0 ? 'is-empty' : ''}`} aria-label="Selected symptoms" aria-live="polite">
                 {selected.length === 0 ? <div className="empty-selection"><span className="empty-icon"><Plus size={19} /></span><p>Your selected symptoms<br />will appear here.</p></div> : (
                   <ul className="chip-list">
-                    {selected.map((symptom) => <li key={symptom} className="symptom-chip"><span>{labelFor(symptom)}</span><button type="button" onClick={() => removeSymptom(symptom)} aria-label={`Remove ${labelFor(symptom)}`}><X size={14} /></button></li>)}
+                    {selected.map((symptom) => <li key={symptom} className="symptom-chip"><span>{symptomLabels.get(symptom)}</span><button type="button" onClick={() => removeSymptom(symptom)} aria-label={`Remove ${symptomLabels.get(symptom)}`} disabled={analyzing}><X size={14} /></button></li>)}
                   </ul>
                 )}
               </div>
@@ -136,21 +175,38 @@ function App() {
           </div>
         </section>
 
+        {analyzing && <div className="feedback loading-feedback" role="status"><LoaderCircle className="spin" size={19} /><span>Analyzing the selected symptoms…</span></div>}
         {analysisError && <div className="feedback error-feedback" role="alert"><AlertCircle size={19} /><span>{analysisError}</span></div>}
 
-        {result && <section className="results" aria-labelledby="results-title" aria-live="polite">
+        {result && <section ref={resultsRef} className="results" aria-labelledby="results-title">
           <div className="results-top"><div className="eyebrow"><span>MODEL OUTPUT</span><span className="eyebrow-line" /></div><span className="result-badge"><Sparkles size={14} /> Assessment complete</span></div>
-          <h2 id="results-title">Ranked possibilities</h2>
-          <p className="results-intro">These are model classifications for the selected symptom pattern.</p>
-          <div className="prediction-list">
-            {result.top_predictions?.map((prediction) => <div className={`prediction-row ${prediction.rank === 1 ? 'prediction-primary' : ''}`} key={prediction.rank}>
-              <span className="prediction-rank">{String(prediction.rank).padStart(2, '0')}</span>
-              <span className="prediction-name">{labelFor(prediction.disease)}</span>
-              <span className="prediction-score">{Number(prediction.percentage).toFixed(2)}%</span>
-              {prediction.rank === 1 && <Check className="prediction-check" size={17} aria-label="Highest ranked" />}
-            </div>)}
-          </div>
-          <p className="probability-note">Percentages are model outputs for this feature vector, not a measure of clinical certainty.</p>
+          <h2 id="results-title" ref={resultsTitleRef} tabIndex={-1}>Assessment results</h2>
+          <p className="results-intro">A ranked model assessment based on the symptoms selected above.</p>
+          {!primaryDisease || !Number.isFinite(primaryPercentage) ? (
+            <div className="results-empty" role="status"><AlertCircle size={19} /><p>No ranked predictions were returned. Review the selected symptoms and try again.</p></div>
+          ) : (
+            <>
+              <div className="primary-result">
+                <div className="primary-copy"><span className="primary-label">Highest-ranked condition</span><h3>{labelFor(primaryDisease)}</h3></div>
+                <div className="primary-probability"><span>Model probability</span><strong>{primaryPercentage.toFixed(2)}%</strong></div>
+              </div>
+              <div className="alternatives-heading"><h3>Other ranked predictions</h3><span>{alternatives.length}</span></div>
+              {alternatives.length === 0 ? <p className="no-alternatives">No alternative predictions were included.</p> : (
+                <div className="prediction-list">
+                  {alternatives.map((prediction) => {
+                    const percentage = Number(prediction.percentage)
+                    const safePercentage = Number.isFinite(percentage) ? percentage : 0
+                    return <div className="prediction-row" key={`${prediction.rank}-${prediction.disease}`}>
+                      <span className="prediction-rank">{String(prediction.rank).padStart(2, '0')}</span>
+                      <div className="prediction-detail"><span className="prediction-name">{labelFor(prediction.disease)}</span><span className="probability-track" aria-hidden="true"><span style={{ width: `${Math.max(0, Math.min(safePercentage, 100))}%` }} /></span></div>
+                      <span className="prediction-score">{Number.isFinite(percentage) ? `${percentage.toFixed(2)}%` : '—'}</span>
+                    </div>
+                  })}
+                </div>
+              )}
+              <p className="probability-note">Probabilities are model outputs for this selected feature pattern. They are not a diagnosis or a measure of clinical certainty.</p>
+            </>
+          )}
         </section>}
 
         <section className="disclaimer" aria-label="Clinical decision support disclaimer">

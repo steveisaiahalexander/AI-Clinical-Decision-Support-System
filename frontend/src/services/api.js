@@ -17,7 +17,11 @@ async function request(path, options = {}) {
 
   const payload = await response.json().catch(() => null)
   if (!response.ok) {
-    const detail = typeof payload?.detail === 'string' ? payload.detail : 'Please review the selected symptoms and try again.'
+    const detail = typeof payload?.detail === 'string'
+      ? payload.detail
+      : typeof payload?.detail?.message === 'string'
+        ? payload.detail.message
+        : 'Please review the selected symptoms and try again.'
     throw new Error(detail)
   }
   return payload
