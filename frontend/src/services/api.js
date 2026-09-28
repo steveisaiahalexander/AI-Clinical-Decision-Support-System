@@ -37,3 +37,10 @@ export function predictFromSymptoms(symptoms, topK = 5) {
     body: JSON.stringify({ symptoms, top_k: topK }),
   })
 }
+
+export function explainSymptoms(symptoms) {
+  return request('/explain', {
+    method: 'POST',
+    body: JSON.stringify({ symptoms }),
+  })
+}

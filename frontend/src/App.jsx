@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Activity, AlertCircle, ChevronRight, LoaderCircle, Plus, Search, ShieldAlert, Sparkles, X } from 'lucide-react'
-import { fetchSymptoms, predictFromSymptoms } from './services/api.js'
+import { explainSymptoms, fetchSymptoms, predictFromSymptoms } from './services/api.js'
 
 function labelFor(value, keepSymptomSuffix = false) {
   let label = value.replace(/^(?:rare_)?symptom_/, '').replace(/_rare$/, '')
@@ -9,6 +9,15 @@ function labelFor(value, keepSymptomSuffix = false) {
     .replaceAll('_', ' ')
     .replace(/\b\w/g, (letter) => letter.toUpperCase())
     .replace(/\bGi\b/g, 'GI')
+}
+
+function formatAttribution(value) {
+  if (!Number.isFinite(value)) return '—'
+  if (Math.abs(value) < 0.000001) return '~0.00'
+  if (Math.abs(value) < 0.0001) return value.toExponential(1)
+
+  const decimals = Math.max(2, Math.min(6, -Math.floor(Math.log10(Math.abs(value))) + 1))
+  return `${value > 0 ? '+' : ''}${value.toFixed(decimals)}`
 }
 
 function App() {
@@ -20,6 +29,9 @@ function App() {
   const [analyzing, setAnalyzing] = useState(false)
   const [analysisError, setAnalysisError] = useState('')
   const [result, setResult] = useState(null)
+  const [explanation, setExplanation] = useState(null)
+  const [explanationLoading, setExplanationLoading] = useState(false)
+  const [explanationError, setExplanationError] = useState('')
   const resultsRef = useRef(null)
   const resultsTitleRef = useRef(null)
 
@@ -79,18 +91,24 @@ function App() {
     setSelected((current) => [...current, symptom])
     setQuery('')
     setResult(null)
+    setExplanation(null)
+    setExplanationError('')
     setAnalysisError('')
   }
 
   function removeSymptom(symptom) {
     setSelected((current) => current.filter((item) => item !== symptom))
     setResult(null)
+    setExplanation(null)
+    setExplanationError('')
     setAnalysisError('')
   }
 
   function clearSelection() {
     setSelected([])
     setResult(null)
+    setExplanation(null)
+    setExplanationError('')
     setAnalysisError('')
   }
 
@@ -99,12 +117,29 @@ function App() {
     setAnalyzing(true)
     setAnalysisError('')
     setResult(null)
+    setExplanation(null)
+    setExplanationError('')
     try {
-      setResult(await predictFromSymptoms(selected))
+      const prediction = await predictFromSymptoms(selected)
+      setResult(prediction)
+      await loadExplanation(selected)
     } catch (error) {
       setAnalysisError(error.message)
     } finally {
       setAnalyzing(false)
+    }
+  }
+
+  async function loadExplanation(symptomsToExplain) {
+    setExplanationLoading(true)
+    setExplanationError('')
+    try {
+      const data = await explainSymptoms(symptomsToExplain)
+      setExplanation(data)
+    } catch (error) {
+      setExplanationError(error.message)
+    } finally {
+      setExplanationLoading(false)
     }
   }
 
@@ -175,11 +210,11 @@ function App() {
           </div>
         </section>
 
-        {analyzing && <div className="feedback loading-feedback" role="status"><LoaderCircle className="spin" size={19} /><span>Analyzing the selected symptoms…</span></div>}
+        {analyzing && <div className="feedback loading-feedback" role="status"><LoaderCircle className="spin" size={19} /><span>{result ? 'Explaining the model output…' : 'Analyzing the selected symptoms…'}</span></div>}
         {analysisError && <div className="feedback error-feedback" role="alert"><AlertCircle size={19} /><span>{analysisError}</span></div>}
 
         {result && <section ref={resultsRef} className="results" aria-labelledby="results-title">
-          <div className="results-top"><div className="eyebrow"><span>MODEL OUTPUT</span><span className="eyebrow-line" /></div><span className="result-badge"><Sparkles size={14} /> Assessment complete</span></div>
+          <div className="results-top"><div className="eyebrow"><span>MODEL OUTPUT</span><span className="eyebrow-line" /></div><span className="result-badge"><Sparkles size={14} /> {explanationLoading ? 'Assessment ready' : 'Assessment complete'}</span></div>
           <h2 id="results-title" ref={resultsTitleRef} tabIndex={-1}>Assessment results</h2>
           <p className="results-intro">A ranked model assessment based on the symptoms selected above.</p>
           {!primaryDisease || !Number.isFinite(primaryPercentage) ? (
@@ -205,6 +240,37 @@ function App() {
                 </div>
               )}
               <p className="probability-note">Probabilities are model outputs for this selected feature pattern. They are not a diagnosis or a measure of clinical certainty.</p>
+              <section className="explanation" aria-labelledby="explanation-title">
+                <div className="explanation-heading">
+                  <div><span className="eyebrow">MODEL EXPLANATION</span><h3 id="explanation-title">Why was this considered?</h3></div>
+                </div>
+                <p className="explanation-note">Local SHAP values show how selected symptoms shifted each model’s raw score for {labelFor(primaryDisease)}.</p>
+                {explanationLoading && <div className="explanation-status" role="status"><LoaderCircle className="spin" size={17} /><span>Calculating feature attributions…</span></div>}
+                {explanationError && <div className="explanation-error" role="alert"><AlertCircle size={17} /><span>{explanationError}</span><button className="text-button" type="button" onClick={() => loadExplanation(selected)} disabled={explanationLoading}>Try again</button></div>}
+                {explanation?.components?.length > 0 && <>
+                  <div className="explanation-components">
+                    {explanation.components.map((component) => (
+                      <div className="explanation-component" key={component.model}>
+                        <div className="component-heading"><h4>{component.model}</h4><span>Raw class score</span></div>
+                        <ul className="attribution-list">
+                          {component.features.map((item) => {
+                            const value = Number(item.shap_value)
+                            const negligible = !Number.isFinite(value) || Math.abs(value) < 0.000001
+                            const direction = negligible ? 'does not materially shift' : value > 0 ? 'raises' : 'lowers'
+                            return <li key={item.feature}>
+                              <span className="attribution-name">{symptomLabels.get(item.feature) || labelFor(item.feature)}</span>
+                              <span className={`attribution-value ${!negligible && value > 0 ? 'positive' : !negligible && value < 0 ? 'negative' : ''}`} aria-label={`${direction} the class score`}>
+                                {formatAttribution(value)}
+                              </span>
+                            </li>
+                          })}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="explanation-disclaimer">These model attributions are not causal or clinical explanations, and are not contributions to the weighted ensemble probability.</p>
+                </>}
+              </section>
             </>
           )}
         </section>}
