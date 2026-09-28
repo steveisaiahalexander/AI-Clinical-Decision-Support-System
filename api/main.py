@@ -133,7 +133,7 @@ def explain(request: ExplainRequest) -> ExplainResponse:
         explanation = get_shap_explainer().explain(symptom_vector, class_label)
         if not isclose(
             explanation["predicted_probability"],
-            prediction["predicted_probability"],
+            prediction["raw_predicted_probability"],
             rel_tol=1e-7,
             abs_tol=1e-8,
         ):
@@ -148,6 +148,7 @@ def explain(request: ExplainRequest) -> ExplainResponse:
         predicted_disease=prediction["predicted_disease"],
         **explanation,
         explanation_note=(
+            "Attributions are for the raw weighted-ensemble probability before calibration. "
             "Shapley values allocate the difference between the ensemble's predicted-class "
             "probability and its all-symptoms-absent reference across the selected symptoms. "
             "Component values are each model's probability attributions; their weighted sum "

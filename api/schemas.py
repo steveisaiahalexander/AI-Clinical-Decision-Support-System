@@ -19,11 +19,28 @@ class RankedPrediction(BaseModel):
     percentage: float
 
 
+class PredictionUncertainty(BaseModel):
+    top_probability: float
+    top_two_margin: float
+    entropy: float
+    normalized_entropy: float
+
+
 class PredictResponse(BaseModel):
     predicted_disease: str
     predicted_probability: float
     predicted_percentage: float
+    raw_predicted_probability: float
     top_predictions: List[RankedPrediction]
+    probability_status: Literal["calibrated", "raw"]
+    calibration_method: Literal["temperature_scaling", "raw_ensemble"]
+    calibration_temperature: float
+    uncertainty: PredictionUncertainty
+    decision_status: Literal["ranked_prediction", "insufficient_evidence"]
+    insufficient_evidence: bool
+    abstention_reasons: List[str]
+    abstention_thresholds: dict[str, float]
+    thresholds_clinically_validated: Literal[False]
     ensemble_weights: dict[str, float]
 
 

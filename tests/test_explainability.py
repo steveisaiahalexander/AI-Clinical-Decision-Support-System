@@ -159,7 +159,8 @@ class ExplainRouteTests(unittest.TestCase):
         self.predictor = Mock()
         self.predictor.predict.return_value = {
             "predicted_disease": "Disease_B",
-            "predicted_probability": 0.7,
+            "predicted_probability": 0.82,
+            "raw_predicted_probability": 0.7,
         }
         self.predictor.label_encoder.transform.return_value = np.asarray([1])
         self.vectorizer = Mock()
@@ -196,6 +197,7 @@ class ExplainRouteTests(unittest.TestCase):
         self.assertEqual(response.predicted_disease, "Disease_B")
         self.assertEqual(response.predicted_class_index, 1)
         self.assertEqual(response.output_space, "ensemble_probability")
+        self.assertIn("not causal effects or a clinical explanation", response.explanation_note)
 
     def test_route_converts_explainer_failures_to_service_unavailable(self):
         explainer = Mock()

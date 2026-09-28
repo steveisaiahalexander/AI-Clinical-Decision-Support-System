@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Activity, AlertCircle, ChevronRight, LoaderCircle, Plus, Search, ShieldAlert, Sparkles, X } from 'lucide-react'
 import { explainSymptoms, fetchSymptoms, predictFromSymptoms } from './services/api.js'
+import { resultPresentation } from './resultsPresentation.js'
 
 function labelFor(value, keepSymptomSuffix = false) {
   let label = value.replace(/^(?:rare_)?symptom_/, '').replace(/_rare$/, '')
@@ -84,6 +85,8 @@ function App() {
   const primaryDisease = result?.predicted_disease || primaryPrediction?.disease
   const primaryPercentage = Number(result?.predicted_percentage ?? primaryPrediction?.percentage)
   const alternatives = rankedPredictions.filter((prediction) => prediction.disease !== primaryDisease)
+  const resultView = result ? resultPresentation(result) : null
+  const visibleRankings = resultView?.insufficientEvidence ? rankedPredictions : alternatives
 
   function addSymptom(symptom) {
     setSelected((current) => [...current, symptom])
@@ -219,14 +222,30 @@ function App() {
             <div className="results-empty" role="status"><AlertCircle size={19} /><p>No ranked predictions were returned. Review the selected symptoms and try again.</p></div>
           ) : (
             <>
-              <div className="primary-result">
-                <div className="primary-copy"><span className="primary-label">Highest-ranked condition</span><h3>{labelFor(primaryDisease)}</h3></div>
-                <div className="primary-probability"><span>Ensemble probability</span><strong>{primaryPercentage.toFixed(2)}%</strong></div>
+              <div className={'primary-result ' + (resultView.insufficientEvidence ? 'is-insufficient' : '')}>
+                <div className="primary-copy">
+                  <span className="primary-label">{resultView.primaryLabel}</span>
+                  <h3>{resultView.primaryHeading ? labelFor(resultView.primaryHeading) : ''}</h3>
+                  {resultView.primaryMessage && <p className="insufficient-message">{resultView.primaryMessage}</p>}
+                </div>
+                <div className="primary-probability"><span>{resultView.probabilityLabel}</span><strong>{primaryPercentage.toFixed(2)}%</strong></div>
               </div>
-              <div className="alternatives-heading"><h3>Other ranked predictions</h3><span>{alternatives.length}</span></div>
-              {alternatives.length === 0 ? <p className="no-alternatives">No alternative predictions were included.</p> : (
+              {result.uncertainty && <section className={'uncertainty-summary ' + (resultView.insufficientEvidence ? 'is-insufficient' : '')} aria-label="Model uncertainty and separation">
+                <div className="uncertainty-heading">
+                  <span className="eyebrow">UNCERTAINTY / SEPARATION</span>
+                  <strong>{resultView.insufficientEvidence ? 'Insufficient evidence' : 'Model separation'}</strong>
+                </div>
+                <div className="uncertainty-values">
+                  <div><span>Top probability</span><strong>{(Number(result.uncertainty.top_probability) * 100).toFixed(2)}%</strong></div>
+                  <div><span>Top-two margin</span><strong>{(Number(result.uncertainty.top_two_margin) * 100).toFixed(2)} pp</strong></div>
+                  <div><span>Normalized entropy</span><strong>{(Number(result.uncertainty.normalized_entropy) * 100).toFixed(1)}%</strong></div>
+                </div>
+                <p className="uncertainty-note">These signals describe the model’s probability distribution, not clinical certainty. Abstention thresholds are development settings and are not clinically validated.</p>
+              </section>}
+              <div className="alternatives-heading"><h3>{resultView.rankedHeading}</h3><span>{visibleRankings.length}</span></div>
+              {visibleRankings.length === 0 ? <p className="no-alternatives">No alternative predictions were included.</p> : (
                 <div className="prediction-list">
-                  {alternatives.map((prediction) => {
+                  {visibleRankings.map((prediction) => {
                     const percentage = Number(prediction.percentage)
                     const safePercentage = Number.isFinite(percentage) ? percentage : 0
                     return <div className="prediction-row" key={`${prediction.rank}-${prediction.disease}`}>
