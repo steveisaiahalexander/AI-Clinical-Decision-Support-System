@@ -1,6 +1,6 @@
 """Pydantic request and response schemas for the inference API."""
 
-from typing import List, Literal
+from typing import List, Literal, Optional
 
 from pydantic import BaseModel, ConfigDict, Field
 
@@ -37,19 +37,31 @@ class FeatureAttribution(BaseModel):
     feature: str
     shap_value: float
     direction: Literal[
-        "increases_class_score",
-        "decreases_class_score",
+        "increases_probability",
+        "decreases_probability",
         "no_change",
     ]
 
 
-class ModelAttribution(BaseModel):
-    model: Literal["XGBoost", "CatBoost"]
-    output_scale: Literal["raw_class_score"]
+class ComponentAttribution(BaseModel):
+    model: Literal["XGBoost model attribution", "CatBoost model attribution"]
+    class_index: int
+    weight: float
+    output_space: Literal["model_probability"]
+    baseline_probability: float
+    predicted_probability: float
     features: List[FeatureAttribution]
 
 
 class ExplainResponse(BaseModel):
     predicted_disease: str
-    components: List[ModelAttribution]
+    predicted_class_index: int
+    predicted_probability: float
+    baseline_probability: float
+    output_space: Literal["ensemble_probability"]
+    method: Literal["exact_coalition_shapley", "sampled_permutation_shapley"]
+    is_exact: bool
+    permutation_count: Optional[int]
+    features: List[FeatureAttribution]
+    component_attributions: List[ComponentAttribution]
     explanation_note: str

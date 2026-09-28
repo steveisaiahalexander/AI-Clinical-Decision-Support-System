@@ -114,7 +114,7 @@ h1 { margin: 17px 0 14px; color: #202925; font-size: 44px; line-height: 1.12; fo
 .explanation { margin-top: 24px; padding-top: 19px; border-top: 1px solid var(--line); }
 .explanation-heading h3 { margin: 8px 0 0; font-size: 15px; font-weight: 650; }
 .explanation-note { margin: 8px 0 14px; color: #758078; font-size: 11px; line-height: 1.55; }
-.explanation-components { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.explanation-components { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
 .explanation-component { min-width: 0; }
 .component-heading { min-height: 34px; display: flex; align-items: center; justify-content: space-between; gap: 10px; border-bottom: 1px solid var(--line); }
 .component-heading h4 { margin: 0; color: #34423a; font-size: 12px; font-weight: 650; }

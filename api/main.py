@@ -1,6 +1,7 @@
 """FastAPI service for the saved clinical disease classification ensemble."""
 
 from functools import lru_cache
+from math import isclose
 from typing import Dict
 
 from fastapi import FastAPI, HTTPException
@@ -40,7 +41,7 @@ def get_symptom_vectorizer() -> SymptomVectorizer:
 
 @lru_cache(maxsize=1)
 def get_shap_explainer() -> EnsembleShapExplainer:
-    """Load the component explainers only when explanations are requested."""
+    """Create the probability-space explainer only when requested."""
     return EnsembleShapExplainer(get_predictor())
 
 
@@ -106,10 +107,10 @@ def predict(request: PredictRequest) -> PredictResponse:
     "/explain",
     response_model=ExplainResponse,
     tags=["explainability"],
-    summary="Explain a prediction with component-level tree SHAP values",
+    summary="Attribute the ensemble prediction to selected symptoms",
 )
 def explain(request: ExplainRequest) -> ExplainResponse:
-    """Explain the current ensemble's top class without changing its prediction."""
+    """Explain the current ensemble's top class in probability space."""
     predictor = get_predictor()
     try:
         symptom_vector = get_symptom_vectorizer().encode(request.symptoms)
@@ -125,23 +126,38 @@ def explain(request: ExplainRequest) -> ExplainResponse:
         raise HTTPException(status_code=422, detail=str(error)) from error
 
     prediction = predictor.predict(symptom_vector, top_k=1)
-    class_label = predictor.label_encoder.transform(
-        [prediction["predicted_disease"]]
-    )[0]
     try:
-        components = get_shap_explainer().explain(symptom_vector, class_label)
+        class_label = predictor.label_encoder.transform(
+            [prediction["predicted_disease"]]
+        )[0]
+        explanation = get_shap_explainer().explain(symptom_vector, class_label)
+        if not isclose(
+            explanation["predicted_probability"],
+            prediction["predicted_probability"],
+            rel_tol=1e-7,
+            abs_tol=1e-8,
+        ):
+            raise ValueError("Explanation target does not match the ensemble prediction.")
     except Exception as error:
         raise HTTPException(
             status_code=503,
-            detail="SHAP explanations are temporarily unavailable for the saved models.",
+            detail="Feature attributions are temporarily unavailable for the saved models.",
         ) from error
 
     return ExplainResponse(
         predicted_disease=prediction["predicted_disease"],
-        components=components,
+        **explanation,
         explanation_note=(
-            "These are local SHAP attributions for each model's raw class score. "
-            "They are not contributions to the weighted ensemble probability, "
-            "causal effects, or clinical explanations."
+            "Shapley values allocate the difference between the ensemble's predicted-class "
+            "probability and its all-symptoms-absent reference across the selected symptoms. "
+            "Component values are each model's probability attributions; their weighted sum "
+            "is the ensemble attribution. These describe model behavior, not causal effects "
+            "or a clinical explanation."
+            if explanation["is_exact"]
+            else "Sampled permutation Shapley values approximate the allocation between the "
+            "ensemble's predicted-class probability and its all-symptoms-absent reference. "
+            "Component values are each model's probability attributions; their weighted sum "
+            "is the ensemble attribution. These describe model behavior, not causal effects "
+            "or a clinical explanation."
         ),
     )

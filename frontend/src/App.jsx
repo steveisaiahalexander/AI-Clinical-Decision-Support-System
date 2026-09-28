@@ -13,11 +13,9 @@ function labelFor(value, keepSymptomSuffix = false) {
 
 function formatAttribution(value) {
   if (!Number.isFinite(value)) return '—'
-  if (Math.abs(value) < 0.000001) return '~0.00'
-  if (Math.abs(value) < 0.0001) return value.toExponential(1)
-
-  const decimals = Math.max(2, Math.min(6, -Math.floor(Math.log10(Math.abs(value))) + 1))
-  return `${value > 0 ? '+' : ''}${value.toFixed(decimals)}`
+  const percentagePoints = value * 100
+  if (Math.abs(percentagePoints) < 0.005) return '0.00 pp'
+  return `${percentagePoints > 0 ? '+' : ''}${percentagePoints.toFixed(2)} pp`
 }
 
 function App() {
@@ -214,7 +212,7 @@ function App() {
         {analysisError && <div className="feedback error-feedback" role="alert"><AlertCircle size={19} /><span>{analysisError}</span></div>}
 
         {result && <section ref={resultsRef} className="results" aria-labelledby="results-title">
-          <div className="results-top"><div className="eyebrow"><span>MODEL OUTPUT</span><span className="eyebrow-line" /></div><span className="result-badge"><Sparkles size={14} /> {explanationLoading ? 'Assessment ready' : 'Assessment complete'}</span></div>
+          <div className="results-top"><div className="eyebrow"><span>ENSEMBLE PREDICTION</span><span className="eyebrow-line" /></div><span className="result-badge"><Sparkles size={14} /> {explanationLoading ? 'Assessment ready' : 'Assessment complete'}</span></div>
           <h2 id="results-title" ref={resultsTitleRef} tabIndex={-1}>Assessment results</h2>
           <p className="results-intro">A ranked model assessment based on the symptoms selected above.</p>
           {!primaryDisease || !Number.isFinite(primaryPercentage) ? (
@@ -223,7 +221,7 @@ function App() {
             <>
               <div className="primary-result">
                 <div className="primary-copy"><span className="primary-label">Highest-ranked condition</span><h3>{labelFor(primaryDisease)}</h3></div>
-                <div className="primary-probability"><span>Model probability</span><strong>{primaryPercentage.toFixed(2)}%</strong></div>
+                <div className="primary-probability"><span>Ensemble probability</span><strong>{primaryPercentage.toFixed(2)}%</strong></div>
               </div>
               <div className="alternatives-heading"><h3>Other ranked predictions</h3><span>{alternatives.length}</span></div>
               {alternatives.length === 0 ? <p className="no-alternatives">No alternative predictions were included.</p> : (
@@ -244,31 +242,29 @@ function App() {
                 <div className="explanation-heading">
                   <div><span className="eyebrow">MODEL EXPLANATION</span><h3 id="explanation-title">Why was this considered?</h3></div>
                 </div>
-                <p className="explanation-note">Local SHAP values show how selected symptoms shifted each model’s raw score for {labelFor(primaryDisease)}.</p>
+                <p className="explanation-note">{explanation?.explanation_note || 'Calculating how the selected symptoms contribute to the ensemble probability for this class.'}</p>
                 {explanationLoading && <div className="explanation-status" role="status"><LoaderCircle className="spin" size={17} /><span>Calculating feature attributions…</span></div>}
                 {explanationError && <div className="explanation-error" role="alert"><AlertCircle size={17} /><span>{explanationError}</span><button className="text-button" type="button" onClick={() => loadExplanation(selected)} disabled={explanationLoading}>Try again</button></div>}
-                {explanation?.components?.length > 0 && <>
+                {explanation?.features?.length > 0 && <>
                   <div className="explanation-components">
-                    {explanation.components.map((component) => (
-                      <div className="explanation-component" key={component.model}>
-                        <div className="component-heading"><h4>{component.model}</h4><span>Raw class score</span></div>
-                        <ul className="attribution-list">
-                          {component.features.map((item) => {
-                            const value = Number(item.shap_value)
-                            const negligible = !Number.isFinite(value) || Math.abs(value) < 0.000001
-                            const direction = negligible ? 'does not materially shift' : value > 0 ? 'raises' : 'lowers'
-                            return <li key={item.feature}>
-                              <span className="attribution-name">{symptomLabels.get(item.feature) || labelFor(item.feature)}</span>
-                              <span className={`attribution-value ${!negligible && value > 0 ? 'positive' : !negligible && value < 0 ? 'negative' : ''}`} aria-label={`${direction} the class score`}>
-                                {formatAttribution(value)}
-                              </span>
-                            </li>
-                          })}
-                        </ul>
-                      </div>
-                    ))}
+                    <div className="explanation-component">
+                      <div className="component-heading"><h4>Ensemble probability attribution</h4><span>{explanation.is_exact ? 'Exact SHAP' : 'Approximate SHAP'}</span></div>
+                      <ul className="attribution-list">
+                        {explanation.features.map((item) => {
+                          const value = Number(item.shap_value)
+                          const negligible = !Number.isFinite(value) || Math.abs(value) < 1e-12
+                          const direction = negligible ? 'does not shift' : value > 0 ? 'increases' : 'decreases'
+                          return <li key={item.feature}>
+                            <span className="attribution-name">{symptomLabels.get(item.feature) || labelFor(item.feature)}</span>
+                            <span className={`attribution-value ${!negligible && value > 0 ? 'positive' : !negligible && value < 0 ? 'negative' : ''}`} aria-label={`${direction} the ensemble probability`}>
+                              {formatAttribution(value)}
+                            </span>
+                          </li>
+                        })}
+                      </ul>
+                    </div>
                   </div>
-                  <p className="explanation-disclaimer">These model attributions are not causal or clinical explanations, and are not contributions to the weighted ensemble probability.</p>
+                  <p className="explanation-disclaimer">Feature attributions describe model behavior relative to a reference input. They do not establish causation or provide a clinical explanation.</p>
                 </>}
               </section>
             </>
