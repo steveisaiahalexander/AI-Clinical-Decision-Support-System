@@ -1,0 +1,49 @@
+{
+  "scope": "retrieval metrics only; not clinical or classifier metrics",
+  "query_source": "manually curated rag/evaluation_queries.json",
+  "classifier_test_samples_used": false,
+  "strategies": {
+    "tfidf": {
+      "query_count": 31,
+      "queries_with_relevant_targets": 30,
+      "recall_at_1": 0.9,
+      "recall_at_3": 1.0,
+      "mrr_at_3": 0.95,
+      "queries_with_no_relevant_evidence": 1,
+      "queries_without_sufficient_evidence": 1,
+      "source_coverage": {
+        "sources_retrieved": 30,
+        "sources_expected": 30,
+        "recall": 1.0
+      }
+    },
+    "semantic": {
+      "query_count": 31,
+      "queries_with_relevant_targets": 30,
+      "recall_at_1": 1.0,
+      "recall_at_3": 1.0,
+      "mrr_at_3": 1.0,
+      "queries_with_no_relevant_evidence": 1,
+      "queries_without_sufficient_evidence": 1,
+      "source_coverage": {
+        "sources_retrieved": 30,
+        "sources_expected": 30,
+        "recall": 1.0
+      }
+    },
+    "hybrid": {
+      "query_count": 31,
+      "queries_with_relevant_targets": 30,
+      "recall_at_1": 0.9667,
+      "recall_at_3": 1.0,
+      "mrr_at_3": 0.9833,
+      "queries_with_no_relevant_evidence": 1,
+      "queries_without_sufficient_evidence": 1,
+      "source_coverage": {
+        "sources_retrieved": 30,
+        "sources_expected": 30,
+        "recall": 1.0
+      }
+    }
+  }
+}

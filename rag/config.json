@@ -1,7 +1,24 @@
 {
   "documents_path": "rag/documents",
+  "supported_conditions_path": "rag/supported_conditions.json",
   "top_k": 3,
   "max_chunk_chars": 700,
   "overlap_sentences": 1,
-  "min_relevance_score": 0.02
+  "min_relevance_score": 0.02,
+  "default_strategy": "tfidf",
+  "semantic": {
+    "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+    "model_revision": "bc57282bc374d33e0d6c4de27f12dc1c2a87f37a",
+    "device": "cpu",
+    "batch_size": 32,
+    "min_similarity": 0.25,
+    "use_system_cert_store": true,
+    "model_cache_dir": "rag/index/model-cache",
+    "index_path": "rag/index/semantic-vectors.npz"
+  },
+  "hybrid": {
+    "tfidf_weight": 0.5,
+    "semantic_weight": 0.5,
+    "rrf_k": 60
+  }
 }

@@ -1,5 +1,6 @@
 """Validate and report the local curated evidence index."""
 
+import argparse
 import json
 import sys
 from pathlib import Path
@@ -11,7 +12,22 @@ from rag.retrieval import EvidenceRetriever
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "--semantic",
+        action="store_true",
+        help="Build the optional local semantic embedding index too.",
+    )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="Re-encode chunks instead of reusing a valid semantic index.",
+    )
+    args = parser.parse_args()
     retriever = EvidenceRetriever(project_root=PROJECT_ROOT)
+    semantic_index = (
+        retriever.build_semantic_index(force=args.force) if args.semantic else None
+    )
     examples = {}
     for condition, terms in (
         ("Asthma", ["wheezing", "chest tightness"]),
@@ -34,6 +50,7 @@ def main():
             {
                 "index": retriever.stats,
                 "embedding": "scikit-learn TF-IDF word unigram/bigram vectors",
+                "semantic_index": semantic_index,
                 "similarity": "cosine",
                 "top_k": retriever.top_k,
                 "examples": examples,

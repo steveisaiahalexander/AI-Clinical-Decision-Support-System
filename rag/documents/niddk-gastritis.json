@@ -1,0 +1,21 @@
+{
+  "id": "niddk-gastritis-gastropathy",
+  "condition": "Gastritis",
+  "aliases": ["Gastritis", "Stomach lining inflammation"],
+  "source": {
+    "title": "Gastritis & Gastropathy",
+    "organization": "National Institute of Diabetes and Digestive and Kidney Diseases, NIH",
+    "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/gastritis-gastropathy",
+    "last_reviewed": "2019-08",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: NIDDK, National Institutes of Health",
+    "license": "NIDDK states most site information is copyright-free; verbatim excerpt reproduced with attribution. No logos, graphics, or third-party materials copied.",
+    "rights_url": "https://www.niddk.nih.gov/copyright"
+  },
+  "passages": [
+    {
+      "section": "Definition & Facts",
+      "text": "Gastritis and gastropathy are conditions that affect the stomach lining, also known as the mucosa. In gastritis, the stomach lining is inflamed."
+    }
+  ]
+}

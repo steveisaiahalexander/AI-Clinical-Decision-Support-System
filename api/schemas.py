@@ -90,6 +90,7 @@ class EvidenceRequest(BaseModel):
     condition: str = Field(min_length=1, max_length=120)
     context: List[str] = Field(default_factory=list, max_length=30)
     top_k: Optional[int] = Field(default=None, strict=True, ge=1, le=5)
+    strategy: Optional[Literal["tfidf", "semantic", "hybrid"]] = None
 
 
 class EvidenceSource(BaseModel):
@@ -100,11 +101,13 @@ class EvidenceSource(BaseModel):
     license: str
     rights_url: str
     accessed_on: str
+    publication_date: Optional[str] = None
     last_updated: Optional[str] = None
     last_reviewed: Optional[str] = None
 
 
 class EvidencePassage(BaseModel):
+    chunk_id: Optional[str] = None
     text: str
     section: str
     source: EvidenceSource
@@ -114,6 +117,16 @@ class EvidencePassage(BaseModel):
 class EvidenceResponse(BaseModel):
     condition: str
     supported: bool
-    retrieval_method: Literal["tfidf_cosine"]
+    sufficient_evidence: bool = False
+    status: Literal[
+        "evidence_available",
+        "no_sufficient_evidence",
+        "unsupported_condition",
+    ] = "evidence_available"
+    retrieval_method: Literal[
+        "tfidf_cosine",
+        "semantic_cosine",
+        "hybrid_weighted_rrf",
+    ]
     passages: List[EvidencePassage]
     disclaimer: str

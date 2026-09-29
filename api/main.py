@@ -94,6 +94,7 @@ def retrieve_evidence(request: EvidenceRequest) -> EvidenceResponse:
             request.condition,
             context=request.context,
             top_k=request.top_k,
+            strategy=request.strategy,
         )
     except Exception as error:
         raise HTTPException(

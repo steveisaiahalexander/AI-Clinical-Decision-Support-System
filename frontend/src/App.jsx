@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Activity, AlertCircle, ChevronRight, LoaderCircle, Plus, Search, ShieldAlert, Sparkles, X } from 'lucide-react'
 import { explainSymptoms, fetchEvidence, fetchSymptoms, predictFromSymptoms } from './services/api.js'
+import { evidencePresentation } from './evidencePresentation.js'
 import { resultPresentation } from './resultsPresentation.js'
 
 function labelFor(value, keepSymptomSuffix = false) {
@@ -89,6 +90,7 @@ function App() {
   const primaryPercentage = Number(result?.predicted_percentage ?? primaryPrediction?.percentage)
   const alternatives = rankedPredictions.filter((prediction) => prediction.disease !== primaryDisease)
   const resultView = result ? resultPresentation(result) : null
+  const evidenceView = evidencePresentation(evidence)
   const visibleRankings = resultView?.insufficientEvidence ? rankedPredictions : alternatives
 
   function addSymptom(symptom) {
@@ -317,19 +319,19 @@ function App() {
               <section className="evidence" aria-labelledby="evidence-title">
                 <div className="evidence-heading">
                   <div><span className="eyebrow">SOURCE-ATTRIBUTED CONTEXT</span><h3 id="evidence-title">Evidence / Clinical Context</h3></div>
+                  {evidenceView.methodLabel && <span className="evidence-method">{evidenceView.methodLabel} retrieval</span>}
                 </div>
                 <p className="evidence-intro">{resultView.insufficientEvidence
-                  ? <>The model marked this result as insufficient evidence. Passages are shown for its highest-ranked class, {labelFor(evidence?.condition || primaryDisease)}, and do not validate that class.</>
+                  ? <>The model marked this result as insufficient evidence. Retrieval is for its highest-ranked class, {labelFor(evidence?.condition || primaryDisease)}, and does not validate that class.</>
                   : <>Retrieved for the highest-ranked model class, {labelFor(evidence?.condition || primaryDisease)}. These passages do not confirm the model classification.</>}</p>
                 {evidenceLoading && <div className="evidence-state" role="status"><LoaderCircle className="spin" size={17} /><span>Retrieving source passages…</span></div>}
                 {evidenceError && <div className="evidence-error" role="alert"><AlertCircle size={17} /><span>{evidenceError}</span><button className="text-button" type="button" onClick={() => loadEvidence(primaryDisease, selected)} disabled={evidenceLoading}>Try again</button></div>}
-                {!evidenceLoading && !evidenceError && evidence && !evidence.supported && <p className="evidence-empty">No curated source passages are available for this model class yet.</p>}
-                {!evidenceLoading && !evidenceError && evidence?.supported && evidence.passages.length === 0 && <p className="evidence-empty">No passages met the retrieval threshold for this context.</p>}
-                {evidence?.supported && evidence.passages.length > 0 && <div className="evidence-list">
+                {!evidenceLoading && !evidenceError && evidenceView.emptyMessage && <p className="evidence-empty">{evidenceView.emptyMessage}</p>}
+                {evidenceView.hasPassages && <div className="evidence-list">
                   {evidence.passages.map((passage, index) => {
                     const source = passage.source
-                    const sourceDate = source.last_reviewed || source.last_updated || source.accessed_on
-                    const sourceDateLabel = source.last_reviewed ? 'Reviewed' : source.last_updated ? 'Updated' : 'Accessed'
+                    const sourceDate = source.last_reviewed || source.last_updated || source.publication_date || source.accessed_on
+                    const sourceDateLabel = source.last_reviewed ? 'Reviewed' : source.last_updated ? 'Updated' : source.publication_date ? 'Published' : 'Accessed'
                     return <article className="evidence-item" key={source.url + passage.section + index}>
                       <p className="evidence-text">{passage.text}</p>
                       <div className="evidence-meta">

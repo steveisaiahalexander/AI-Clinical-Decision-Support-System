@@ -1,0 +1,21 @@
+{
+  "id": "niddk-irritable-bowel-syndrome",
+  "condition": "Irritable_Bowel_Syndrome",
+  "aliases": ["Irritable bowel syndrome", "IBS", "Irritable bowel"],
+  "source": {
+    "title": "Symptoms & Causes of Irritable Bowel Syndrome",
+    "organization": "National Institute of Diabetes and Digestive and Kidney Diseases, NIH",
+    "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/irritable-bowel-syndrome/symptoms-causes",
+    "last_reviewed": "2017-11",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: NIDDK, National Institutes of Health",
+    "license": "NIDDK states most site information is copyright-free; verbatim excerpt reproduced with attribution. No logos, graphics, or third-party materials copied.",
+    "rights_url": "https://www.niddk.nih.gov/copyright"
+  },
+  "passages": [
+    {
+      "section": "Symptoms",
+      "text": "pain in your abdomen, often related to your bowel movements, and changes in your bowel movements."
+    }
+  ]
+}

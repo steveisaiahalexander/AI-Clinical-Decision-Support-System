@@ -1,0 +1,21 @@
+{
+  "id": "nhlbi-coronary-heart-disease-symptoms",
+  "condition": "Coronary_Artery_Disease",
+  "aliases": ["Coronary artery disease", "Coronary heart disease", "CAD", "CHD"],
+  "source": {
+    "title": "Coronary Heart Disease Symptoms",
+    "organization": "National Heart, Lung, and Blood Institute, NIH",
+    "url": "https://www.nhlbi.nih.gov/health/coronary-heart-disease/symptoms",
+    "last_updated": "2024-12-27",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: NHLBI, National Institutes of Health",
+    "license": "NIH public information is public domain unless otherwise noted; text excerpt only, no third-party images copied.",
+    "rights_url": "https://www.nih.gov/about-nih/frequently-asked-questions"
+  },
+  "passages": [
+    {
+      "section": "Symptoms",
+      "text": "more likely to have symptoms such as chest pain, shortness of breath, or neck pain when you exert yourself."
+    }
+  ]
+}

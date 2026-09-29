@@ -1,0 +1,21 @@
+{
+  "id": "medlineplus-ehlers-danlos",
+  "condition": "Ehlers_Danlos_Syndrome",
+  "aliases": ["Ehlers-Danlos syndrome", "EDS"],
+  "source": {
+    "title": "Ehlers-Danlos syndrome",
+    "organization": "National Library of Medicine, NIH",
+    "url": "https://medlineplus.gov/genetics/condition/ehlers-danlos-syndrome/",
+    "last_updated": "2022-07-29",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: MedlinePlus Genetics, National Library of Medicine, NIH",
+    "license": "MedlinePlus identifies Genetics page summaries as public-domain federal content; no images or third-party materials copied.",
+    "rights_url": "https://medlineplus.gov/about/using/usingcontent/"
+  },
+  "passages": [
+    {
+      "section": "Description",
+      "text": "Ehlers-Danlos syndrome is a group of disorders that affect connective tissues supporting the skin, bones, blood vessels, and many other organs and tissues."
+    }
+  ]
+}

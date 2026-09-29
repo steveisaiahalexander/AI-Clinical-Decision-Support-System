@@ -144,7 +144,9 @@ h1 { margin: 17px 0 14px; color: #202925; font-size: 44px; line-height: 1.12; fo
 .explanation-error { color: #914638; }
 .explanation-error .text-button { margin-left: auto; }
 .evidence { margin-top: 24px; padding-top: 19px; border-top: 1px solid var(--line); }
+.evidence-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
 .evidence-heading h3 { margin: 8px 0 0; font-size: 15px; font-weight: 650; }
+.evidence-method { flex: 0 0 auto; color: #758078; font-size: 10px; line-height: 1.4; }
 .evidence-intro { margin: 8px 0 14px; color: #758078; font-size: 11px; line-height: 1.55; }
 .evidence-list { border-top: 1px solid var(--line); }
 .evidence-item { padding: 13px 0; border-bottom: 1px solid var(--line); }

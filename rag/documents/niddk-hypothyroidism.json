@@ -1,0 +1,21 @@
+{
+  "id": "niddk-hypothyroidism",
+  "condition": "Hypothyroidism",
+  "aliases": ["Hypothyroidism", "Underactive thyroid"],
+  "source": {
+    "title": "Hypothyroidism (Underactive Thyroid)",
+    "organization": "National Institute of Diabetes and Digestive and Kidney Diseases, NIH",
+    "url": "https://www.niddk.nih.gov/health-information/endocrine-diseases/hypothyroidism",
+    "last_reviewed": "2021-03",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: NIDDK, National Institutes of Health",
+    "license": "NIDDK states most site information is copyright-free; verbatim excerpt reproduced with attribution. No logos, graphics, or third-party materials copied.",
+    "rights_url": "https://www.niddk.nih.gov/copyright"
+  },
+  "passages": [
+    {
+      "section": "Symptoms",
+      "text": "Some common symptoms of hypothyroidism include fatigue, weight gain, trouble tolerating cold, joint and muscle pain."
+    }
+  ]
+}

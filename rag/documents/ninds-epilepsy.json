@@ -1,0 +1,21 @@
+{
+  "id": "ninds-epilepsy-seizures",
+  "condition": "Epilepsy",
+  "aliases": ["Seizure disorder", "Epileptic seizures"],
+  "source": {
+    "title": "Epilepsy and Seizures",
+    "organization": "National Institute of Neurological Disorders and Stroke, NIH",
+    "url": "https://www.ninds.nih.gov/node/647",
+    "publication_date": "2024-03",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: NINDS, National Institutes of Health",
+    "license": "NIH public information is public domain unless otherwise noted; text excerpt only, no third-party images copied.",
+    "rights_url": "https://www.nih.gov/about-nih/frequently-asked-questions"
+  },
+  "passages": [
+    {
+      "section": "What are epilepsy and seizures?",
+      "text": "Epilepsy is a chronic brain disorder in which groups of nerve cells, or neurons, in the brain sometimes send the wrong signals and cause seizures."
+    }
+  ]
+}

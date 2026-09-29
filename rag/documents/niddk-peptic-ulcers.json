@@ -1,0 +1,21 @@
+{
+  "id": "niddk-peptic-ulcers",
+  "condition": "Peptic_Ulcer_Disease",
+  "aliases": ["Peptic ulcer disease", "Peptic ulcers", "Stomach ulcer", "Duodenal ulcer", "PUD"],
+  "source": {
+    "title": "Symptoms & Causes of Peptic Ulcers (Stomach or Duodenal Ulcers)",
+    "organization": "National Institute of Diabetes and Digestive and Kidney Diseases, NIH",
+    "url": "https://www.niddk.nih.gov/health-information/digestive-diseases/peptic-ulcers-stomach-ulcers/symptoms-causes",
+    "last_reviewed": "2022-09",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: NIDDK, National Institutes of Health",
+    "license": "NIDDK states most site information is copyright-free; verbatim excerpt reproduced with attribution. No logos, graphics, or third-party materials copied.",
+    "rights_url": "https://www.niddk.nih.gov/copyright"
+  },
+  "passages": [
+    {
+      "section": "Symptoms",
+      "text": "Abdominal pain is the most common symptom of a peptic ulcer. The pain may be dull or burning and may come and go over time."
+    }
+  ]
+}

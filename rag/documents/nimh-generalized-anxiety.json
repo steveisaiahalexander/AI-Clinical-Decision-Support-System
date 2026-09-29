@@ -1,0 +1,20 @@
+{
+  "id": "nimh-generalized-anxiety-disorder",
+  "condition": "Generalized_Anxiety_Disorder",
+  "aliases": ["Generalized anxiety disorder", "GAD"],
+  "source": {
+    "title": "Generalized Anxiety Disorder: What You Need to Know",
+    "organization": "National Institute of Mental Health, NIH",
+    "url": "https://www.nimh.nih.gov/health/publications/generalized-anxiety-disorder-gad",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: NIMH, National Institutes of Health",
+    "license": "NIH public information is public domain unless otherwise noted; text excerpt only, no third-party images copied.",
+    "rights_url": "https://www.nih.gov/about-nih/frequently-asked-questions"
+  },
+  "passages": [
+    {
+      "section": "Signs and symptoms",
+      "text": "People with GAD may:\nWorry excessively about everyday things\nHave trouble controlling their worries or feelings of nervousness\nFeel restless or have trouble relaxing"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "cdc-obesity-consequences",
+  "condition": "Obesity",
+  "aliases": ["Obesity", "Adult obesity"],
+  "source": {
+    "title": "Consequences of Obesity",
+    "organization": "Centers for Disease Control and Prevention",
+    "url": "https://www.cdc.gov/obesity/php/about/consequences.html",
+    "last_updated": "2026-07-09",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: CDC",
+    "license": "CDC public-domain content unless otherwise noted; attribution retained, no endorsement implied, and no third-party content copied.",
+    "rights_url": "https://www.cdc.gov/other/agencymaterials.html"
+  },
+  "passages": [
+    {
+      "section": "At a glance",
+      "text": "Obesity is a complex chronic disease. Too much body fat can cause inflammation and other long-lasting changes in the body."
+    }
+  ]
+}

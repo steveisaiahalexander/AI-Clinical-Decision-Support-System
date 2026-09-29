@@ -1,0 +1,21 @@
+{
+  "id": "niams-systemic-lupus-erythematosus",
+  "condition": "Systemic_Lupus_Erythematosus",
+  "aliases": ["Systemic lupus erythematosus", "Lupus", "SLE"],
+  "source": {
+    "title": "Systemic Lupus Erythematosus (Lupus)",
+    "organization": "National Institute of Arthritis and Musculoskeletal and Skin Diseases, NIH",
+    "url": "https://www.niams.nih.gov/health-topics/lupus",
+    "last_reviewed": "2022-10",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: NIAMS, National Institutes of Health",
+    "license": "NIAMS states its site text is public domain; verbatim text excerpt reproduced. No photographs, illustrations, or third-party materials copied.",
+    "rights_url": "https://www.niams.nih.gov/disclaimer"
+  },
+  "passages": [
+    {
+      "section": "Symptoms",
+      "text": "Symptoms of lupus can include:\nArthritis, causing painful and swollen joints and morning stiffness\nFevers\nFatigue or feeling tired often"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "id": "medlineplus-osteopetrosis",
+  "condition": "Osteopetrosis",
+  "aliases": ["Osteopetrosis", "Marble bone disease", "Albers-Schonberg disease"],
+  "source": {
+    "title": "Osteopetrosis",
+    "organization": "National Library of Medicine, NIH",
+    "url": "https://medlineplus.gov/genetics/condition/osteopetrosis/",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: MedlinePlus Genetics, National Library of Medicine, NIH",
+    "license": "MedlinePlus identifies Genetics page summaries as public-domain federal content; no images or third-party materials copied.",
+    "rights_url": "https://medlineplus.gov/about/using/usingcontent/"
+  },
+  "passages": [
+    {
+      "section": "Description",
+      "text": "Osteopetrosis is a bone disease that makes bone tissue abnormally compact and dense and also prone to breakage (fracture)."
+    }
+  ]
+}

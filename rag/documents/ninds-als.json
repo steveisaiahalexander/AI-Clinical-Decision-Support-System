@@ -1,0 +1,21 @@
+{
+  "id": "ninds-als",
+  "condition": "Amyotrophic_Lateral_Sclerosis",
+  "aliases": ["ALS", "Amyotrophic lateral sclerosis", "Lou Gehrig's disease"],
+  "source": {
+    "title": "Amyotrophic Lateral Sclerosis (ALS)",
+    "organization": "National Institute of Neurological Disorders and Stroke, NIH",
+    "url": "https://www.ninds.nih.gov/sites/default/files/2025-05/NINDS_ALS_Booklet_Digital-508c.pdf",
+    "publication_date": "2025-03",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: NINDS, National Institutes of Health",
+    "license": "NIH public information is public domain unless otherwise noted; text excerpt only, no third-party images copied.",
+    "rights_url": "https://www.nih.gov/about-nih/frequently-asked-questions"
+  },
+  "passages": [
+    {
+      "section": "Early symptoms (p. 2)",
+      "text": "Early symptoms include:\nMuscle twitches in the arm, leg, shoulder, or tongue\nMuscle cramps\nTight and stiff muscles (spasticity)"
+    }
+  ]
+}

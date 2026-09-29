@@ -1,0 +1,20 @@
+{
+  "id": "niams-marfan-syndrome",
+  "condition": "Marfan_Syndrome",
+  "aliases": ["Marfan syndrome", "Marfan's syndrome", "MFS"],
+  "source": {
+    "title": "Marfan Syndrome",
+    "organization": "National Institute of Arthritis and Musculoskeletal and Skin Diseases, NIH",
+    "url": "https://www.niams.nih.gov/health-topics/marfan-syndrome",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: NIAMS, National Institutes of Health",
+    "license": "NIAMS states its site text is public domain; verbatim text excerpt reproduced. No photographs, illustrations, or third-party materials copied.",
+    "rights_url": "https://www.niams.nih.gov/disclaimer"
+  },
+  "passages": [
+    {
+      "section": "Symptoms",
+      "text": "Arms, legs, fingers, and toes that are longer in relation to the rest of the body."
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": "nhlbi-cystic-fibrosis-symptoms",
+  "condition": "Cystic_Fibrosis",
+  "aliases": ["Cystic fibrosis", "CF"],
+  "source": {
+    "title": "Cystic Fibrosis Symptoms",
+    "organization": "National Heart, Lung, and Blood Institute, NIH",
+    "url": "https://www.nhlbi.nih.gov/health/cystic-fibrosis/symptoms",
+    "last_updated": "2024-11-15",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: NHLBI, National Institutes of Health",
+    "license": "NIH public information is public domain unless otherwise noted; text excerpt only, no third-party images copied.",
+    "rights_url": "https://www.nih.gov/about-nih/frequently-asked-questions"
+  },
+  "passages": [
+    {
+      "section": "Symptoms",
+      "text": "Cystic fibrosis most often affects the lungs. Some people who have cystic fibrosis have wheezing and a cough that can produce mucus."
+    }
+  ]
+}
