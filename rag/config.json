@@ -1,0 +1,7 @@
+{
+  "documents_path": "rag/documents",
+  "top_k": 3,
+  "max_chunk_chars": 700,
+  "overlap_sentences": 1,
+  "min_relevance_score": 0.02
+}

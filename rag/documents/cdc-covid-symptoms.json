@@ -1,0 +1,33 @@
+{
+  "id": "cdc-covid-symptoms",
+  "condition": "COVID19",
+  "aliases": [
+    "COVID-19",
+    "COVID 19",
+    "coronavirus disease 2019"
+  ],
+  "source": {
+    "title": "Symptoms of COVID-19",
+    "organization": "Centers for Disease Control and Prevention",
+    "url": "https://www.cdc.gov/covid/signs-symptoms/",
+    "last_updated": "2025-03-10",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: CDC",
+    "license": "CDC public-domain content; attribution provided. Third-party images and materials are excluded.",
+    "rights_url": "https://www.cdc.gov/other/agencymaterials.html"
+  },
+  "passages": [
+    {
+      "section": "Signs and Symptoms",
+      "text": "People with COVID-19 have a wide range of symptoms ranging from mild symptoms to severe illness. Symptoms may appear 2-14 days after exposure to the virus."
+    },
+    {
+      "section": "Signs and Symptoms",
+      "text": "The following list does not include all possible symptoms. Symptoms may change with new COVID-19 variants and can vary depending on vaccination status. Possible symptoms include:\nFever or chills\nCough\nShortness of breath or difficulty breathing\nSore throat\nCongestion or runny nose\nNew loss of taste or smell\nFatigue\nMuscle or body aches\nHeadache\nNausea or vomiting\nDiarrhea"
+    },
+    {
+      "section": "Signs and Symptoms",
+      "text": "CDC will continue to update this list as we learn more about COVID-19."
+    }
+  ]
+}

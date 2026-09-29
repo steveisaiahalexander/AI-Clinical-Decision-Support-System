@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Activity, AlertCircle, ChevronRight, LoaderCircle, Plus, Search, ShieldAlert, Sparkles, X } from 'lucide-react'
-import { explainSymptoms, fetchSymptoms, predictFromSymptoms } from './services/api.js'
+import { explainSymptoms, fetchEvidence, fetchSymptoms, predictFromSymptoms } from './services/api.js'
 import { resultPresentation } from './resultsPresentation.js'
 
 function labelFor(value, keepSymptomSuffix = false) {
@@ -31,6 +31,9 @@ function App() {
   const [explanation, setExplanation] = useState(null)
   const [explanationLoading, setExplanationLoading] = useState(false)
   const [explanationError, setExplanationError] = useState('')
+  const [evidence, setEvidence] = useState(null)
+  const [evidenceLoading, setEvidenceLoading] = useState(false)
+  const [evidenceError, setEvidenceError] = useState('')
   const resultsRef = useRef(null)
   const resultsTitleRef = useRef(null)
 
@@ -94,6 +97,8 @@ function App() {
     setResult(null)
     setExplanation(null)
     setExplanationError('')
+    setEvidence(null)
+    setEvidenceError('')
     setAnalysisError('')
   }
 
@@ -102,6 +107,8 @@ function App() {
     setResult(null)
     setExplanation(null)
     setExplanationError('')
+    setEvidence(null)
+    setEvidenceError('')
     setAnalysisError('')
   }
 
@@ -110,6 +117,8 @@ function App() {
     setResult(null)
     setExplanation(null)
     setExplanationError('')
+    setEvidence(null)
+    setEvidenceError('')
     setAnalysisError('')
   }
 
@@ -120,10 +129,15 @@ function App() {
     setResult(null)
     setExplanation(null)
     setExplanationError('')
+    setEvidence(null)
+    setEvidenceError('')
     try {
       const prediction = await predictFromSymptoms(selected)
       setResult(prediction)
-      await loadExplanation(selected)
+      await Promise.all([
+        loadExplanation(selected),
+        loadEvidence(prediction.predicted_disease, selected),
+      ])
     } catch (error) {
       setAnalysisError(error.message)
     } finally {
@@ -141,6 +155,20 @@ function App() {
       setExplanationError(error.message)
     } finally {
       setExplanationLoading(false)
+    }
+  }
+
+  async function loadEvidence(condition, context) {
+    setEvidenceLoading(true)
+    setEvidenceError('')
+    setEvidence(null)
+    try {
+      const data = await fetchEvidence(condition, context)
+      setEvidence(data)
+    } catch (error) {
+      setEvidenceError(error.message)
+    } finally {
+      setEvidenceLoading(false)
     }
   }
 
@@ -211,11 +239,11 @@ function App() {
           </div>
         </section>
 
-        {analyzing && <div className="feedback loading-feedback" role="status"><LoaderCircle className="spin" size={19} /><span>{result ? 'Explaining the model output…' : 'Analyzing the selected symptoms…'}</span></div>}
+        {analyzing && <div className="feedback loading-feedback" role="status"><LoaderCircle className="spin" size={19} /><span>{result ? 'Loading model explanation and clinical context…' : 'Analyzing the selected symptoms…'}</span></div>}
         {analysisError && <div className="feedback error-feedback" role="alert"><AlertCircle size={19} /><span>{analysisError}</span></div>}
 
         {result && <section ref={resultsRef} className="results" aria-labelledby="results-title">
-          <div className="results-top"><div className="eyebrow"><span>ENSEMBLE PREDICTION</span><span className="eyebrow-line" /></div><span className="result-badge"><Sparkles size={14} /> {explanationLoading ? 'Assessment ready' : 'Assessment complete'}</span></div>
+          <div className="results-top"><div className="eyebrow"><span>ENSEMBLE PREDICTION</span><span className="eyebrow-line" /></div><span className="result-badge"><Sparkles size={14} /> {explanationLoading || evidenceLoading ? 'Assessment ready' : 'Assessment complete'}</span></div>
           <h2 id="results-title" ref={resultsTitleRef} tabIndex={-1}>Assessment results</h2>
           <p className="results-intro">A ranked model assessment based on the symptoms selected above.</p>
           {!primaryDisease || !Number.isFinite(primaryPercentage) ? (
@@ -285,6 +313,34 @@ function App() {
                   </div>
                   <p className="explanation-disclaimer">Feature attributions describe model behavior relative to a reference input. They do not establish causation or provide a clinical explanation.</p>
                 </>}
+              </section>
+              <section className="evidence" aria-labelledby="evidence-title">
+                <div className="evidence-heading">
+                  <div><span className="eyebrow">SOURCE-ATTRIBUTED CONTEXT</span><h3 id="evidence-title">Evidence / Clinical Context</h3></div>
+                </div>
+                <p className="evidence-intro">{resultView.insufficientEvidence
+                  ? <>The model marked this result as insufficient evidence. Passages are shown for its highest-ranked class, {labelFor(evidence?.condition || primaryDisease)}, and do not validate that class.</>
+                  : <>Retrieved for the highest-ranked model class, {labelFor(evidence?.condition || primaryDisease)}. These passages do not confirm the model classification.</>}</p>
+                {evidenceLoading && <div className="evidence-state" role="status"><LoaderCircle className="spin" size={17} /><span>Retrieving source passages…</span></div>}
+                {evidenceError && <div className="evidence-error" role="alert"><AlertCircle size={17} /><span>{evidenceError}</span><button className="text-button" type="button" onClick={() => loadEvidence(primaryDisease, selected)} disabled={evidenceLoading}>Try again</button></div>}
+                {!evidenceLoading && !evidenceError && evidence && !evidence.supported && <p className="evidence-empty">No curated source passages are available for this model class yet.</p>}
+                {!evidenceLoading && !evidenceError && evidence?.supported && evidence.passages.length === 0 && <p className="evidence-empty">No passages met the retrieval threshold for this context.</p>}
+                {evidence?.supported && evidence.passages.length > 0 && <div className="evidence-list">
+                  {evidence.passages.map((passage, index) => {
+                    const source = passage.source
+                    const sourceDate = source.last_reviewed || source.last_updated || source.accessed_on
+                    const sourceDateLabel = source.last_reviewed ? 'Reviewed' : source.last_updated ? 'Updated' : 'Accessed'
+                    return <article className="evidence-item" key={source.url + passage.section + index}>
+                      <p className="evidence-text">{passage.text}</p>
+                      <div className="evidence-meta">
+                        <span>{passage.section}</span><span>{source.title}</span><span>{source.organization}</span>
+                        <span>{sourceDateLabel} {sourceDate}</span>
+                      </div>
+                      <a className="evidence-link" href={source.url} target="_blank" rel="noreferrer">Open source <ChevronRight size={14} aria-hidden="true" /></a>
+                    </article>
+                  })}
+                </div>}
+                <p className="evidence-disclaimer">{evidence?.disclaimer || 'Retrieved evidence is contextual information only, not a diagnosis or treatment recommendation. Source inclusion does not imply agency endorsement.'}</p>
               </section>
             </>
           )}

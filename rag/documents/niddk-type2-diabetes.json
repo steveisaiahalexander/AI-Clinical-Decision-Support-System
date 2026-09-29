@@ -1,0 +1,32 @@
+{
+  "id": "niddk-type2-diabetes",
+  "condition": "Type2_Diabetes",
+  "aliases": [
+    "Type 2 Diabetes",
+    "type 2 diabetes"
+  ],
+  "source": {
+    "title": "Type 2 Diabetes",
+    "organization": "National Institute of Diabetes and Digestive and Kidney Diseases, NIH",
+    "url": "https://www.niddk.nih.gov/health-information/diabetes/overview/what-is-diabetes/type-2-diabetes",
+    "last_reviewed": "2017-05",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: NIDDK, National Institutes of Health",
+    "license": "NIDDK states most site information is copyright-free; verbatim excerpt reproduced with attribution. No images included.",
+    "rights_url": "https://www.niddk.nih.gov/copyright"
+  },
+  "passages": [
+    {
+      "section": "What is type 2 diabetes?",
+      "text": "Type 2 diabetes, the most common type of diabetes, is a disease that occurs when your blood glucose, also called blood sugar, is too high."
+    },
+    {
+      "section": "Symptoms",
+      "text": "Symptoms of diabetes include:\nincreased thirst and urination\nincreased hunger\nfeeling tired\nblurred vision\nnumbness or tingling in the feet or hands\nsores that do not heal\nunexplained weight loss"
+    },
+    {
+      "section": "Symptoms",
+      "text": "Symptoms of type 2 diabetes often develop slowly—over the course of several years—and can be so mild that you might not even notice them. Many people have no symptoms."
+    }
+  ]
+}

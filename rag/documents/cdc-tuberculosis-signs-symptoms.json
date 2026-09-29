@@ -1,0 +1,33 @@
+{
+  "id": "cdc-tuberculosis-signs-symptoms",
+  "condition": "Tuberculosis",
+  "aliases": [
+    "TB",
+    "tuberculosis (TB)"
+  ],
+  "source": {
+    "title": "Signs and Symptoms of Tuberculosis",
+    "organization": "Centers for Disease Control and Prevention",
+    "url": "https://www.cdc.gov/tb/signs-symptoms/index.html",
+    "last_updated": "2025-01-17",
+    "last_reviewed": "2024-03-06",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: CDC",
+    "license": "CDC public-domain content; attribution provided. Third-party images and materials are excluded.",
+    "rights_url": "https://www.cdc.gov/other/agencymaterials.html"
+  },
+  "passages": [
+    {
+      "section": "Key points",
+      "text": "Symptoms of active tuberculosis (TB) disease depend on where the TB germs are growing in the body. Common symptoms of active TB disease include cough, pain in the chest, and coughing up blood or sputum (phlegm)."
+    },
+    {
+      "section": "Active TB Disease",
+      "text": "A bad cough that lasts 3 weeks or longer\nPain in the chest\nCoughing up blood or sputum (phlegm) from deep inside the lungs\nWeakness or fatigue\nWeight loss\nLoss of appetite\nChills\nFever\nSweating at night"
+    },
+    {
+      "section": "Inactive TB",
+      "text": "People with inactive TB do not have symptoms of TB disease. However, without treatment, they can develop active TB disease and become sick."
+    }
+  ]
+}

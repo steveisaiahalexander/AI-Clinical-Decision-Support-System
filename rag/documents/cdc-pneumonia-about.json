@@ -1,0 +1,28 @@
+{
+  "id": "cdc-pneumonia-about",
+  "condition": "Pneumonia",
+  "aliases": [
+    "Pneumonia"
+  ],
+  "source": {
+    "title": "About Pneumonia",
+    "organization": "Centers for Disease Control and Prevention",
+    "url": "https://www.cdc.gov/pneumonia/about/index.html",
+    "last_updated": "2026-02-25",
+    "last_reviewed": "2026-02-25",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: CDC",
+    "license": "CDC public-domain content; attribution provided. Third-party images and materials are excluded.",
+    "rights_url": "https://www.cdc.gov/other/agencymaterials.html"
+  },
+  "passages": [
+    {
+      "section": "Overview",
+      "text": "Pneumonia is an infection of the lungs. Many germs (bacteria, fungi, parasites, and viruses) can cause pneumonia."
+    },
+    {
+      "section": "Symptoms",
+      "text": "Common symptoms of pneumonia include:\nChest pain when breathing or coughing\nAltered mental status (confusion)\nCough\nFatigue (feeling tired)\nFever or chills\nNausea, vomiting, or diarrhea\nShortness of breath"
+    }
+  ]
+}

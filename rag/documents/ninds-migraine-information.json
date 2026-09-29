@@ -1,0 +1,31 @@
+{
+  "id": "ninds-migraine-information",
+  "condition": "Migraine",
+  "aliases": [
+    "Migraine",
+    "migraine headache"
+  ],
+  "source": {
+    "title": "Migraine Information Page",
+    "organization": "National Institute of Neurological Disorders and Stroke, NIH",
+      "url": "https://www.ninds.nih.gov/Disorders/All-Disorders/Migraine-Information-Page",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: NINDS, National Institutes of Health",
+    "license": "NIH public information is public domain unless otherwise noted; selected text only, no third-party images included.",
+    "rights_url": "https://www.nih.gov/about-nih/frequently-asked-questions"
+  },
+  "passages": [
+    {
+      "section": "What is migraine?",
+      "text": "Migraine is a health condition that is more than just a bad headache. The symptoms of migraine are different from person to person, but often include headaches that keep coming back. They can also include nausea, vomiting, changes in mood, extreme tiredness, and sensitivity to light, noise, and smells."
+    },
+    {
+      "section": "Migraine attacks",
+      "text": "Migraine attacks may last from hours to days and make it hard to do everyday activities."
+    },
+    {
+      "section": "Symptoms",
+      "text": "One of the most common symptoms of a migraine attack is moderate to severe throbbing pain that usually happens on one side of the head."
+    }
+  ]
+}

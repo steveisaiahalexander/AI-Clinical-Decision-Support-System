@@ -1,0 +1,28 @@
+{
+  "id": "cdc-copd-about",
+  "condition": "COPD",
+  "aliases": [
+    "COPD",
+    "chronic obstructive pulmonary disease"
+  ],
+  "source": {
+    "title": "About COPD",
+    "organization": "Centers for Disease Control and Prevention",
+    "url": "https://www.cdc.gov/copd/about/index.html",
+    "last_updated": "2024-05-14",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: CDC",
+    "license": "CDC public-domain content; attribution provided. Third-party images and materials are excluded.",
+    "rights_url": "https://www.cdc.gov/other/agencymaterials.html"
+  },
+  "passages": [
+    {
+      "section": "What it is",
+      "text": "COPD is a group of lung diseases that get worse over time. The most common COPD types are emphysema and chronic bronchitis."
+    },
+    {
+      "section": "Symptoms",
+      "text": "Frequent coughing or wheezing. Shortness of breath doing everyday activities. Trouble taking deep breaths. Excess phlegm or mucus."
+    }
+  ]
+}

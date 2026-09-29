@@ -1,0 +1,27 @@
+{
+  "id": "cdc-stroke-signs-symptoms",
+  "condition": "Stroke",
+  "aliases": [
+    "Stroke"
+  ],
+  "source": {
+    "title": "Signs and Symptoms of Stroke",
+    "organization": "Centers for Disease Control and Prevention",
+    "url": "https://www.cdc.gov/stroke/signs-symptoms/index.html",
+    "last_updated": "2026-05-19",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: CDC",
+    "license": "CDC public-domain content; attribution provided. Third-party images and materials are excluded.",
+    "rights_url": "https://www.cdc.gov/other/agencymaterials.html"
+  },
+  "passages": [
+    {
+      "section": "Signs and symptoms",
+      "text": "Sudden trouble walking, dizziness, loss of balance, or lack of coordination.\nSudden trouble seeing.\nSudden numbness or weakness in the face, arm, or leg, especially on one side of the body.\nSudden confusion, trouble speaking, or difficulty understanding speech.\nSudden severe headache with no known cause."
+    },
+    {
+      "section": "When to seek emergency help",
+      "text": "If you see any of these signs, call 9-1-1 right away."
+    }
+  ]
+}

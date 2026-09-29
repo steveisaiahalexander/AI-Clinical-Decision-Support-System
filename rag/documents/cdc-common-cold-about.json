@@ -1,0 +1,33 @@
+{
+  "id": "cdc-common-cold-about",
+  "condition": "Common_Cold",
+  "aliases": [
+    "Common Cold",
+    "cold"
+  ],
+  "source": {
+    "title": "About Common Cold",
+    "organization": "Centers for Disease Control and Prevention",
+    "url": "https://www.cdc.gov/common-cold/about/",
+    "last_updated": "2026-02-19",
+    "last_reviewed": "2026-02-19",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: CDC",
+    "license": "CDC public-domain content; attribution provided. Third-party images and materials are excluded.",
+    "rights_url": "https://www.cdc.gov/other/agencymaterials.html"
+  },
+  "passages": [
+    {
+      "section": "Overview",
+      "text": "A cold is a viral infection of the upper respiratory tract (also called an upper respiratory infection or URI). Colds usually last less than a week and are caused by different respiratory viruses."
+    },
+    {
+      "section": "Signs and symptoms",
+      "text": "The signs and symptoms of a cold usually peak within 2 to 3 days of infection and can include runny nose, nasal congestion, cough, sneezing, sore throat, headache, mild body aches, and fever (usually low grade in older children and adults)."
+    },
+    {
+      "section": "Causes and spread",
+      "text": "SARS-CoV-2 (the virus that causes COVID-19), influenza virus (the virus that causes flu), and respiratory syncytial virus (RSV) can also cause cold-like symptoms but do not cause colds."
+    }
+  ]
+}

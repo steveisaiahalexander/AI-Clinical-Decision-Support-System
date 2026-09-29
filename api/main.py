@@ -7,6 +7,8 @@ from typing import Dict
 from fastapi import FastAPI, HTTPException
 
 from api.schemas import (
+    EvidenceRequest,
+    EvidenceResponse,
     ExplainRequest,
     ExplainResponse,
     PredictRequest,
@@ -45,6 +47,14 @@ def get_shap_explainer() -> EnsembleShapExplainer:
     return EnsembleShapExplainer(get_predictor())
 
 
+@lru_cache(maxsize=1)
+def get_evidence_retriever():
+    """Build the separate evidence index only when evidence is requested."""
+    from rag.retrieval import EvidenceRetriever
+
+    return EvidenceRetriever()
+
+
 @app.get("/health", tags=["system"])
 def health() -> Dict[str, str]:
     """Report service readiness after confirming model artifacts can load."""
@@ -69,6 +79,28 @@ def list_symptoms() -> Dict[str, object]:
     """List valid symptom names in the saved model feature order."""
     symptoms = get_symptom_vectorizer().available_symptoms()
     return {"count": len(symptoms), "symptoms": symptoms}
+
+
+@app.post(
+    "/evidence",
+    response_model=EvidenceResponse,
+    tags=["evidence"],
+    summary="Retrieve attributed context for a supported model class",
+)
+def retrieve_evidence(request: EvidenceRequest) -> EvidenceResponse:
+    """Retrieve source passages without changing or re-running the classifier."""
+    try:
+        result = get_evidence_retriever().retrieve(
+            request.condition,
+            context=request.context,
+            top_k=request.top_k,
+        )
+    except Exception as error:
+        raise HTTPException(
+            status_code=503,
+            detail="Curated evidence retrieval is temporarily unavailable.",
+        ) from error
+    return EvidenceResponse(**result)
 
 
 @app.post(

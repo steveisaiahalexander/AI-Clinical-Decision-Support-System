@@ -1,0 +1,28 @@
+{
+  "id": "cdc-asthma-about",
+  "condition": "Asthma",
+  "aliases": [
+    "Asthma"
+  ],
+  "source": {
+    "title": "About Asthma",
+    "organization": "Centers for Disease Control and Prevention",
+    "url": "https://www.cdc.gov/asthma/about/index.html",
+    "last_updated": "2023-10-26",
+    "last_reviewed": "2026-08-28",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: CDC",
+    "license": "CDC public-domain content; attribution provided. Third-party images and materials are excluded.",
+    "rights_url": "https://www.cdc.gov/other/agencymaterials.html"
+  },
+  "passages": [
+    {
+      "section": "Symptoms",
+      "text": "Asthma causes wheezing, breathlessness, chest tightness, and coughing at night or early in the morning."
+    },
+    {
+      "section": "Diagnosis",
+      "text": "It can be hard to tell if someone has asthma, especially in children under age 5. A doctor can help you find out if you have asthma."
+    }
+  ]
+}

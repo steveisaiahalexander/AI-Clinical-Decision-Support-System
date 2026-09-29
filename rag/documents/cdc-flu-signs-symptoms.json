@@ -1,0 +1,32 @@
+{
+  "id": "cdc-flu-signs-symptoms",
+  "condition": "Flu",
+  "aliases": [
+    "Influenza",
+    "influenza flu"
+  ],
+  "source": {
+    "title": "Signs and Symptoms of Flu",
+    "organization": "Centers for Disease Control and Prevention",
+    "url": "https://www.cdc.gov/flu/signs-symptoms/",
+    "last_updated": "2024-08-26",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: CDC",
+    "license": "CDC public-domain content; attribution provided. Third-party images and materials are excluded.",
+    "rights_url": "https://www.cdc.gov/other/agencymaterials.html"
+  },
+  "passages": [
+    {
+      "section": "About",
+      "text": "Influenza (also known as flu) is a contagious respiratory illness caused by influenza viruses."
+    },
+    {
+      "section": "Symptoms",
+      "text": "Flu symptoms usually come on suddenly. People who have flu often feel some or all of these signs and symptoms:\nfever or feeling feverish/chills\ncough\nsore throat\nrunny or stuffy nose\nmuscle or body aches\nheadaches\nfatigue (tiredness)\nsome people may have vomiting and diarrhea, though this is more common in children than adults."
+    },
+    {
+      "section": "Symptoms",
+      "text": "It's important to note that not everyone with flu will have a fever."
+    }
+  ]
+}

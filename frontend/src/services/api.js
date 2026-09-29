@@ -44,3 +44,10 @@ export function explainSymptoms(symptoms) {
     body: JSON.stringify({ symptoms }),
   })
 }
+
+export function fetchEvidence(condition, context) {
+  return request('/evidence', {
+    method: 'POST',
+    body: JSON.stringify({ condition, context }),
+  })
+}

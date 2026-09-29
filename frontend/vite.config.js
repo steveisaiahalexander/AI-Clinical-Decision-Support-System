@@ -11,6 +11,7 @@ export default defineConfig({
       '/symptoms': apiProxyTarget,
       '/predict': apiProxyTarget,
       '/explain': apiProxyTarget,
+      '/evidence': apiProxyTarget,
     },
   },
 })

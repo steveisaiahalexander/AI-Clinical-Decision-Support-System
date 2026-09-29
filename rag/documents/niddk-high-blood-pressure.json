@@ -1,0 +1,27 @@
+{
+  "id": "niddk-high-blood-pressure",
+  "condition": "Hypertension",
+  "aliases": [
+    "High blood pressure",
+    "hypertension"
+  ],
+  "source": {
+    "title": "High Blood Pressure & Kidney Disease",
+    "organization": "National Institute of Diabetes and Digestive and Kidney Diseases, NIH",
+    "url": "https://www.niddk.nih.gov/health-information/kidney-disease/high-blood-pressure",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: NIDDK, National Institutes of Health",
+    "license": "NIDDK states most site information is copyright-free; verbatim excerpt reproduced with attribution. No images included.",
+    "rights_url": "https://www.niddk.nih.gov/copyright"
+  },
+  "passages": [
+    {
+      "section": "What is high blood pressure?",
+      "text": "Blood pressure is the force of blood pushing against blood vessel walls as your heart pumps out blood. High blood pressure, also called hypertension, is an increase in the amount of force that blood places on blood vessels as it moves through the body."
+    },
+    {
+      "section": "Symptoms",
+      "text": "Most people with high blood pressure do not have symptoms. In rare cases, high blood pressure can cause headaches."
+    }
+  ]
+}

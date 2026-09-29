@@ -143,6 +143,21 @@ h1 { margin: 17px 0 14px; color: #202925; font-size: 44px; line-height: 1.12; fo
 .explanation-status svg, .explanation-error svg { flex: 0 0 auto; }
 .explanation-error { color: #914638; }
 .explanation-error .text-button { margin-left: auto; }
+.evidence { margin-top: 24px; padding-top: 19px; border-top: 1px solid var(--line); }
+.evidence-heading h3 { margin: 8px 0 0; font-size: 15px; font-weight: 650; }
+.evidence-intro { margin: 8px 0 14px; color: #758078; font-size: 11px; line-height: 1.55; }
+.evidence-list { border-top: 1px solid var(--line); }
+.evidence-item { padding: 13px 0; border-bottom: 1px solid var(--line); }
+.evidence-text { margin: 0; color: #435149; font-size: 12px; line-height: 1.65; overflow-wrap: anywhere; white-space: pre-line; }
+.evidence-meta { display: flex; flex-wrap: wrap; gap: 5px 13px; margin-top: 9px; color: #87928b; font-size: 10px; line-height: 1.5; }
+.evidence-link { display: inline-flex; align-items: center; gap: 2px; margin-top: 8px; color: #4c8062; font-size: 11px; font-weight: 600; text-decoration: none; }
+.evidence-link:hover { color: #235b40; text-decoration: underline; text-underline-offset: 3px; }
+.evidence-state, .evidence-error { display: flex; align-items: center; gap: 9px; min-height: 38px; color: #647169; font-size: 11px; }
+.evidence-state svg, .evidence-error svg { flex: 0 0 auto; }
+.evidence-error { color: #914638; }
+.evidence-error .text-button { margin-left: auto; }
+.evidence-empty { margin: 0; padding: 13px 0; border-top: 1px solid var(--line); color: #758078; font-size: 12px; line-height: 1.55; }
+.evidence-disclaimer { margin: 11px 0 0; color: #87928b; font-size: 10px; line-height: 1.55; }
 .disclaimer { display: flex; align-items: flex-start; gap: 12px; margin-top: 35px; padding: 15px 16px; border: 1px solid #e5e4d9; border-radius: 4px; background: #fbfaf5; }
 .disclaimer-icon { flex: 0 0 auto; color: #8e8050; }
 .disclaimer p { margin: 0; color: #686758; font-size: 11px; line-height: 1.65; }

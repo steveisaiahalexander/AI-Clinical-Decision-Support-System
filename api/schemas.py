@@ -82,3 +82,38 @@ class ExplainResponse(BaseModel):
     features: List[FeatureAttribution]
     component_attributions: List[ComponentAttribution]
     explanation_note: str
+
+
+class EvidenceRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    condition: str = Field(min_length=1, max_length=120)
+    context: List[str] = Field(default_factory=list, max_length=30)
+    top_k: Optional[int] = Field(default=None, strict=True, ge=1, le=5)
+
+
+class EvidenceSource(BaseModel):
+    title: str
+    organization: str
+    url: str
+    attribution: str
+    license: str
+    rights_url: str
+    accessed_on: str
+    last_updated: Optional[str] = None
+    last_reviewed: Optional[str] = None
+
+
+class EvidencePassage(BaseModel):
+    text: str
+    section: str
+    source: EvidenceSource
+    relevance_score: float
+
+
+class EvidenceResponse(BaseModel):
+    condition: str
+    supported: bool
+    retrieval_method: Literal["tfidf_cosine"]
+    passages: List[EvidencePassage]
+    disclaimer: str

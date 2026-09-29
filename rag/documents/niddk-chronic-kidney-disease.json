@@ -1,0 +1,33 @@
+{
+  "id": "niddk-chronic-kidney-disease",
+  "condition": "Chronic_Kidney_Disease",
+  "aliases": [
+    "Chronic Kidney Disease",
+    "CKD",
+    "chronic kidney disease"
+  ],
+  "source": {
+    "title": "What Is Chronic Kidney Disease in Adults?",
+    "organization": "National Institute of Diabetes and Digestive and Kidney Diseases, NIH",
+    "url": "https://www.niddk.nih.gov/health-information/kidney-disease/chronic-kidney-disease-ckd/what-is-chronic-kidney-disease",
+    "last_reviewed": "2025-02",
+    "accessed_on": "2026-09-30",
+    "attribution": "Source: NIDDK, National Institutes of Health",
+    "license": "NIDDK states most site information is copyright-free; verbatim excerpt reproduced with attribution. No images included.",
+    "rights_url": "https://www.niddk.nih.gov/copyright"
+  },
+  "passages": [
+    {
+      "section": "What is chronic kidney disease?",
+      "text": "Chronic kidney disease (CKD) is a condition in which your kidneys are damaged or have a problem with their structure that prevents them from filtering blood the way they should. As a result, waste and extra fluid can build up in your body."
+    },
+    {
+      "section": "Symptoms of early CKD",
+      "text": "Most people in the early stages of CKD do not have symptoms, and many people have no symptoms until their kidney disease is advanced. For many people, the only way to know if they have CKD is to get their kidneys checked with blood and urine tests."
+    },
+    {
+      "section": "Symptoms of advanced CKD",
+        "text": "As CKD becomes more advanced, symptoms may include:\nloss of appetite, nausea, or vomiting\nfeeling tired or having sleep problems\ntrouble concentrating\na change in how often you urinate\nfoamy urine\nitching, numbness, dry skin, or darkened skin\nweight loss\nmuscle cramps\nchest pain or shortness of breath\nworsening edema"
+    }
+  ]
+}
