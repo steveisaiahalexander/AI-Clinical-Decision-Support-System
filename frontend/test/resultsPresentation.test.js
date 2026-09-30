@@ -2,6 +2,7 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { resultPresentation } from '../src/resultsPresentation.js'
 import { evidencePresentation } from '../src/evidencePresentation.js'
+import { groundedExplanationPresentation } from '../src/groundedExplanationPresentation.js'
 
 test('confident response separates calibrated probability from the ranked class', () => {
   const view = resultPresentation({
@@ -43,4 +44,44 @@ test('evidence presentation labels strategy without exposing retrieval scores', 
   assert.equal(view.methodLabel, 'Hybrid')
   assert.equal(view.hasPassages, true)
   assert.equal(Object.hasOwn(view, 'score'), false)
+})
+
+test('grounded summary displays only claims whose evidence IDs resolve to attributed sources', () => {
+  const response = {
+    grounding_status: 'grounded',
+    explanation: {
+      grounding_status: 'grounded',
+      summary: 'Wheezing is described in the retrieved evidence. [E1]',
+      claims: [{ text: 'Wheezing is described in the retrieved evidence.', evidence_ids: ['E1'] }],
+    },
+    evidence: [
+      { evidence_id: 'E1', passage: { source: { title: 'About Asthma', url: 'https://example.gov/asthma' } } },
+      { evidence_id: 'E2', passage: { source: { title: 'Unused source', url: 'https://example.gov/unused' } } },
+    ],
+  }
+  const view = groundedExplanationPresentation(response)
+  assert.equal(view.grounded, true)
+  assert.equal(view.claims.length, 1)
+  assert.deepEqual(view.evidence.map((item) => item.evidence_id), ['E1'])
+})
+
+test('grounded summary suppresses unknown citations but retains evidence on fallback states', () => {
+  const invalid = groundedExplanationPresentation({
+    grounding_status: 'grounded',
+    explanation: {
+      grounding_status: 'grounded',
+      claims: [{ text: 'Unsupported claim.', evidence_ids: ['E9'] }],
+    },
+    evidence: [{ evidence_id: 'E1', passage: { source: { title: 'About Asthma', url: 'https://example.gov/asthma' } } }],
+  })
+  assert.equal(invalid.grounded, false)
+  assert.deepEqual(invalid.claims, [])
+
+  const unavailable = groundedExplanationPresentation({
+    grounding_status: 'llm_unavailable',
+    status_message: 'Generated synthesis is unavailable.',
+    evidence: [{ evidence_id: 'E1', passage: { source: { title: 'About Asthma', url: 'https://example.gov/asthma' } } }],
+  })
+  assert.equal(unavailable.statusMessage, 'Generated synthesis is unavailable.')
+  assert.deepEqual(unavailable.evidence.map((item) => item.evidence_id), ['E1'])
 })

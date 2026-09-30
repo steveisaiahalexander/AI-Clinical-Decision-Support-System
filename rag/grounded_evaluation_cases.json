@@ -1,0 +1,131 @@
+{
+  "scope": "Manual representative RAG and validator fixtures only. No classifier test samples or live LLM outputs are used.",
+  "cases": [
+    {
+      "id": "asthma_symptom_overlap",
+      "condition": "Asthma",
+      "context": ["wheezing", "coughing"],
+      "expected_document_id": "cdc-asthma-about",
+      "draft": {
+        "claims": [
+          {
+            "text": "Wheezing and coughing are among the symptoms described in the retrieved asthma evidence.",
+            "evidence_ids": ["E1"]
+          }
+        ]
+      },
+      "expected_status": "grounded"
+    },
+    {
+      "id": "type2_diabetes_symptom_overlap",
+      "condition": "Type2_Diabetes",
+      "context": ["increased thirst", "frequent urination"],
+      "expected_document_id": "niddk-type2-diabetes",
+      "draft": {
+        "claims": [
+          {
+            "text": "The retrieved source lists increased thirst and urination among diabetes symptoms.",
+            "evidence_ids": ["E1"]
+          }
+        ]
+      },
+      "expected_status": "grounded"
+    },
+    {
+      "id": "coronary_heart_disease_symptom_overlap",
+      "condition": "Coronary_Artery_Disease",
+      "context": ["shortness of breath during exertion", "chest pain"],
+      "expected_document_id": "nhlbi-coronary-heart-disease-symptoms",
+      "draft": {
+        "claims": [
+          {
+            "text": "The retrieved coronary heart disease passage mentions shortness of breath during exertion.",
+            "evidence_ids": ["E1"]
+          }
+        ]
+      },
+      "expected_status": "grounded"
+    },
+    {
+      "id": "unknown_citation_id",
+      "condition": "Asthma",
+      "context": ["wheezing"],
+      "draft": {
+        "claims": [
+          {
+            "text": "Wheezing is described in the retrieved asthma evidence.",
+            "evidence_ids": ["E99"]
+          }
+        ]
+      },
+      "expected_status": "validation_failed"
+    },
+    {
+      "id": "missing_claim_citation",
+      "condition": "Type2_Diabetes",
+      "context": ["increased thirst"],
+      "draft": {
+        "claims": [
+          {
+            "text": "The retrieved source lists increased thirst as a symptom.",
+            "evidence_ids": []
+          }
+        ]
+      },
+      "expected_status": "validation_failed"
+    },
+    {
+      "id": "malformed_provider_json",
+      "condition": "Asthma",
+      "context": ["wheezing"],
+      "draft": "{malformed-json",
+      "expected_status": "validation_failed"
+    },
+    {
+      "id": "classifier_abstention",
+      "condition": "Asthma",
+      "context": ["wheezing"],
+      "decision_status": "insufficient_evidence",
+      "expected_document_id": "cdc-asthma-about",
+      "draft": {
+        "claims": [
+          {
+            "text": "Wheezing is described in the retrieved asthma evidence.",
+            "evidence_ids": ["E1"]
+          }
+        ]
+      },
+      "expected_status": "abstained"
+    },
+    {
+      "id": "unsupported_condition",
+      "condition": "Uncurated_Condition",
+      "context": ["unrelated phrase"],
+      "draft": {
+        "claims": [
+          {
+            "text": "An unsupported claim should never be generated.",
+            "evidence_ids": ["E1"]
+          }
+        ]
+      },
+      "expected_status": "insufficient_evidence"
+    },
+    {
+      "id": "local_llm_unavailable",
+      "condition": "Asthma",
+      "context": ["wheezing"],
+      "provider_unavailable": true,
+      "expected_document_id": "cdc-asthma-about",
+      "draft": {
+        "claims": [
+          {
+            "text": "Wheezing is described in the retrieved asthma evidence.",
+            "evidence_ids": ["E1"]
+          }
+        ]
+      },
+      "expected_status": "llm_unavailable"
+    }
+  ]
+}

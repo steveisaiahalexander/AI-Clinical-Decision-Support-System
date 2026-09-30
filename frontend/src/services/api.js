@@ -51,3 +51,10 @@ export function fetchEvidence(condition, context) {
     body: JSON.stringify({ condition, context }),
   })
 }
+
+export function generateGroundedExplanation(symptoms) {
+  return request('/explain-grounded', {
+    method: 'POST',
+    body: JSON.stringify({ symptoms }),
+  })
+}

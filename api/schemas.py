@@ -130,3 +130,40 @@ class EvidenceResponse(BaseModel):
     ]
     passages: List[EvidencePassage]
     disclaimer: str
+
+
+class GroundedExplainRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    symptoms: List[str] = Field(min_length=1)
+
+
+class GroundedClaim(BaseModel):
+    text: str
+    evidence_ids: List[str] = Field(min_length=1)
+
+
+class GroundedExplanation(BaseModel):
+    summary: str
+    claims: List[GroundedClaim] = Field(min_length=1)
+    grounding_status: Literal["grounded"]
+
+
+class GroundedEvidence(BaseModel):
+    evidence_id: str
+    passage: EvidencePassage
+
+
+class GroundedExplainResponse(BaseModel):
+    prediction: PredictResponse
+    explanation: Optional[GroundedExplanation] = None
+    grounding_status: Literal[
+        "grounded",
+        "abstained",
+        "insufficient_evidence",
+        "llm_unavailable",
+        "validation_failed",
+    ]
+    evidence: List[GroundedEvidence]
+    status_message: str
+    disclaimer: str

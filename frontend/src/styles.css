@@ -144,6 +144,23 @@ h1 { margin: 17px 0 14px; color: #202925; font-size: 44px; line-height: 1.12; fo
 .explanation-error { color: #914638; }
 .explanation-error .text-button { margin-left: auto; }
 .evidence { margin-top: 24px; padding-top: 19px; border-top: 1px solid var(--line); }
+.grounded-summary { margin-top: 24px; padding-top: 19px; border-top: 1px solid var(--line); }
+.grounded-summary h3 { margin: 8px 0 0; font-size: 15px; font-weight: 650; }
+.grounding-status { flex: 0 0 auto; color: #4c8062; font-size: 10px; line-height: 1.4; }
+.grounded-state { margin: 9px 0 0; color: #758078; font-size: 11px; line-height: 1.55; }
+.grounded-claims { margin-top: 12px; border-top: 1px solid var(--line); }
+.grounded-claim { display: flex; flex-wrap: wrap; gap: 3px 6px; margin: 0; padding: 11px 0; border-bottom: 1px solid var(--line); color: #435149; font-size: 12px; line-height: 1.65; overflow-wrap: anywhere; }
+.grounded-citations { display: inline-flex; flex-wrap: wrap; gap: 4px; color: #397554; font-size: 11px; font-weight: 700; white-space: nowrap; }
+.grounded-evidence { margin-top: 13px; }
+.grounded-evidence h4 { margin: 0 0 6px; color: #758078; font-size: 10px; font-weight: 650; }
+.grounded-evidence ul { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.grounded-evidence li { display: flex; gap: 9px; padding: 9px 0; border-bottom: 1px solid var(--line); color: #435149; font-size: 11px; line-height: 1.5; }
+.grounded-evidence-id { flex: 0 0 auto; color: #397554; font-weight: 700; }
+.grounded-evidence li > span:last-child { min-width: 0; }
+.grounded-evidence a { color: #4c8062; font-weight: 600; text-decoration: none; overflow-wrap: anywhere; }
+.grounded-evidence a:hover { color: #235b40; text-decoration: underline; text-underline-offset: 3px; }
+.grounded-source-org { display: block; color: #87928b; font-size: 10px; }
+.grounded-disclaimer { margin: 11px 0 0; color: #87928b; font-size: 10px; line-height: 1.55; }
 .evidence-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; }
 .evidence-heading h3 { margin: 8px 0 0; font-size: 15px; font-weight: 650; }
 .evidence-method { flex: 0 0 auto; color: #758078; font-size: 10px; line-height: 1.4; }

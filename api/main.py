@@ -11,6 +11,8 @@ from api.schemas import (
     EvidenceResponse,
     ExplainRequest,
     ExplainResponse,
+    GroundedExplainRequest,
+    GroundedExplainResponse,
     PredictRequest,
     PredictResponse,
 )
@@ -53,6 +55,14 @@ def get_evidence_retriever():
     from rag.retrieval import EvidenceRetriever
 
     return EvidenceRetriever()
+
+
+@lru_cache(maxsize=1)
+def get_grounded_explanation_service():
+    """Configure optional local LLM synthesis independently from classifier inference."""
+    from rag.grounded_explanation import GroundedExplanationService, create_generator
+
+    return GroundedExplanationService(create_generator())
 
 
 @app.get("/health", tags=["system"])
@@ -195,3 +205,55 @@ def explain(request: ExplainRequest) -> ExplainResponse:
             "or a clinical explanation."
         ),
     )
+
+
+@app.post(
+    "/explain-grounded",
+    response_model=GroundedExplainResponse,
+    tags=["evidence"],
+    summary="Generate an optional source-grounded explanation after hybrid retrieval",
+)
+def explain_grounded(request: GroundedExplainRequest) -> GroundedExplainResponse:
+    """Re-run the saved prediction, retrieve hybrid evidence, then optionally synthesize."""
+    predictor = get_predictor()
+    try:
+        symptom_vector = get_symptom_vectorizer().encode(request.symptoms)
+    except UnknownSymptomsError as error:
+        raise HTTPException(
+            status_code=422,
+            detail={
+                "message": "Request contains unknown symptoms.",
+                "unknown_symptoms": error.symptoms,
+            },
+        ) from error
+    except ValueError as error:
+        raise HTTPException(status_code=422, detail=str(error)) from error
+
+    prediction = predictor.predict(symptom_vector, top_k=1)
+    try:
+        retrieval = get_evidence_retriever().retrieve(
+            prediction["predicted_disease"],
+            context=request.symptoms,
+            strategy="hybrid",
+        )
+    except Exception as error:
+        raise HTTPException(
+            status_code=503,
+            detail="Hybrid evidence retrieval is temporarily unavailable.",
+        ) from error
+
+    try:
+        explanation_result = get_grounded_explanation_service().explain(
+            prediction,
+            request.symptoms,
+            retrieval,
+        )
+        return GroundedExplainResponse(
+            prediction=PredictResponse(**prediction),
+            **explanation_result,
+        )
+    except Exception as error:
+        raise HTTPException(
+            status_code=503,
+            detail="Grounded explanation is temporarily unavailable; retrieved evidence remains available.",
+        ) from error

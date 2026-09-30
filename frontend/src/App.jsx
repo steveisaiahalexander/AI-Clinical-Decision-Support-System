@@ -1,7 +1,8 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Activity, AlertCircle, ChevronRight, LoaderCircle, Plus, Search, ShieldAlert, Sparkles, X } from 'lucide-react'
-import { explainSymptoms, fetchEvidence, fetchSymptoms, predictFromSymptoms } from './services/api.js'
+import { explainSymptoms, fetchEvidence, fetchSymptoms, generateGroundedExplanation, predictFromSymptoms } from './services/api.js'
 import { evidencePresentation } from './evidencePresentation.js'
+import { groundedExplanationPresentation } from './groundedExplanationPresentation.js'
 import { resultPresentation } from './resultsPresentation.js'
 
 function labelFor(value, keepSymptomSuffix = false) {
@@ -35,6 +36,9 @@ function App() {
   const [evidence, setEvidence] = useState(null)
   const [evidenceLoading, setEvidenceLoading] = useState(false)
   const [evidenceError, setEvidenceError] = useState('')
+  const [groundedExplanation, setGroundedExplanation] = useState(null)
+  const [groundedExplanationLoading, setGroundedExplanationLoading] = useState(false)
+  const [groundedExplanationError, setGroundedExplanationError] = useState('')
   const resultsRef = useRef(null)
   const resultsTitleRef = useRef(null)
 
@@ -91,6 +95,7 @@ function App() {
   const alternatives = rankedPredictions.filter((prediction) => prediction.disease !== primaryDisease)
   const resultView = result ? resultPresentation(result) : null
   const evidenceView = evidencePresentation(evidence)
+  const groundedExplanationView = groundedExplanationPresentation(groundedExplanation)
   const visibleRankings = resultView?.insufficientEvidence ? rankedPredictions : alternatives
 
   function addSymptom(symptom) {
@@ -101,6 +106,8 @@ function App() {
     setExplanationError('')
     setEvidence(null)
     setEvidenceError('')
+    setGroundedExplanation(null)
+    setGroundedExplanationError('')
     setAnalysisError('')
   }
 
@@ -111,6 +118,8 @@ function App() {
     setExplanationError('')
     setEvidence(null)
     setEvidenceError('')
+    setGroundedExplanation(null)
+    setGroundedExplanationError('')
     setAnalysisError('')
   }
 
@@ -121,6 +130,8 @@ function App() {
     setExplanationError('')
     setEvidence(null)
     setEvidenceError('')
+    setGroundedExplanation(null)
+    setGroundedExplanationError('')
     setAnalysisError('')
   }
 
@@ -133,12 +144,15 @@ function App() {
     setExplanationError('')
     setEvidence(null)
     setEvidenceError('')
+    setGroundedExplanation(null)
+    setGroundedExplanationError('')
     try {
       const prediction = await predictFromSymptoms(selected)
       setResult(prediction)
       await Promise.all([
         loadExplanation(selected),
         loadEvidence(prediction.predicted_disease, selected),
+        loadGroundedExplanation(selected),
       ])
     } catch (error) {
       setAnalysisError(error.message)
@@ -171,6 +185,19 @@ function App() {
       setEvidenceError(error.message)
     } finally {
       setEvidenceLoading(false)
+    }
+  }
+
+  async function loadGroundedExplanation(symptomsToExplain) {
+    setGroundedExplanationLoading(true)
+    setGroundedExplanationError('')
+    try {
+      const data = await generateGroundedExplanation(symptomsToExplain)
+      setGroundedExplanation(data)
+    } catch (error) {
+      setGroundedExplanationError(error.message)
+    } finally {
+      setGroundedExplanationLoading(false)
     }
   }
 
@@ -245,7 +272,7 @@ function App() {
         {analysisError && <div className="feedback error-feedback" role="alert"><AlertCircle size={19} /><span>{analysisError}</span></div>}
 
         {result && <section ref={resultsRef} className="results" aria-labelledby="results-title">
-          <div className="results-top"><div className="eyebrow"><span>ENSEMBLE PREDICTION</span><span className="eyebrow-line" /></div><span className="result-badge"><Sparkles size={14} /> {explanationLoading || evidenceLoading ? 'Assessment ready' : 'Assessment complete'}</span></div>
+          <div className="results-top"><div className="eyebrow"><span>ENSEMBLE PREDICTION</span><span className="eyebrow-line" /></div><span className="result-badge"><Sparkles size={14} /> {explanationLoading || evidenceLoading || groundedExplanationLoading ? 'Assessment ready' : 'Assessment complete'}</span></div>
           <h2 id="results-title" ref={resultsTitleRef} tabIndex={-1}>Assessment results</h2>
           <p className="results-intro">A ranked model assessment based on the symptoms selected above.</p>
           {!primaryDisease || !Number.isFinite(primaryPercentage) ? (
@@ -315,6 +342,33 @@ function App() {
                   </div>
                   <p className="explanation-disclaimer">Feature attributions describe model behavior relative to a reference input. They do not establish causation or provide a clinical explanation.</p>
                 </>}
+              </section>
+              <section className="grounded-summary" aria-labelledby="grounded-summary-title">
+                <div className="evidence-heading">
+                  <div><span className="eyebrow">EVIDENCE-GROUNDED CONTEXT</span><h3 id="grounded-summary-title">AI-Generated Evidence Summary</h3></div>
+                  {groundedExplanationView.grounded && <span className="grounding-status">Citations validated</span>}
+                </div>
+                {groundedExplanationLoading && <div className="evidence-state" role="status"><LoaderCircle className="spin" size={17} /><span>Preparing an evidence-grounded summary…</span></div>}
+                {groundedExplanationError && <p className="grounded-state" role="status">Generated synthesis is unavailable. Retrieved evidence remains below.</p>}
+                {!groundedExplanationLoading && !groundedExplanationError && groundedExplanation && <>
+                  {!groundedExplanationView.grounded && <p className="grounded-state" role="status">{groundedExplanationView.statusMessage}</p>}
+                  {groundedExplanationView.grounded && <div className="grounded-claims" aria-label="Grounded claims">
+                    {groundedExplanationView.claims.map((claim, index) => <p className="grounded-claim" key={`${claim.evidence_ids.join('-')}-${index}`}>
+                      <span>{claim.text}</span><span className="grounded-citations">{claim.evidence_ids.map((evidenceId) => <span key={evidenceId}>[{evidenceId}]</span>)}</span>
+                    </p>)}
+                  </div>}
+                  {groundedExplanationView.evidence.length > 0 && <div className="grounded-evidence">
+                    <h4>{groundedExplanationView.grounded ? 'Evidence used' : 'Retrieved evidence'}</h4>
+                    <ul>{groundedExplanationView.evidence.map((item) => {
+                      const source = item.passage.source
+                      return <li key={item.evidence_id}>
+                        <span className="grounded-evidence-id">[{item.evidence_id}]</span>
+                        <span><a href={source.url} target="_blank" rel="noreferrer">{source.title}</a><span className="grounded-source-org">{source.organization} · {item.passage.section}</span></span>
+                      </li>
+                    })}</ul>
+                  </div>}
+                </>}
+                <p className="grounded-disclaimer">{groundedExplanation?.disclaimer || 'This summary describes model behavior and retrieved context. It does not establish a diagnosis or treatment recommendation. Citation checks do not prove medical truth.'}</p>
               </section>
               <section className="evidence" aria-labelledby="evidence-title">
                 <div className="evidence-heading">

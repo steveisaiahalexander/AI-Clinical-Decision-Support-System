@@ -1,0 +1,7 @@
+{
+  "provider": "ollama",
+  "base_url": "http://127.0.0.1:11434",
+  "model": "qwen2.5:1.5b-instruct-q4_K_M",
+  "timeout_seconds": 90,
+  "allow_remote": false
+}

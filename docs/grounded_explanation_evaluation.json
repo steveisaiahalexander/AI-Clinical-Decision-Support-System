@@ -1,0 +1,119 @@
+{
+  "scope": "Structural/citation and evidence-gating evaluation with mocked LLM drafts; not clinical, classifier, or live LLM quality metrics.",
+  "classifier_test_samples_used": false,
+  "live_llm_invocations": 0,
+  "manual_case_count": 9,
+  "expected_source_coverage": {
+    "retrieved": 5,
+    "expected": 5,
+    "recall": 1.0
+  },
+  "citation_validity": {
+    "valid_references": 3,
+    "all_references_in_fixture_drafts": 4,
+    "rate": 0.75
+  },
+  "citation_completeness": {
+    "claims_with_any_reference": 4,
+    "fixture_claims": 5,
+    "rate": 0.8
+  },
+  "grounded_claim_rate": {
+    "accepted_claims_with_known_citations": 3,
+    "fixture_claims": 5,
+    "rate": 0.6
+  },
+  "structurally_unsupported_claim_rate": {
+    "rejected_or_uncited_fixture_claims": 2,
+    "fixture_claims": 5,
+    "rate": 0.4,
+    "meaning": "Missing or unknown citations; not a determination of medical truth."
+  },
+  "evidence_gate_behavior": {
+    "cases_expected_to_skip_generation": 3,
+    "cases_that_skipped_generation": 3,
+    "correct": true
+  },
+  "status_counts": {
+    "abstained": 1,
+    "grounded": 3,
+    "insufficient_evidence": 1,
+    "llm_unavailable": 1,
+    "validation_failed": 3
+  },
+  "case_results": [
+    {
+      "id": "asthma_symptom_overlap",
+      "status": "grounded",
+      "expected_status": "grounded",
+      "status_check_passed": true,
+      "retrieved_expected_source": true,
+      "generator_calls": 1
+    },
+    {
+      "id": "type2_diabetes_symptom_overlap",
+      "status": "grounded",
+      "expected_status": "grounded",
+      "status_check_passed": true,
+      "retrieved_expected_source": true,
+      "generator_calls": 1
+    },
+    {
+      "id": "coronary_heart_disease_symptom_overlap",
+      "status": "grounded",
+      "expected_status": "grounded",
+      "status_check_passed": true,
+      "retrieved_expected_source": true,
+      "generator_calls": 1
+    },
+    {
+      "id": "unknown_citation_id",
+      "status": "validation_failed",
+      "expected_status": "validation_failed",
+      "status_check_passed": true,
+      "retrieved_expected_source": null,
+      "generator_calls": 1
+    },
+    {
+      "id": "missing_claim_citation",
+      "status": "validation_failed",
+      "expected_status": "validation_failed",
+      "status_check_passed": true,
+      "retrieved_expected_source": null,
+      "generator_calls": 1
+    },
+    {
+      "id": "malformed_provider_json",
+      "status": "validation_failed",
+      "expected_status": "validation_failed",
+      "status_check_passed": true,
+      "retrieved_expected_source": null,
+      "generator_calls": 1
+    },
+    {
+      "id": "classifier_abstention",
+      "status": "abstained",
+      "expected_status": "abstained",
+      "status_check_passed": true,
+      "retrieved_expected_source": true,
+      "generator_calls": 0
+    },
+    {
+      "id": "unsupported_condition",
+      "status": "insufficient_evidence",
+      "expected_status": "insufficient_evidence",
+      "status_check_passed": true,
+      "retrieved_expected_source": null,
+      "generator_calls": 0
+    },
+    {
+      "id": "local_llm_unavailable",
+      "status": "llm_unavailable",
+      "expected_status": "llm_unavailable",
+      "status_check_passed": true,
+      "retrieved_expected_source": true,
+      "generator_calls": 0
+    }
+  ],
+  "status_checks_passed": 9
+}
