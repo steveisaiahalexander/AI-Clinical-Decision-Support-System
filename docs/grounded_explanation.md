@@ -47,4 +47,15 @@ The disclaimer states that the summary describes model behavior and retrieved co
     python scripts/evaluate_grounded_explanations.py
     python -m unittest tests.test_grounded_explanation
 
-The report in `docs/grounded_explanation_evaluation.json` uses deterministic mocked drafts. Citation validity and completeness are calculated on generation-eligible fixtures; grounded-claim and structurally-unsupported rates measure whether citations pass the validator, not whether a medical statement is true. These are not live LLM quality metrics, retrieval metrics, classifier metrics, or clinical safety/validity measures. The current environment lacks Ollama, so no actual generated output is included in the evaluation. No held-out classifier test samples are used.
+The report in `docs/grounded_explanation_evaluation.json` uses deterministic mocked drafts. Citation validity and completeness are calculated on generation-eligible fixtures; grounded-claim and structurally-unsupported rates measure whether citations pass the validator, not whether a medical statement is true. These are not live LLM quality metrics, retrieval metrics, classifier metrics, or clinical safety/validity measures. The report contains no live generated outputs; live Ollama integration is separately exercised by the opt-in test below. No held-out classifier test samples are used.
+
+## Local Live Integration Test
+
+The opt-in `tests/test_live_grounded_explanation.py` calls the configured local Ollama model through the `/explain-grounded` API route and uses the real hybrid retriever. Its generation case supplies an explicit non-abstained test-fixture prediction at the predictor boundary to isolate the LLM integration; a second case runs the reported symptom examples through the real saved predictor and verifies they skip generation. It does not change production thresholds or classifier artifacts. With Ollama running and the configured model pulled, run:
+
+    $env:RAG_RUN_LIVE_LLM_TEST="1"
+    $env:HF_HUB_OFFLINE="1"
+    $env:TRANSFORMERS_OFFLINE="1"
+    .\.venv\Scripts\python.exe -m unittest discover -s tests -p test_live_grounded_explanation.py -v
+
+The model is called only on localhost. The test checks structured claim output and that all cited IDs resolve to supplied, attributed passages. This verifies formatting/citation linkage, not medical entailment or truth.

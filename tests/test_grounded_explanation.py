@@ -183,6 +183,16 @@ class GroundedExplanationTests(unittest.TestCase):
         self.assertIn("shown below", result["status_message"])
         self.assertEqual(result["evidence"][0]["evidence_id"], "E1")
 
+    def test_provider_failure_keeps_retrieved_evidence(self):
+        generator = StubGenerator(GenerationUnavailable("Ollama is not responding."))
+        result = GroundedExplanationService(generator).explain(
+            prediction(), ["wheezing"], retrieval()
+        )
+        self.assertEqual(result["grounding_status"], "llm_unavailable")
+        self.assertEqual(result["evidence"][0]["evidence_id"], "E1")
+        self.assertIsNone(result["explanation"])
+        self.assertEqual(generator.calls, 1)
+
     def test_config_is_local_by_default_and_environment_overridable(self):
         settings = load_llm_settings(environ={"RAG_LLM_MODEL": "test:model"})
         self.assertEqual(settings["model"], "test:model")
@@ -266,6 +276,32 @@ class GroundedExplanationTests(unittest.TestCase):
         retriever.retrieve.assert_called_once_with(
             "Asthma", context=["symptom_wheezing"], strategy="hybrid"
         )
+
+    def test_api_abstention_skips_generation_and_returns_retrieved_evidence(self):
+        predictor = Mock()
+        predictor.predict.return_value = prediction("insufficient_evidence")
+        vectorizer = Mock()
+        vectorizer.encode.return_value = {"symptom_wheezing": 1}
+        retriever = Mock()
+        retriever.retrieve.return_value = retrieval()
+        generator = StubGenerator({"claims": []})
+        service = GroundedExplanationService(generator)
+
+        with (
+            patch("api.main.get_predictor", return_value=predictor),
+            patch("api.main.get_symptom_vectorizer", return_value=vectorizer),
+            patch("api.main.get_evidence_retriever", return_value=retriever),
+            patch("api.main.get_grounded_explanation_service", return_value=service),
+        ):
+            result = explain_grounded(
+                GroundedExplainRequest(symptoms=["symptom_wheezing"])
+            )
+
+        self.assertEqual(result.prediction.decision_status, "insufficient_evidence")
+        self.assertEqual(result.grounding_status, "abstained")
+        self.assertEqual(result.evidence[0].evidence_id, "E1")
+        self.assertIsNone(result.explanation)
+        self.assertEqual(generator.calls, 0)
 
     def test_api_validates_request_shape_and_unknown_symptoms(self):
         with self.assertRaises(ValidationError):
