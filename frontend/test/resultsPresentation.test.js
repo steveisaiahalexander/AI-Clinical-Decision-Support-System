@@ -3,7 +3,9 @@ import assert from 'node:assert/strict'
 import { resultPresentation } from '../src/resultsPresentation.js'
 import { evidencePresentation } from '../src/evidencePresentation.js'
 import { groundedExplanationPresentation } from '../src/groundedExplanationPresentation.js'
-import { applyQuestionResponse, unaskedSuggestions } from '../src/questioningPresentation.js'
+import { applyQuestionResponse, nextQuestionPanelPresentation, unaskedSuggestions } from '../src/questioningPresentation.js'
+import { fetchNextQuestions } from '../src/services/api.js'
+import viteConfig, { apiProxyPaths } from '../vite.config.js'
 
 test('confident response separates calibrated probability from the ranked class', () => {
   const view = resultPresentation({
@@ -107,4 +109,89 @@ test('responded symptoms are not suggested again', () => {
     unaskedSuggestions(suggestions, ['cough'], ['nausea'], ['headache']),
     [],
   )
+})
+
+test('question panel presents ranked candidates for the response controls', () => {
+  const response = {
+    status: 'suggestions_available',
+    status_message: 'Suggestions available.',
+    suggestions: [
+      { feature_id: 'symptom_orthopnea', label: 'Orthopnea', information_gain_bits: 0.09 },
+      { feature_id: 'symptom_edema', label: 'Peripheral Edema', information_gain_bits: 0.08 },
+    ],
+  }
+  const view = nextQuestionPanelPresentation({
+    response,
+    error: '',
+    loading: false,
+    selected: ['symptom_fatigue'],
+    answeredNegative: [],
+    skipped: [],
+  })
+  assert.equal(view.state, 'ready')
+  assert.deepEqual(view.suggestions.map((item) => item.label), ['Orthopnea', 'Peripheral Edema'])
+})
+
+test('question panel displays the request error state rather than an empty result', () => {
+  const view = nextQuestionPanelPresentation({
+    response: null,
+    error: 'Please review the selected symptoms and try again.',
+    loading: false,
+    selected: [],
+    answeredNegative: [],
+    skipped: [],
+  })
+  assert.deepEqual(view, {
+    state: 'error',
+    message: 'Please review the selected symptoms and try again.',
+  })
+})
+
+test('Vite forwards the next-question API route to FastAPI', () => {
+  assert.ok(apiProxyPaths.includes('/next-question'))
+  assert.ok(Object.hasOwn(viteConfig.server.proxy, '/next-question'))
+})
+
+test('browser API sends the request contract and returns ranked candidates', async () => {
+  const originalFetch = globalThis.fetch
+  const payload = { status: 'suggestions_available', suggestions: [{ feature_id: 'symptom_orthopnea' }] }
+  let captured
+  globalThis.fetch = async (url, options) => {
+    captured = { url, options }
+    return { ok: true, json: async () => payload }
+  }
+  try {
+    const response = await fetchNextQuestions(
+      ['symptom_fatigue'],
+      ['symptom_cough'],
+      ['symptom_nausea'],
+      3,
+    )
+    assert.equal(captured.url, '/next-question')
+    assert.deepEqual(JSON.parse(captured.options.body), {
+      symptoms: ['symptom_fatigue'],
+      answered_negative_symptoms: ['symptom_cough'],
+      skipped_symptoms: ['symptom_nausea'],
+      top_k: 3,
+    })
+    assert.deepEqual(response, payload)
+  } finally {
+    globalThis.fetch = originalFetch
+  }
+})
+
+test('browser API converts an unproxied HTML 404 into the displayed request error', async () => {
+  const originalFetch = globalThis.fetch
+  globalThis.fetch = async () => ({
+    ok: false,
+    json: async () => { throw new SyntaxError('Unexpected token <') },
+  })
+  try {
+    await assert.rejects(
+      fetchNextQuestions(['symptom_fatigue']),
+      /Please review the selected symptoms and try again\./,
+    )
+  } finally {
+    globalThis.fetch = originalFetch
+  }
 })

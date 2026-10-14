@@ -17,3 +17,25 @@ export function unaskedSuggestions(suggestions, selected, answeredNegative, skip
   const excluded = new Set([...selected, ...answeredNegative, ...skipped])
   return (suggestions || []).filter((item) => !excluded.has(item.feature_id))
 }
+
+export function nextQuestionPanelPresentation({
+  response,
+  error,
+  loading,
+  selected,
+  answeredNegative,
+  skipped,
+}) {
+  if (loading) return { state: 'loading' }
+  if (error) return { state: 'error', message: error.message || String(error) }
+  if (!response) return { state: 'idle' }
+
+  const suggestions = unaskedSuggestions(
+    response.suggestions,
+    selected,
+    answeredNegative,
+    skipped,
+  )
+  if (suggestions.length > 0) return { state: 'ready', suggestions }
+  return { state: 'empty', message: response.status_message }
+}

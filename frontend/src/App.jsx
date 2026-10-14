@@ -4,7 +4,7 @@ import { explainSymptoms, fetchEvidence, fetchNextQuestions, fetchSymptoms, gene
 import { evidencePresentation } from './evidencePresentation.js'
 import { groundedExplanationPresentation } from './groundedExplanationPresentation.js'
 import { resultPresentation } from './resultsPresentation.js'
-import { applyQuestionResponse, unaskedSuggestions } from './questioningPresentation.js'
+import { applyQuestionResponse, nextQuestionPanelPresentation } from './questioningPresentation.js'
 
 function labelFor(value, keepSymptomSuffix = false) {
   let label = value.replace(/^(?:rare_)?symptom_/, '').replace(/_rare$/, '')
@@ -104,7 +104,14 @@ function App() {
   const evidenceView = evidencePresentation(evidence)
   const groundedExplanationView = groundedExplanationPresentation(groundedExplanation)
   const visibleRankings = resultView?.insufficientEvidence ? rankedPredictions : alternatives
-  const visibleQuestions = unaskedSuggestions(nextQuestions?.suggestions, selected, answeredNegative, skippedSymptoms)
+  const questionPanelView = nextQuestionPanelPresentation({
+    response: nextQuestions,
+    error: nextQuestionsError,
+    loading: nextQuestionsLoading,
+    selected,
+    answeredNegative,
+    skipped: skippedSymptoms,
+  })
 
   function clearQuestionResults() {
     setNextQuestions(null)
@@ -365,17 +372,18 @@ function App() {
                   <button className="text-button" type="button" onClick={() => setQuestionsDismissed(true)}>Continue without answering</button>
                 </div>
                 <p className="next-questions-note">Prompts are ranked by estimated information gain from training data. They are not clinical recommendations. “No” and “Skip” are not sent as positive symptoms to the classifier.</p>
-                {nextQuestionsLoading && <div className="question-status" role="status"><LoaderCircle className="spin" size={17} /><span>Finding optional follow-up questions…</span></div>}
-                {nextQuestionsError && <div className="question-status question-error" role="alert"><AlertCircle size={17} /><span>{nextQuestionsError}</span><button className="text-button" type="button" onClick={() => analyze()} disabled={analyzing}>Try again</button></div>}
-                {!nextQuestionsLoading && !nextQuestionsError && nextQuestions && <>
-                  {visibleQuestions.length > 0 ? <ul className="question-list">{visibleQuestions.map((question) => <li className="question-row" key={question.feature_id}>
+                {questionPanelView.state === 'loading' && <div className="question-status" role="status"><LoaderCircle className="spin" size={17} /><span>Finding optional follow-up questions…</span></div>}
+                {questionPanelView.state === 'error' && <div className="question-status question-error" role="alert"><AlertCircle size={17} /><span>{questionPanelView.message}</span><button className="text-button" type="button" onClick={() => analyze()} disabled={analyzing}>Try again</button></div>}
+                {questionPanelView.state === 'ready' && <ul className="question-list">{questionPanelView.suggestions.map((question) => <li className="question-row" key={question.feature_id}>
                     <div className="question-copy"><strong>Have you experienced {symptomLabels.get(question.feature_id) || question.label}?</strong><span>Estimated information gain: {Number(question.information_gain_bits).toFixed(3)} bits</span></div>
                     <div className="question-actions" aria-label={`Answer for ${symptomLabels.get(question.feature_id) || question.label}`}>
                       <button type="button" onClick={() => recordQuestionResponse(question.feature_id, 'yes')} disabled={analyzing || nextQuestionsLoading}><Check size={15} /> Yes</button>
                       <button type="button" onClick={() => recordQuestionResponse(question.feature_id, 'no')} disabled={analyzing || nextQuestionsLoading}><Minus size={15} /> No</button>
                       <button type="button" onClick={() => recordQuestionResponse(question.feature_id, 'skip')} disabled={analyzing || nextQuestionsLoading}><SkipForward size={15} /> Skip</button>
                     </div>
-                  </li>)}</ul> : <p className="question-empty">{nextQuestions.status_message}</p>}
+                  </li>)}</ul>}
+                {questionPanelView.state === 'empty' && <p className="question-empty">{questionPanelView.message}</p>}
+                {(questionPanelView.state === 'ready' || questionPanelView.state === 'empty') && <>
                   {(answeredNegative.length > 0 || skippedSymptoms.length > 0) && <div className="question-answers" aria-label="Question responses">
                     {answeredNegative.length > 0 && <p><strong>No:</strong> {answeredNegative.map((id) => symptomLabels.get(id) || labelFor(id)).join(', ')}</p>}
                     {skippedSymptoms.length > 0 && <p><strong>Skipped:</strong> {skippedSymptoms.map((id) => symptomLabels.get(id) || labelFor(id)).join(', ')}</p>}
