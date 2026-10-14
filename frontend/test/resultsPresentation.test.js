@@ -3,6 +3,7 @@ import assert from 'node:assert/strict'
 import { resultPresentation } from '../src/resultsPresentation.js'
 import { evidencePresentation } from '../src/evidencePresentation.js'
 import { groundedExplanationPresentation } from '../src/groundedExplanationPresentation.js'
+import { applyQuestionResponse, unaskedSuggestions } from '../src/questioningPresentation.js'
 
 test('confident response separates calibrated probability from the ranked class', () => {
   const view = resultPresentation({
@@ -84,4 +85,26 @@ test('grounded summary suppresses unknown citations but retains evidence on fall
   })
   assert.equal(unavailable.statusMessage, 'Generated synthesis is unavailable.')
   assert.deepEqual(unavailable.evidence.map((item) => item.evidence_id), ['E1'])
+})
+
+test('Yes adds a positive symptom while No and Skip remain separate questioning states', () => {
+  const initial = { selected: ['fatigue'], answeredNegative: [], skipped: [] }
+  assert.deepEqual(applyQuestionResponse(initial, 'cough', 'yes'), {
+    selected: ['fatigue', 'cough'], answeredNegative: [], skipped: [],
+  })
+  assert.deepEqual(applyQuestionResponse(initial, 'cough', 'no'), {
+    selected: ['fatigue'], answeredNegative: ['cough'], skipped: [],
+  })
+  assert.deepEqual(applyQuestionResponse(initial, 'cough', 'skip'), {
+    selected: ['fatigue'], answeredNegative: [], skipped: ['cough'],
+  })
+  assert.deepEqual(initial, { selected: ['fatigue'], answeredNegative: [], skipped: [] })
+})
+
+test('responded symptoms are not suggested again', () => {
+  const suggestions = ['cough', 'nausea', 'headache'].map((feature_id) => ({ feature_id }))
+  assert.deepEqual(
+    unaskedSuggestions(suggestions, ['cough'], ['nausea'], ['headache']),
+    [],
+  )
 })

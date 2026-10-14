@@ -13,6 +13,8 @@ from api.schemas import (
     ExplainResponse,
     GroundedExplainRequest,
     GroundedExplainResponse,
+    NextQuestionRequest,
+    NextQuestionResponse,
     PredictRequest,
     PredictResponse,
 )
@@ -63,6 +65,34 @@ def get_grounded_explanation_service():
     from rag.grounded_explanation import GroundedExplanationService, create_generator
 
     return GroundedExplanationService(create_generator())
+
+
+@lru_cache(maxsize=1)
+def get_symptom_question_ranker():
+    """Load train-split symptom frequencies and verify saved model ordering."""
+    import json
+    from pathlib import Path
+
+    from src.models.question_ranking import SymptomQuestionRanker
+
+    root = Path(__file__).resolve().parents[1]
+    config = json.loads((root / "configs" / "question_ranking.json").read_text(encoding="utf-8"))
+    statistics_path = root / config["statistics_path"]
+    statistics = json.loads(statistics_path.read_text(encoding="utf-8"))
+    predictor = get_predictor()
+    feature_order = predictor.get_feature_columns()
+    class_order = [str(label) for label in predictor.label_encoder.classes_.tolist()]
+    if statistics.get("feature_order") != feature_order:
+        raise ValueError("Question statistics do not match the saved model feature order.")
+    if statistics.get("class_order") != class_order:
+        raise ValueError("Question statistics do not match the saved model class order.")
+    return SymptomQuestionRanker(
+        feature_order=feature_order,
+        class_order=class_order,
+        conditional_yes=statistics.get("conditional_probability_yes", {}),
+        constant_features=statistics.get("constant_features", []),
+        min_information_gain_bits=float(config["min_information_gain_bits"]),
+    )
 
 
 @app.get("/health", tags=["system"])
@@ -257,3 +287,74 @@ def explain_grounded(request: GroundedExplainRequest) -> GroundedExplainResponse
             status_code=503,
             detail="Grounded explanation is temporarily unavailable; retrieved evidence remains available.",
         ) from error
+
+
+@app.post(
+    "/next-question",
+    response_model=NextQuestionResponse,
+    tags=["inference"],
+    summary="Rank optional symptom questions by estimated information gain",
+)
+def next_question(request: NextQuestionRequest) -> NextQuestionResponse:
+    """Rank unanswered symptoms without changing the existing prediction workflow."""
+    predictor = get_predictor()
+    vectorizer = get_symptom_vectorizer()
+    try:
+        symptom_vector = vectorizer.encode(request.symptoms)
+    except UnknownSymptomsError as error:
+        raise HTTPException(
+            status_code=422,
+            detail={
+                "message": "Request contains unknown symptoms.",
+                "unknown_symptoms": error.symptoms,
+            },
+        ) from error
+    except ValueError as error:
+        raise HTTPException(status_code=422, detail=str(error)) from error
+
+    excluded_answers = [
+        *request.answered_negative_symptoms,
+        *request.skipped_symptoms,
+    ]
+    valid_features = set(vectorizer.available_symptoms())
+    unknown_answers = sorted(set(excluded_answers) - valid_features)
+    if unknown_answers:
+        raise HTTPException(
+            status_code=422,
+            detail={
+                "message": "Questioning responses contain unknown symptoms.",
+                "unknown_symptoms": unknown_answers,
+            },
+        )
+
+    try:
+        ranker = get_symptom_question_ranker()
+        prediction = predictor.predict(symptom_vector, top_k=len(ranker.class_order))
+        class_probabilities = {
+            item["disease"]: float(item["probability"])
+            for item in prediction["top_predictions"]
+        }
+        ranking = ranker.rank(
+            class_probabilities,
+            excluded_features=[*request.symptoms, *excluded_answers],
+            top_k=request.top_k,
+        )
+    except FileNotFoundError as error:
+        raise HTTPException(
+            status_code=503,
+            detail="Training-derived symptom question statistics are unavailable.",
+        ) from error
+    except ValueError as error:
+        raise HTTPException(status_code=503, detail="Symptom question ranking is unavailable.") from error
+
+    return NextQuestionResponse(
+        prediction_status={
+            "predicted_disease": prediction["predicted_disease"],
+            "decision_status": prediction["decision_status"],
+            "insufficient_evidence": prediction["insufficient_evidence"],
+            "abstention_reasons": prediction["abstention_reasons"],
+            "uncertainty": prediction["uncertainty"],
+        },
+        ranking_method="expected_information_gain_bits",
+        **ranking,
+    )

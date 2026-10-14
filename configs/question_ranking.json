@@ -1,0 +1,8 @@
+{
+  "statistics_path": "configs/symptom_question_statistics.json",
+  "smoothing_alpha": 1.0,
+  "min_information_gain_bits": 0.000001,
+  "default_top_k": 3,
+  "max_top_k": 10,
+  "evaluation_steps": 3
+}

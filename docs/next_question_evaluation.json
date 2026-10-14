@@ -1,0 +1,173 @@
+{
+  "scope": "Algorithmic information-gain evaluation on hand-authored development queries; not clinical outcomes or classifier metrics.",
+  "classifier_test_samples_used": false,
+  "training_statistics_source": {
+    "X_train": "data/processed/X_train.pkl",
+    "feature_count": 174,
+    "held_out_test_split_read": false,
+    "sample_count": 79892,
+    "y_train": "data/processed/y_train.pkl"
+  },
+  "query_count": 4,
+  "eligible_candidates": {
+    "mean": 171,
+    "minimum": 170,
+    "maximum": 172
+  },
+  "queries_with_useful_question": {
+    "count": 4,
+    "total": 4,
+    "percent": 100.0
+  },
+  "mean_top_question_expected_entropy_reduction_bits": 0.06521,
+  "repeat_rate_after_skip_responses": 0.0,
+  "question_slots_simulated": 12,
+  "edge_cases": {
+    "all_features_selected": {
+      "status": "no_unasked_candidates",
+      "suggestion_count": 0
+    },
+    "degenerate_single_class_distribution": {
+      "status": "no_useful_candidate",
+      "suggestion_count": 0
+    }
+  },
+  "cases": [
+    {
+      "id": "mixed_common_symptoms",
+      "decision_status": "insufficient_evidence",
+      "eligible_candidate_count": 170,
+      "useful_question_available": true,
+      "top_questions": [
+        {
+          "feature_id": "symptom_orthopnea_symptom",
+          "label": "Orthopnea",
+          "information_gain_bits": 0.09161805416127278,
+          "expected_entropy_after_answer_bits": 2.9310066019736785,
+          "rationale": "Ranked by estimated expected reduction in class entropy, using yes/no symptom frequencies from the training split."
+        },
+        {
+          "feature_id": "symptom_peripheral_edema",
+          "label": "Peripheral Edema",
+          "information_gain_bits": 0.08529785655947819,
+          "expected_entropy_after_answer_bits": 2.937326799575473,
+          "rationale": "Ranked by estimated expected reduction in class entropy, using yes/no symptom frequencies from the training split."
+        },
+        {
+          "feature_id": "symptom_night_sweats",
+          "label": "Night Sweats",
+          "information_gain_bits": 0.08012748041649731,
+          "expected_entropy_after_answer_bits": 2.942497175718454,
+          "rationale": "Ranked by estimated expected reduction in class entropy, using yes/no symptom frequencies from the training split."
+        }
+      ],
+      "unique_skip_sequence": [
+        "symptom_orthopnea_symptom",
+        "symptom_peripheral_edema",
+        "symptom_night_sweats"
+      ]
+    },
+    {
+      "id": "metabolic_symptom_pattern",
+      "decision_status": "insufficient_evidence",
+      "eligible_candidate_count": 171,
+      "useful_question_available": true,
+      "top_questions": [
+        {
+          "feature_id": "symptom_dark_stools",
+          "label": "Dark Stools",
+          "information_gain_bits": 0.06084676545884182,
+          "expected_entropy_after_answer_bits": 2.980541665253311,
+          "rationale": "Ranked by estimated expected reduction in class entropy, using yes/no symptom frequencies from the training split."
+        },
+        {
+          "feature_id": "symptom_speech_difficulty",
+          "label": "Speech Difficulty",
+          "information_gain_bits": 0.060136222876172596,
+          "expected_entropy_after_answer_bits": 2.9812522078359804,
+          "rationale": "Ranked by estimated expected reduction in class entropy, using yes/no symptom frequencies from the training split."
+        },
+        {
+          "feature_id": "symptom_myalgia",
+          "label": "Myalgia",
+          "information_gain_bits": 0.06008451312677243,
+          "expected_entropy_after_answer_bits": 2.9813039175853806,
+          "rationale": "Ranked by estimated expected reduction in class entropy, using yes/no symptom frequencies from the training split."
+        }
+      ],
+      "unique_skip_sequence": [
+        "symptom_dark_stools",
+        "symptom_speech_difficulty",
+        "symptom_myalgia"
+      ]
+    },
+    {
+      "id": "respiratory_symptom_pattern",
+      "decision_status": "insufficient_evidence",
+      "eligible_candidate_count": 172,
+      "useful_question_available": true,
+      "top_questions": [
+        {
+          "feature_id": "symptom_night_sweats",
+          "label": "Night Sweats",
+          "information_gain_bits": 0.05172118792431091,
+          "expected_entropy_after_answer_bits": 2.9427655535025785,
+          "rationale": "Ranked by estimated expected reduction in class entropy, using yes/no symptom frequencies from the training split."
+        },
+        {
+          "feature_id": "symptom_exercise_dyspnea",
+          "label": "Exercise Dyspnea",
+          "information_gain_bits": 0.0463294028161525,
+          "expected_entropy_after_answer_bits": 2.948157338610737,
+          "rationale": "Ranked by estimated expected reduction in class entropy, using yes/no symptom frequencies from the training split."
+        },
+        {
+          "feature_id": "symptom_constipation",
+          "label": "Constipation",
+          "information_gain_bits": 0.04522520406265995,
+          "expected_entropy_after_answer_bits": 2.9492615373642295,
+          "rationale": "Ranked by estimated expected reduction in class entropy, using yes/no symptom frequencies from the training split."
+        }
+      ],
+      "unique_skip_sequence": [
+        "symptom_night_sweats",
+        "symptom_exercise_dyspnea",
+        "symptom_constipation"
+      ]
+    },
+    {
+      "id": "headache_symptom_pattern",
+      "decision_status": "insufficient_evidence",
+      "eligible_candidate_count": 171,
+      "useful_question_available": true,
+      "top_questions": [
+        {
+          "feature_id": "symptom_abdominal_bloating",
+          "label": "Abdominal Bloating",
+          "information_gain_bits": 0.05665352473739693,
+          "expected_entropy_after_answer_bits": 2.970241231519036,
+          "rationale": "Ranked by estimated expected reduction in class entropy, using yes/no symptom frequencies from the training split."
+        },
+        {
+          "feature_id": "symptom_night_sweats",
+          "label": "Night Sweats",
+          "information_gain_bits": 0.05658451360506689,
+          "expected_entropy_after_answer_bits": 2.970310242651366,
+          "rationale": "Ranked by estimated expected reduction in class entropy, using yes/no symptom frequencies from the training split."
+        },
+        {
+          "feature_id": "symptom_gait_instability_symptom",
+          "label": "Gait Instability",
+          "information_gain_bits": 0.05518778053155371,
+          "expected_entropy_after_answer_bits": 2.9717069757248793,
+          "rationale": "Ranked by estimated expected reduction in class entropy, using yes/no symptom frequencies from the training split."
+        }
+      ],
+      "unique_skip_sequence": [
+        "symptom_abdominal_bloating",
+        "symptom_night_sweats",
+        "symptom_gait_instability_symptom"
+      ]
+    }
+  ]
+}

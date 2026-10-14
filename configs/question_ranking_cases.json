@@ -1,0 +1,21 @@
+{
+  "scope": "Hand-authored development symptom queries; no held-out classifier rows or labels are included.",
+  "cases": [
+    {
+      "id": "mixed_common_symptoms",
+      "symptoms": ["symptom_fatigue", "symptom_cough", "symptom_headache", "symptom_nausea"]
+    },
+    {
+      "id": "metabolic_symptom_pattern",
+      "symptoms": ["symptom_polyuria", "symptom_polydipsia", "symptom_polyphagia"]
+    },
+    {
+      "id": "respiratory_symptom_pattern",
+      "symptoms": ["symptom_wheezing", "symptom_shortness_of_breath"]
+    },
+    {
+      "id": "headache_symptom_pattern",
+      "symptoms": ["symptom_headache", "symptom_photophobia", "symptom_nausea"]
+    }
+  ]
+}

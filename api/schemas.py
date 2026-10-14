@@ -2,7 +2,7 @@
 
 from typing import List, Literal, Optional
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
 
 class PredictRequest(BaseModel):
@@ -166,4 +166,63 @@ class GroundedExplainResponse(BaseModel):
     ]
     evidence: List[GroundedEvidence]
     status_message: str
+    disclaimer: str
+
+
+class NextQuestionRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
+    symptoms: List[str] = Field(min_length=1, max_length=174)
+    answered_negative_symptoms: List[str] = Field(default_factory=list, max_length=174)
+    skipped_symptoms: List[str] = Field(default_factory=list, max_length=174)
+    top_k: int = Field(default=3, strict=True, ge=1, le=10)
+
+    @model_validator(mode="after")
+    def validate_answer_sets(self):
+        groups = (
+            self.symptoms,
+            self.answered_negative_symptoms,
+            self.skipped_symptoms,
+        )
+        if any(len(values) != len(set(values)) for values in groups):
+            raise ValueError("Symptom identifiers must not be duplicated.")
+        if (
+            set(self.symptoms) & set(self.answered_negative_symptoms)
+            or set(self.symptoms) & set(self.skipped_symptoms)
+            or set(self.answered_negative_symptoms) & set(self.skipped_symptoms)
+        ):
+            raise ValueError("A symptom can have only one current questioning response.")
+        return self
+
+
+class QuestionPredictionStatus(BaseModel):
+    predicted_disease: str
+    decision_status: Literal["ranked_prediction", "insufficient_evidence"]
+    insufficient_evidence: bool
+    abstention_reasons: List[str]
+    uncertainty: PredictionUncertainty
+
+
+class NextQuestionSuggestion(BaseModel):
+    feature_id: str
+    label: str
+    information_gain_bits: float
+    expected_entropy_after_answer_bits: float
+    rationale: str
+
+
+class NextQuestionResponse(BaseModel):
+    prediction_status: QuestionPredictionStatus
+    ranking_method: Literal["expected_information_gain_bits"]
+    prior_entropy_bits: float
+    eligible_candidate_count: int
+    useful_candidate_count: int
+    status: Literal[
+        "suggestions_available",
+        "no_useful_candidate",
+        "no_unasked_candidates",
+        "no_eligible_candidates",
+    ]
+    status_message: str
+    suggestions: List[NextQuestionSuggestion]
     disclaimer: str

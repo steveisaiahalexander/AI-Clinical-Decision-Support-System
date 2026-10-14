@@ -58,3 +58,15 @@ export function generateGroundedExplanation(symptoms) {
     body: JSON.stringify({ symptoms }),
   })
 }
+
+export function fetchNextQuestions(symptoms, answeredNegativeSymptoms = [], skippedSymptoms = [], topK = 3) {
+  return request('/next-question', {
+    method: 'POST',
+    body: JSON.stringify({
+      symptoms,
+      answered_negative_symptoms: answeredNegativeSymptoms,
+      skipped_symptoms: skippedSymptoms,
+      top_k: topK,
+    }),
+  })
+}

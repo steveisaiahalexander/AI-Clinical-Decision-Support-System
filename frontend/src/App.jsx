@@ -1,9 +1,10 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { Activity, AlertCircle, ChevronRight, LoaderCircle, Plus, Search, ShieldAlert, Sparkles, X } from 'lucide-react'
-import { explainSymptoms, fetchEvidence, fetchSymptoms, generateGroundedExplanation, predictFromSymptoms } from './services/api.js'
+import { Activity, AlertCircle, Check, ChevronRight, LoaderCircle, Minus, Plus, Search, ShieldAlert, SkipForward, Sparkles, X } from 'lucide-react'
+import { explainSymptoms, fetchEvidence, fetchNextQuestions, fetchSymptoms, generateGroundedExplanation, predictFromSymptoms } from './services/api.js'
 import { evidencePresentation } from './evidencePresentation.js'
 import { groundedExplanationPresentation } from './groundedExplanationPresentation.js'
 import { resultPresentation } from './resultsPresentation.js'
+import { applyQuestionResponse, unaskedSuggestions } from './questioningPresentation.js'
 
 function labelFor(value, keepSymptomSuffix = false) {
   let label = value.replace(/^(?:rare_)?symptom_/, '').replace(/_rare$/, '')
@@ -39,6 +40,12 @@ function App() {
   const [groundedExplanation, setGroundedExplanation] = useState(null)
   const [groundedExplanationLoading, setGroundedExplanationLoading] = useState(false)
   const [groundedExplanationError, setGroundedExplanationError] = useState('')
+  const [nextQuestions, setNextQuestions] = useState(null)
+  const [nextQuestionsLoading, setNextQuestionsLoading] = useState(false)
+  const [nextQuestionsError, setNextQuestionsError] = useState('')
+  const [answeredNegative, setAnsweredNegative] = useState([])
+  const [skippedSymptoms, setSkippedSymptoms] = useState([])
+  const [questionsDismissed, setQuestionsDismissed] = useState(false)
   const resultsRef = useRef(null)
   const resultsTitleRef = useRef(null)
 
@@ -97,6 +104,13 @@ function App() {
   const evidenceView = evidencePresentation(evidence)
   const groundedExplanationView = groundedExplanationPresentation(groundedExplanation)
   const visibleRankings = resultView?.insufficientEvidence ? rankedPredictions : alternatives
+  const visibleQuestions = unaskedSuggestions(nextQuestions?.suggestions, selected, answeredNegative, skippedSymptoms)
+
+  function clearQuestionResults() {
+    setNextQuestions(null)
+    setNextQuestionsError('')
+    setQuestionsDismissed(false)
+  }
 
   function addSymptom(symptom) {
     setSelected((current) => [...current, symptom])
@@ -109,6 +123,9 @@ function App() {
     setGroundedExplanation(null)
     setGroundedExplanationError('')
     setAnalysisError('')
+    setAnsweredNegative([])
+    setSkippedSymptoms([])
+    clearQuestionResults()
   }
 
   function removeSymptom(symptom) {
@@ -121,6 +138,7 @@ function App() {
     setGroundedExplanation(null)
     setGroundedExplanationError('')
     setAnalysisError('')
+    clearQuestionResults()
   }
 
   function clearSelection() {
@@ -133,6 +151,9 @@ function App() {
     setGroundedExplanation(null)
     setGroundedExplanationError('')
     setAnalysisError('')
+    setAnsweredNegative([])
+    setSkippedSymptoms([])
+    clearQuestionResults()
   }
 
   async function analyze() {
@@ -146,9 +167,23 @@ function App() {
     setEvidenceError('')
     setGroundedExplanation(null)
     setGroundedExplanationError('')
+    setNextQuestions(null)
+    setNextQuestionsError('')
+    setQuestionsDismissed(false)
     try {
       const prediction = await predictFromSymptoms(selected)
       setResult(prediction)
+      if (prediction.decision_status === 'insufficient_evidence') {
+        setNextQuestionsLoading(true)
+        try {
+          const questions = await fetchNextQuestions(selected, answeredNegative, skippedSymptoms)
+          setNextQuestions(questions)
+        } catch (error) {
+          setNextQuestionsError(error.message)
+        } finally {
+          setNextQuestionsLoading(false)
+        }
+      }
       await Promise.all([
         loadExplanation(selected),
         loadEvidence(prediction.predicted_disease, selected),
@@ -158,6 +193,31 @@ function App() {
       setAnalysisError(error.message)
     } finally {
       setAnalyzing(false)
+    }
+  }
+
+  function recordQuestionResponse(featureId, response) {
+    const next = applyQuestionResponse({ selected, answeredNegative, skipped: skippedSymptoms }, featureId, response)
+    setSelected(next.selected)
+    setAnsweredNegative(next.answeredNegative)
+    setSkippedSymptoms(next.skipped)
+    if (response === 'yes') {
+      setQuery('')
+      setResult(null)
+      setExplanation(null)
+      setExplanationError('')
+      setEvidence(null)
+      setEvidenceError('')
+      setGroundedExplanation(null)
+      setGroundedExplanationError('')
+      setAnalysisError('')
+    } else {
+      setNextQuestionsLoading(true)
+      setNextQuestionsError('')
+      fetchNextQuestions(selected, next.answeredNegative, next.skipped)
+        .then(setNextQuestions)
+        .catch((error) => setNextQuestionsError(error.message))
+        .finally(() => setNextQuestionsLoading(false))
     }
   }
 
@@ -298,6 +358,30 @@ function App() {
                   <div><span>Normalized entropy</span><strong>{(Number(result.uncertainty.normalized_entropy) * 100).toFixed(1)}%</strong></div>
                 </div>
                 <p className="uncertainty-note">These signals describe the model’s probability distribution, not clinical certainty. Abstention thresholds are development settings and are not clinically validated.</p>
+              </section>}
+              {resultView.insufficientEvidence && !questionsDismissed && <section className="next-questions" aria-labelledby="next-questions-title">
+                <div className="next-questions-heading">
+                  <div><span className="eyebrow">OPTIONAL FOLLOW-UP</span><h3 id="next-questions-title">Questions that may help refine the input</h3></div>
+                  <button className="text-button" type="button" onClick={() => setQuestionsDismissed(true)}>Continue without answering</button>
+                </div>
+                <p className="next-questions-note">Prompts are ranked by estimated information gain from training data. They are not clinical recommendations. “No” and “Skip” are not sent as positive symptoms to the classifier.</p>
+                {nextQuestionsLoading && <div className="question-status" role="status"><LoaderCircle className="spin" size={17} /><span>Finding optional follow-up questions…</span></div>}
+                {nextQuestionsError && <div className="question-status question-error" role="alert"><AlertCircle size={17} /><span>{nextQuestionsError}</span><button className="text-button" type="button" onClick={() => analyze()} disabled={analyzing}>Try again</button></div>}
+                {!nextQuestionsLoading && !nextQuestionsError && nextQuestions && <>
+                  {visibleQuestions.length > 0 ? <ul className="question-list">{visibleQuestions.map((question) => <li className="question-row" key={question.feature_id}>
+                    <div className="question-copy"><strong>Have you experienced {symptomLabels.get(question.feature_id) || question.label}?</strong><span>Estimated information gain: {Number(question.information_gain_bits).toFixed(3)} bits</span></div>
+                    <div className="question-actions" aria-label={`Answer for ${symptomLabels.get(question.feature_id) || question.label}`}>
+                      <button type="button" onClick={() => recordQuestionResponse(question.feature_id, 'yes')} disabled={analyzing || nextQuestionsLoading}><Check size={15} /> Yes</button>
+                      <button type="button" onClick={() => recordQuestionResponse(question.feature_id, 'no')} disabled={analyzing || nextQuestionsLoading}><Minus size={15} /> No</button>
+                      <button type="button" onClick={() => recordQuestionResponse(question.feature_id, 'skip')} disabled={analyzing || nextQuestionsLoading}><SkipForward size={15} /> Skip</button>
+                    </div>
+                  </li>)}</ul> : <p className="question-empty">{nextQuestions.status_message}</p>}
+                  {(answeredNegative.length > 0 || skippedSymptoms.length > 0) && <div className="question-answers" aria-label="Question responses">
+                    {answeredNegative.length > 0 && <p><strong>No:</strong> {answeredNegative.map((id) => symptomLabels.get(id) || labelFor(id)).join(', ')}</p>}
+                    {skippedSymptoms.length > 0 && <p><strong>Skipped:</strong> {skippedSymptoms.map((id) => symptomLabels.get(id) || labelFor(id)).join(', ')}</p>}
+                  </div>}
+                </>}
+                <p className="question-disclaimer">{nextQuestions?.disclaimer || 'Follow-up prompts are algorithmic only and are not a diagnosis, triage, or treatment recommendation.'}</p>
               </section>}
               <div className="alternatives-heading"><h3>{resultView.rankedHeading}</h3><span>{visibleRankings.length}</span></div>
               {visibleRankings.length === 0 ? <p className="no-alternatives">No alternative predictions were included.</p> : (
