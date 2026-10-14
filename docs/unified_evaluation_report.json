@@ -1,0 +1,1945 @@
+{
+  "report_version": 1,
+  "title": "Unified Evaluation Report",
+  "evaluation_integrity": {
+    "classifier_test_samples_used_for_tuning": false,
+    "classifier_retrained": false,
+    "source_artifacts_reused": true,
+    "note": "Metrics remain separated by evaluation dataset and type; no aggregate score is computed."
+  },
+  "sections": {
+    "classification": {
+      "availability": "available",
+      "evaluation_type": "classifier",
+      "dataset": "Final held-out classifier test set (n=19974)",
+      "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+      "source": "outputs/reports/final_ensemble_metrics.json",
+      "test_set_used_only_for_final_evaluation": true,
+      "metrics": {
+        "accuracy": {
+          "value": 0.7347551817362571,
+          "availability": "available",
+          "category": "classifier",
+          "dataset": "Final held-out classifier test set (n=19974)",
+          "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+          "source": "outputs/reports/final_ensemble_metrics.json",
+          "unit": "ratio"
+        },
+        "weighted_precision": {
+          "value": 0.7320484829431587,
+          "availability": "available",
+          "category": "classifier",
+          "dataset": "Final held-out classifier test set (n=19974)",
+          "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+          "source": "outputs/reports/final_ensemble_metrics.json",
+          "unit": "ratio"
+        },
+        "weighted_recall": {
+          "value": 0.7347551817362571,
+          "availability": "available",
+          "category": "classifier",
+          "dataset": "Final held-out classifier test set (n=19974)",
+          "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+          "source": "outputs/reports/final_ensemble_metrics.json",
+          "unit": "ratio"
+        },
+        "weighted_f1": {
+          "value": 0.7301143469180174,
+          "availability": "available",
+          "category": "classifier",
+          "dataset": "Final held-out classifier test set (n=19974)",
+          "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+          "source": "outputs/reports/final_ensemble_metrics.json",
+          "unit": "ratio"
+        },
+        "macro_precision": {
+          "value": 0.6869232934291039,
+          "availability": "available",
+          "category": "classifier",
+          "dataset": "Final held-out classifier test set (n=19974)",
+          "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+          "source": "outputs/reports/final_ensemble_metrics.json",
+          "unit": "ratio"
+        },
+        "macro_recall": {
+          "value": 0.5132637172441563,
+          "availability": "available",
+          "category": "classifier",
+          "dataset": "Final held-out classifier test set (n=19974)",
+          "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+          "source": "outputs/reports/final_ensemble_metrics.json",
+          "unit": "ratio"
+        },
+        "macro_f1": {
+          "value": 0.5478964820988163,
+          "availability": "available",
+          "category": "classifier",
+          "dataset": "Final held-out classifier test set (n=19974)",
+          "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+          "source": "outputs/reports/final_ensemble_metrics.json",
+          "unit": "ratio"
+        }
+      },
+      "class_wise": {
+        "Amyotrophic_Lateral_Sclerosis": {
+          "precision": {
+            "value": 0.5,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.4,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.4444444444444444,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 10.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Asthma": {
+          "precision": {
+            "value": 0.7722419928825622,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.8661657666118807,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.8165117308543604,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 4259.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "COPD": {
+          "precision": {
+            "value": 0.6657060518731989,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.5606796116504854,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.6086956521739131,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 412.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "COVID19": {
+          "precision": {
+            "value": 0.6524390243902439,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.5257985257985258,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.582312925170068,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 407.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Chronic_Kidney_Disease": {
+          "precision": {
+            "value": 0.7371663244353183,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.7187187187187187,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.7278256462240243,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 999.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Common_Cold": {
+          "precision": {
+            "value": 0.7543352601156069,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.5838926174496645,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.6582597730138714,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 447.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Coronary_Artery_Disease": {
+          "precision": {
+            "value": 0.734375,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.5108695652173914,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.6025641025641025,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 184.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Cystic_Fibrosis": {
+          "precision": {
+            "value": 0.9142857142857143,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.9696969696969697,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.9411764705882353,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 33.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Depression": {
+          "precision": {
+            "value": 0.652605459057072,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.5668103448275862,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.6066897347174164,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 464.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Ehlers_Danlos_Syndrome": {
+          "precision": {
+            "value": 1.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.2,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.3333333333333333,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 5.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Epilepsy": {
+          "precision": {
+            "value": 0.6140350877192983,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.4794520547945205,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.5384615384615384,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 73.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Flu": {
+          "precision": {
+            "value": 0.6935724962630793,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.6734397677793904,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.6833578792341679,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 689.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Gastritis": {
+          "precision": {
+            "value": 0.674074074074074,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.718961625282167,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.695794647733479,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 886.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Generalized_Anxiety_Disorder": {
+          "precision": {
+            "value": 1.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.05263157894736842,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.1,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 19.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Hypertension": {
+          "precision": {
+            "value": 0.7112970711297071,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.5167173252279635,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.5985915492957746,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 329.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Hyperthyroidism": {
+          "precision": {
+            "value": 0.756108202443281,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.8064215914378781,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.7804548525106958,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 2149.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Hypothyroidism": {
+          "precision": {
+            "value": 0.5858585858585859,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.516320474777448,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.5488958990536278,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 337.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Irritable_Bowel_Syndrome": {
+          "precision": {
+            "value": 0.7419354838709677,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.7390581717451523,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.7404940327504858,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 1805.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Marfan_Syndrome": {
+          "precision": {
+            "value": 0.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 6.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Migraine": {
+          "precision": {
+            "value": 0.6086956521739131,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.3010752688172043,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.4028776978417266,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 93.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Obesity": {
+          "precision": {
+            "value": 0.7176258992805755,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.7619350732017823,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.7391170114232788,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 1571.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Osteoarthritis": {
+          "precision": {
+            "value": 0.7067938021454112,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.6951934349355217,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.7009456264775413,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 853.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Osteopetrosis": {
+          "precision": {
+            "value": 0.6666666666666666,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.2222222222222222,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.3333333333333333,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 9.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Peptic_Ulcer_Disease": {
+          "precision": {
+            "value": 0.7851458885941645,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.7609254498714653,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.7728459530026109,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 1167.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Pneumonia": {
+          "precision": {
+            "value": 0.7334851936218679,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.74364896073903,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.7385321100917431,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 1299.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Polycystic_Ovary_Syndrome": {
+          "precision": {
+            "value": 0.667741935483871,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.5686813186813187,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.6142433234421365,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 364.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Stroke": {
+          "precision": {
+            "value": 0.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 13.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Systemic_Lupus_Erythematosus": {
+          "precision": {
+            "value": 0.8333333333333334,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.16129032258064516,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.2702702702702703,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 31.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Tuberculosis": {
+          "precision": {
+            "value": 1.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.07692307692307693,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.14285714285714285,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 13.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        },
+        "Type2_Diabetes": {
+          "precision": {
+            "value": 0.7281746031746031,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "recall": {
+            "value": 0.700381679389313,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "f1": {
+            "value": 0.7140077821011673,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "ratio"
+          },
+          "support": {
+            "value": 1048.0,
+            "availability": "available",
+            "category": "classifier",
+            "dataset": "Final held-out classifier test set (n=19974)",
+            "method": "Saved final evaluation report; no fitting or tuning performed by this script",
+            "source": "outputs/reports/final_ensemble_metrics.json",
+            "unit": "samples"
+          }
+        }
+      }
+    },
+    "calibration": {
+      "availability": "available",
+      "evaluation_type": "classifier_calibration",
+      "method": "Scalar temperature scaling selected by a separate development partition; no test-set tuning",
+      "source": "configs/ensemble_calibration.json",
+      "selected_calibration_method": "temperature_scaling",
+      "temperature": {
+        "value": 0.673403810833824,
+        "availability": "available",
+        "category": "classifier_calibration",
+        "dataset": "Independent method-selection partition (n=7989)",
+        "method": "Compare raw ensemble with temperature scaling; select only if log loss decreases",
+        "source": "configs/ensemble_calibration.json",
+        "unit": "ratio"
+      },
+      "validation": {
+        "dataset": "Development validation partition (n=7990); temporary validation models",
+        "raw": {
+          "multiclass_brier_score": {
+            "value": 0.4315721045422228,
+            "availability": "available",
+            "category": "classifier_calibration",
+            "dataset": "Development validation partition (n=7990); temporary validation models",
+            "method": "Multiclass Brier score, log loss, and equal-width 15-bin top-label ECE",
+            "source": "configs/ensemble_calibration.json",
+            "unit": "ratio"
+          },
+          "log_loss": {
+            "value": 0.9611068383972884,
+            "availability": "available",
+            "category": "classifier_calibration",
+            "dataset": "Development validation partition (n=7990); temporary validation models",
+            "method": "Multiclass Brier score, log loss, and equal-width 15-bin top-label ECE",
+            "source": "configs/ensemble_calibration.json",
+            "unit": "ratio"
+          },
+          "top_label_ece": {
+            "value": 0.13484686062400356,
+            "availability": "available",
+            "category": "classifier_calibration",
+            "dataset": "Development validation partition (n=7990); temporary validation models",
+            "method": "Multiclass Brier score, log loss, and equal-width 15-bin top-label ECE",
+            "source": "configs/ensemble_calibration.json",
+            "unit": "ratio"
+          }
+        },
+        "selected": {
+          "multiclass_brier_score": {
+            "value": 0.40450658712984655,
+            "availability": "available",
+            "category": "classifier_calibration",
+            "dataset": "Development validation partition (n=7990); temporary validation models",
+            "method": "Multiclass Brier score, log loss, and equal-width 15-bin top-label ECE",
+            "source": "configs/ensemble_calibration.json",
+            "unit": "ratio"
+          },
+          "log_loss": {
+            "value": 0.8796442250513292,
+            "availability": "available",
+            "category": "classifier_calibration",
+            "dataset": "Development validation partition (n=7990); temporary validation models",
+            "method": "Multiclass Brier score, log loss, and equal-width 15-bin top-label ECE",
+            "source": "configs/ensemble_calibration.json",
+            "unit": "ratio"
+          },
+          "top_label_ece": {
+            "value": 0.01705154747639356,
+            "availability": "available",
+            "category": "classifier_calibration",
+            "dataset": "Development validation partition (n=7990); temporary validation models",
+            "method": "Multiclass Brier score, log loss, and equal-width 15-bin top-label ECE",
+            "source": "configs/ensemble_calibration.json",
+            "unit": "ratio"
+          }
+        }
+      },
+      "method_selection": {
+        "dataset": "Independent method-selection partition (n=7989)",
+        "raw": {
+          "multiclass_brier_score": {
+            "value": 0.43060680834342613,
+            "availability": "available",
+            "category": "classifier_calibration",
+            "dataset": "Independent method-selection partition (n=7989)",
+            "method": "Compare raw ensemble with temperature scaling; select only if log loss decreases",
+            "source": "configs/ensemble_calibration.json",
+            "unit": "ratio"
+          },
+          "log_loss": {
+            "value": 0.9480421018224601,
+            "availability": "available",
+            "category": "classifier_calibration",
+            "dataset": "Independent method-selection partition (n=7989)",
+            "method": "Compare raw ensemble with temperature scaling; select only if log loss decreases",
+            "source": "configs/ensemble_calibration.json",
+            "unit": "ratio"
+          },
+          "top_label_ece": {
+            "value": 0.13512152484052226,
+            "availability": "available",
+            "category": "classifier_calibration",
+            "dataset": "Independent method-selection partition (n=7989)",
+            "method": "Compare raw ensemble with temperature scaling; select only if log loss decreases",
+            "source": "configs/ensemble_calibration.json",
+            "unit": "ratio"
+          }
+        },
+        "temperature_scaled": {
+          "multiclass_brier_score": {
+            "value": 0.4038788429175398,
+            "availability": "available",
+            "category": "classifier_calibration",
+            "dataset": "Independent method-selection partition (n=7989)",
+            "method": "Compare raw ensemble with temperature scaling; select only if log loss decreases",
+            "source": "configs/ensemble_calibration.json",
+            "unit": "ratio"
+          },
+          "log_loss": {
+            "value": 0.8630202031375676,
+            "availability": "available",
+            "category": "classifier_calibration",
+            "dataset": "Independent method-selection partition (n=7989)",
+            "method": "Compare raw ensemble with temperature scaling; select only if log loss decreases",
+            "source": "configs/ensemble_calibration.json",
+            "unit": "ratio"
+          },
+          "top_label_ece": {
+            "value": 0.0108648175745352,
+            "availability": "available",
+            "category": "classifier_calibration",
+            "dataset": "Independent method-selection partition (n=7989)",
+            "method": "Compare raw ensemble with temperature scaling; select only if log loss decreases",
+            "source": "configs/ensemble_calibration.json",
+            "unit": "ratio"
+          }
+        }
+      },
+      "abstention": {
+        "dataset": "Development validation partition (n=7990); temporary validation models",
+        "method": "Evaluate the locked three-condition OR policy without refitting thresholds",
+        "metrics": {
+          "coverage": {
+            "value": 0.48760951188986235,
+            "availability": "available",
+            "category": "uncertainty_abstention",
+            "dataset": "Development validation partition (n=7990)",
+            "method": "Fixed selected thresholds",
+            "source": "configs/ensemble_calibration.json",
+            "unit": "ratio",
+            "note": "Estimate for temporary validation models; may differ from the full-data deployed model."
+          },
+          "abstention_rate": {
+            "value": 0.5123904881101377,
+            "availability": "available",
+            "category": "uncertainty_abstention",
+            "dataset": "Development validation partition (n=7990)",
+            "method": "Fixed selected thresholds",
+            "source": "configs/ensemble_calibration.json",
+            "unit": "ratio",
+            "note": "Estimate for temporary validation models; may differ from the full-data deployed model."
+          },
+          "abstention_count": {
+            "value": 4094,
+            "availability": "available",
+            "category": "uncertainty_abstention",
+            "dataset": "Development validation partition (n=7990)",
+            "method": "Rounded from saved abstention rate × sample count",
+            "source": "configs/ensemble_calibration.json",
+            "unit": "samples"
+          },
+          "accuracy_when_accepted": {
+            "value": 0.8942505133470225,
+            "availability": "available",
+            "category": "uncertainty_abstention",
+            "dataset": "Development validation partition (n=7990)",
+            "method": "Accuracy on non-abstained rows",
+            "source": "configs/ensemble_calibration.json",
+            "unit": "ratio",
+            "note": "Selective performance estimate for temporary validation models."
+          },
+          "accuracy_on_all_rows": {
+            "value": 0.7017521902377972,
+            "availability": "available",
+            "category": "uncertainty_abstention",
+            "dataset": "Development validation partition (n=7990)",
+            "method": "Top-1 accuracy before abstention",
+            "source": "configs/ensemble_calibration.json",
+            "unit": "ratio"
+          },
+          "selection_coverage": {
+            "value": 0.5000625860558268,
+            "availability": "available",
+            "category": "uncertainty_abstention",
+            "dataset": "Independent threshold-selection partition (n=7989)",
+            "method": "Select fixed OR-threshold policy subject to minimum development coverage",
+            "source": "configs/ensemble_calibration.json",
+            "unit": "ratio"
+          },
+          "selection_accuracy_when_accepted": {
+            "value": 0.8941176470588236,
+            "availability": "available",
+            "category": "uncertainty_abstention",
+            "dataset": "Independent threshold-selection partition (n=7989)",
+            "method": "Select fixed OR-threshold policy subject to minimum development coverage",
+            "source": "configs/ensemble_calibration.json",
+            "unit": "ratio"
+          },
+          "minimum_coverage_target": {
+            "value": 0.5,
+            "availability": "available",
+            "category": "uncertainty_abstention",
+            "dataset": "Independent threshold-selection partition (n=7989)",
+            "method": "Select fixed OR-threshold policy subject to minimum development coverage",
+            "source": "configs/ensemble_calibration.json",
+            "unit": "ratio"
+          },
+          "abstention_counts_by_reason": {
+            "value": null,
+            "availability": "unavailable",
+            "category": "uncertainty_abstention",
+            "dataset": "Development validation partition (n=7990)",
+            "method": "Per-reason count from saved evaluation predictions",
+            "source": "configs/ensemble_calibration.json",
+            "unit": "ratio",
+            "note": "The saved aggregate artifact does not include reason-level counts."
+          }
+        },
+        "caveat": "Development estimates from temporary models fitted on a subset of X_train; not measured on the deployed full-data model or held-out test set."
+      }
+    },
+    "uncertainty_abstention": {
+      "dataset": "Development validation partition (n=7990); temporary validation models",
+      "method": "Evaluate the locked three-condition OR policy without refitting thresholds",
+      "metrics": {
+        "coverage": {
+          "value": 0.48760951188986235,
+          "availability": "available",
+          "category": "uncertainty_abstention",
+          "dataset": "Development validation partition (n=7990)",
+          "method": "Fixed selected thresholds",
+          "source": "configs/ensemble_calibration.json",
+          "unit": "ratio",
+          "note": "Estimate for temporary validation models; may differ from the full-data deployed model."
+        },
+        "abstention_rate": {
+          "value": 0.5123904881101377,
+          "availability": "available",
+          "category": "uncertainty_abstention",
+          "dataset": "Development validation partition (n=7990)",
+          "method": "Fixed selected thresholds",
+          "source": "configs/ensemble_calibration.json",
+          "unit": "ratio",
+          "note": "Estimate for temporary validation models; may differ from the full-data deployed model."
+        },
+        "abstention_count": {
+          "value": 4094,
+          "availability": "available",
+          "category": "uncertainty_abstention",
+          "dataset": "Development validation partition (n=7990)",
+          "method": "Rounded from saved abstention rate × sample count",
+          "source": "configs/ensemble_calibration.json",
+          "unit": "samples"
+        },
+        "accuracy_when_accepted": {
+          "value": 0.8942505133470225,
+          "availability": "available",
+          "category": "uncertainty_abstention",
+          "dataset": "Development validation partition (n=7990)",
+          "method": "Accuracy on non-abstained rows",
+          "source": "configs/ensemble_calibration.json",
+          "unit": "ratio",
+          "note": "Selective performance estimate for temporary validation models."
+        },
+        "accuracy_on_all_rows": {
+          "value": 0.7017521902377972,
+          "availability": "available",
+          "category": "uncertainty_abstention",
+          "dataset": "Development validation partition (n=7990)",
+          "method": "Top-1 accuracy before abstention",
+          "source": "configs/ensemble_calibration.json",
+          "unit": "ratio"
+        },
+        "selection_coverage": {
+          "value": 0.5000625860558268,
+          "availability": "available",
+          "category": "uncertainty_abstention",
+          "dataset": "Independent threshold-selection partition (n=7989)",
+          "method": "Select fixed OR-threshold policy subject to minimum development coverage",
+          "source": "configs/ensemble_calibration.json",
+          "unit": "ratio"
+        },
+        "selection_accuracy_when_accepted": {
+          "value": 0.8941176470588236,
+          "availability": "available",
+          "category": "uncertainty_abstention",
+          "dataset": "Independent threshold-selection partition (n=7989)",
+          "method": "Select fixed OR-threshold policy subject to minimum development coverage",
+          "source": "configs/ensemble_calibration.json",
+          "unit": "ratio"
+        },
+        "minimum_coverage_target": {
+          "value": 0.5,
+          "availability": "available",
+          "category": "uncertainty_abstention",
+          "dataset": "Independent threshold-selection partition (n=7989)",
+          "method": "Select fixed OR-threshold policy subject to minimum development coverage",
+          "source": "configs/ensemble_calibration.json",
+          "unit": "ratio"
+        },
+        "abstention_counts_by_reason": {
+          "value": null,
+          "availability": "unavailable",
+          "category": "uncertainty_abstention",
+          "dataset": "Development validation partition (n=7990)",
+          "method": "Per-reason count from saved evaluation predictions",
+          "source": "configs/ensemble_calibration.json",
+          "unit": "ratio",
+          "note": "The saved aggregate artifact does not include reason-level counts."
+        }
+      },
+      "caveat": "Development estimates from temporary models fitted on a subset of X_train; not measured on the deployed full-data model or held-out test set."
+    },
+    "retrieval": {
+      "availability": "available",
+      "evaluation_type": "retrieval",
+      "dataset": "Manually curated queries in rag/evaluation_queries.json; classifier test samples not used",
+      "method": "Offline relevance/source matching; strategy-specific Recall@k and MRR@3",
+      "source": "docs/evidence_retrieval_evaluation.json",
+      "supported_class_coverage": {
+        "value": 30,
+        "availability": "available",
+        "category": "retrieval",
+        "dataset": "Curated corpus versus the supported model classes",
+        "method": "Corpus/document coverage check",
+        "source": "rag/supported_conditions.json and retrieval tests",
+        "unit": "classes"
+      },
+      "unsupported_query_behavior": {
+        "availability": "verified_by_fixture",
+        "expected_behavior": "Unsupported class returns an explicit unsupported/no-sufficient-evidence state and no passages.",
+        "dataset": "Unknown-condition fixture in tests/test_evidence_retrieval.py",
+        "method": "Deterministic API behavior test",
+        "source": "tests/test_evidence_retrieval.py::test_unknown_condition_returns_no_unattributed_fallback"
+      },
+      "strategies": {
+        "tfidf": {
+          "query_count": {
+            "value": 31,
+            "availability": "available",
+            "category": "retrieval",
+            "dataset": "Manually curated queries in rag/evaluation_queries.json; classifier test samples not used",
+            "method": "Offline relevance/source matching; strategy-specific Recall@k and MRR@3",
+            "source": "docs/evidence_retrieval_evaluation.json",
+            "unit": "queries"
+          },
+          "metrics": {
+            "recall_at_1": {
+              "value": 0.9,
+              "availability": "available",
+              "category": "retrieval",
+              "dataset": "Manually curated queries in rag/evaluation_queries.json; classifier test samples not used",
+              "method": "Offline relevance/source matching; strategy-specific Recall@k and MRR@3",
+              "source": "docs/evidence_retrieval_evaluation.json",
+              "unit": "ratio"
+            },
+            "recall_at_3": {
+              "value": 1.0,
+              "availability": "available",
+              "category": "retrieval",
+              "dataset": "Manually curated queries in rag/evaluation_queries.json; classifier test samples not used",
+              "method": "Offline relevance/source matching; strategy-specific Recall@k and MRR@3",
+              "source": "docs/evidence_retrieval_evaluation.json",
+              "unit": "ratio"
+            },
+            "mrr_at_3": {
+              "value": 0.95,
+              "availability": "available",
+              "category": "retrieval",
+              "dataset": "Manually curated queries in rag/evaluation_queries.json; classifier test samples not used",
+              "method": "Offline relevance/source matching; strategy-specific Recall@k and MRR@3",
+              "source": "docs/evidence_retrieval_evaluation.json",
+              "unit": "ratio"
+            },
+            "queries_with_no_relevant_evidence": {
+              "value": 1,
+              "availability": "available",
+              "category": "retrieval",
+              "dataset": "Manually curated queries in rag/evaluation_queries.json; classifier test samples not used",
+              "method": "Offline relevance/source matching; strategy-specific Recall@k and MRR@3",
+              "source": "docs/evidence_retrieval_evaluation.json",
+              "unit": "queries"
+            },
+            "source_coverage_recall": {
+              "value": 1.0,
+              "availability": "available",
+              "category": "retrieval",
+              "dataset": "Manually curated queries in rag/evaluation_queries.json; classifier test samples not used",
+              "method": "Distinct retrieved sources / expected sources",
+              "source": "docs/evidence_retrieval_evaluation.json",
+              "unit": "ratio",
+              "note": "30 / 30 sources"
+            },
+            "queries_without_sufficient_evidence": {
+              "value": 1,
+              "availability": "available",
+              "category": "retrieval",
+              "dataset": "Manually curated queries in rag/evaluation_queries.json; classifier test samples not used",
+              "method": "Retriever evidence threshold behavior",
+              "source": "docs/evidence_retrieval_evaluation.json",
+              "unit": "queries"
+            }
+          }
+        },
+        "semantic": {
+          "query_count": {
+            "value": 31,
+            "availability": "available",
+            "category": "retrieval",
+            "dataset": "Manually curated queries in rag/evaluation_queries.json; classifier test samples not used",
+            "method": "Offline relevance/source matching; strategy-specific Recall@k and MRR@3",
+            "source": "docs/evidence_retrieval_evaluation.json",
+            "unit": "queries"
+          },
+          "metrics": {
+            "recall_at_1": {
+              "value": 1.0,
+              "availability": "available",
+              "category": "retrieval",
+              "dataset": "Manually curated queries in rag/evaluation_queries.json; classifier test samples not used",
+              "method": "Offline relevance/source matching; strategy-specific Recall@k and MRR@3",
+              "source": "docs/evidence_retrieval_evaluation.json",
+              "unit": "ratio"
+            },
+            "recall_at_3": {
+              "value": 1.0,
+              "availability": "available",
+              "category": "retrieval",
+              "dataset": "Manually curated queries in rag/evaluation_queries.json; classifier test samples not used",
+              "method": "Offline relevance/source matching; strategy-specific Recall@k and MRR@3",
+              "source": "docs/evidence_retrieval_evaluation.json",
+              "unit": "ratio"
+            },
+            "mrr_at_3": {
+              "value": 1.0,
+              "availability": "available",
+              "category": "retrieval",
+              "dataset": "Manually curated queries in rag/evaluation_queries.json; classifier test samples not used",
+              "method": "Offline relevance/source matching; strategy-specific Recall@k and MRR@3",
+              "source": "docs/evidence_retrieval_evaluation.json",
+              "unit": "ratio"
+            },
+            "queries_with_no_relevant_evidence": {
+              "value": 1,
+              "availability": "available",
+              "category": "retrieval",
+              "dataset": "Manually curated queries in rag/evaluation_queries.json; classifier test samples not used",
+              "method": "Offline relevance/source matching; strategy-specific Recall@k and MRR@3",
+              "source": "docs/evidence_retrieval_evaluation.json",
+              "unit": "queries"
+            },
+            "source_coverage_recall": {
+              "value": 1.0,
+              "availability": "available",
+              "category": "retrieval",
+              "dataset": "Manually curated queries in rag/evaluation_queries.json; classifier test samples not used",
+              "method": "Distinct retrieved sources / expected sources",
+              "source": "docs/evidence_retrieval_evaluation.json",
+              "unit": "ratio",
+              "note": "30 / 30 sources"
+            },
+            "queries_without_sufficient_evidence": {
+              "value": 1,
+              "availability": "available",
+              "category": "retrieval",
+              "dataset": "Manually curated queries in rag/evaluation_queries.json; classifier test samples not used",
+              "method": "Retriever evidence threshold behavior",
+              "source": "docs/evidence_retrieval_evaluation.json",
+              "unit": "queries"
+            }
+          }
+        },
+        "hybrid": {
+          "query_count": {
+            "value": 31,
+            "availability": "available",
+            "category": "retrieval",
+            "dataset": "Manually curated queries in rag/evaluation_queries.json; classifier test samples not used",
+            "method": "Offline relevance/source matching; strategy-specific Recall@k and MRR@3",
+            "source": "docs/evidence_retrieval_evaluation.json",
+            "unit": "queries"
+          },
+          "metrics": {
+            "recall_at_1": {
+              "value": 0.9667,
+              "availability": "available",
+              "category": "retrieval",
+              "dataset": "Manually curated queries in rag/evaluation_queries.json; classifier test samples not used",
+              "method": "Offline relevance/source matching; strategy-specific Recall@k and MRR@3",
+              "source": "docs/evidence_retrieval_evaluation.json",
+              "unit": "ratio"
+            },
+            "recall_at_3": {
+              "value": 1.0,
+              "availability": "available",
+              "category": "retrieval",
+              "dataset": "Manually curated queries in rag/evaluation_queries.json; classifier test samples not used",
+              "method": "Offline relevance/source matching; strategy-specific Recall@k and MRR@3",
+              "source": "docs/evidence_retrieval_evaluation.json",
+              "unit": "ratio"
+            },
+            "mrr_at_3": {
+              "value": 0.9833,
+              "availability": "available",
+              "category": "retrieval",
+              "dataset": "Manually curated queries in rag/evaluation_queries.json; classifier test samples not used",
+              "method": "Offline relevance/source matching; strategy-specific Recall@k and MRR@3",
+              "source": "docs/evidence_retrieval_evaluation.json",
+              "unit": "ratio"
+            },
+            "queries_with_no_relevant_evidence": {
+              "value": 1,
+              "availability": "available",
+              "category": "retrieval",
+              "dataset": "Manually curated queries in rag/evaluation_queries.json; classifier test samples not used",
+              "method": "Offline relevance/source matching; strategy-specific Recall@k and MRR@3",
+              "source": "docs/evidence_retrieval_evaluation.json",
+              "unit": "queries"
+            },
+            "source_coverage_recall": {
+              "value": 1.0,
+              "availability": "available",
+              "category": "retrieval",
+              "dataset": "Manually curated queries in rag/evaluation_queries.json; classifier test samples not used",
+              "method": "Distinct retrieved sources / expected sources",
+              "source": "docs/evidence_retrieval_evaluation.json",
+              "unit": "ratio",
+              "note": "30 / 30 sources"
+            },
+            "queries_without_sufficient_evidence": {
+              "value": 1,
+              "availability": "available",
+              "category": "retrieval",
+              "dataset": "Manually curated queries in rag/evaluation_queries.json; classifier test samples not used",
+              "method": "Retriever evidence threshold behavior",
+              "source": "docs/evidence_retrieval_evaluation.json",
+              "unit": "queries"
+            }
+          }
+        }
+      },
+      "scope": "retrieval metrics only; not clinical or classifier metrics"
+    },
+    "grounded_llm": {
+      "availability": "available",
+      "evaluation_type": "grounded_llm_structural_mock",
+      "dataset": "Nine manually curated grounded-explanation fixtures with deterministic mocked drafts",
+      "method": "Structural citation validation, evidence-gate status checks; not semantic truth validation",
+      "source": "docs/grounded_explanation_evaluation.json",
+      "metrics": {
+        "citation_validity": {
+          "value": 0.75,
+          "availability": "available",
+          "category": "grounded_llm_structural_mock",
+          "dataset": "Nine manually curated grounded-explanation fixtures with deterministic mocked drafts",
+          "method": "Structural citation validation, evidence-gate status checks; not semantic truth validation",
+          "source": "docs/grounded_explanation_evaluation.json",
+          "unit": "ratio",
+          "note": "3 / 4"
+        },
+        "citation_completeness": {
+          "value": 0.8,
+          "availability": "available",
+          "category": "grounded_llm_structural_mock",
+          "dataset": "Nine manually curated grounded-explanation fixtures with deterministic mocked drafts",
+          "method": "Structural citation validation, evidence-gate status checks; not semantic truth validation",
+          "source": "docs/grounded_explanation_evaluation.json",
+          "unit": "ratio",
+          "note": "4 / 5"
+        },
+        "grounded_claim_rate": {
+          "value": 0.6,
+          "availability": "available",
+          "category": "grounded_llm_structural_mock",
+          "dataset": "Nine manually curated grounded-explanation fixtures with deterministic mocked drafts",
+          "method": "Structural citation validation, evidence-gate status checks; not semantic truth validation",
+          "source": "docs/grounded_explanation_evaluation.json",
+          "unit": "ratio",
+          "note": "3 / 5"
+        },
+        "structurally_unsupported_claim_rate": {
+          "value": 0.4,
+          "availability": "available",
+          "category": "grounded_llm_structural_mock",
+          "dataset": "Nine manually curated grounded-explanation fixtures with deterministic mocked drafts",
+          "method": "Structural citation validation, evidence-gate status checks; not semantic truth validation",
+          "source": "docs/grounded_explanation_evaluation.json",
+          "unit": "ratio",
+          "note": "2 / 5"
+        },
+        "evidence_gate_correct": {
+          "value": true,
+          "availability": "available",
+          "category": "grounded_llm_structural_mock",
+          "dataset": "Nine manually curated grounded-explanation fixtures with deterministic mocked drafts",
+          "method": "Compare expected versus actual LLM-call gating",
+          "source": "docs/grounded_explanation_evaluation.json",
+          "unit": "boolean"
+        }
+      },
+      "manual_case_count": {
+        "value": 9,
+        "availability": "available",
+        "category": "grounded_llm_structural_mock",
+        "dataset": "Nine manually curated grounded-explanation fixtures with deterministic mocked drafts",
+        "method": "Structural citation validation, evidence-gate status checks; not semantic truth validation",
+        "source": "docs/grounded_explanation_evaluation.json",
+        "unit": "cases"
+      },
+      "mocked_evaluation": true,
+      "live_evaluation": {
+        "status": "not_measured",
+        "invocations_in_saved_report": 0,
+        "reason": "The saved report used mocks; optional live Ollama tests are separate and not a scored quality evaluation."
+      },
+      "semantic_grounding_validation": {
+        "status": "not_measured",
+        "note": "Citation ID/structure acceptance does not establish factual or medical correctness."
+      },
+      "status_counts": {
+        "abstained": 1,
+        "grounded": 3,
+        "insufficient_evidence": 1,
+        "llm_unavailable": 1,
+        "validation_failed": 3
+      },
+      "scope": "Structural/citation and evidence-gating evaluation with mocked LLM drafts; not clinical, classifier, or live LLM quality metrics."
+    },
+    "next_question": {
+      "availability": "available",
+      "evaluation_type": "next_question_algorithmic_development",
+      "dataset": "Four manually authored development query cases using X_train/y_train-derived symptom frequencies",
+      "method": "Expected information-gain ranking diagnostics; simulated exclusions after No/Skip",
+      "source": "docs/next_question_evaluation.json",
+      "metrics": {
+        "query_count": {
+          "value": 4,
+          "availability": "available",
+          "category": "next_question_algorithmic_development",
+          "dataset": "Four manually authored development query cases using X_train/y_train-derived symptom frequencies",
+          "method": "Expected information-gain ranking diagnostics; simulated exclusions after No/Skip",
+          "source": "docs/next_question_evaluation.json",
+          "unit": "queries"
+        },
+        "queries_with_useful_question": {
+          "value": 100.0,
+          "availability": "available",
+          "category": "next_question_algorithmic_development",
+          "dataset": "Four manually authored development query cases using X_train/y_train-derived symptom frequencies",
+          "method": "Expected information-gain ranking diagnostics; simulated exclusions after No/Skip",
+          "source": "docs/next_question_evaluation.json",
+          "unit": "percent"
+        },
+        "mean_top_question_expected_entropy_reduction_bits": {
+          "value": 0.06521,
+          "availability": "available",
+          "category": "next_question_algorithmic_development",
+          "dataset": "Four manually authored development query cases using X_train/y_train-derived symptom frequencies",
+          "method": "Expected information-gain ranking diagnostics; simulated exclusions after No/Skip",
+          "source": "docs/next_question_evaluation.json",
+          "unit": "bits"
+        },
+        "repeat_rate_after_skip_responses": {
+          "value": 0.0,
+          "availability": "available",
+          "category": "next_question_algorithmic_development",
+          "dataset": "Four manually authored development query cases using X_train/y_train-derived symptom frequencies",
+          "method": "Expected information-gain ranking diagnostics; simulated exclusions after No/Skip",
+          "source": "docs/next_question_evaluation.json",
+          "unit": "ratio"
+        },
+        "question_slots_simulated": {
+          "value": 12,
+          "availability": "available",
+          "category": "next_question_algorithmic_development",
+          "dataset": "Four manually authored development query cases using X_train/y_train-derived symptom frequencies",
+          "method": "Expected information-gain ranking diagnostics; simulated exclusions after No/Skip",
+          "source": "docs/next_question_evaluation.json",
+          "unit": "question_slots"
+        },
+        "mean_eligible_candidates": {
+          "value": 171,
+          "availability": "available",
+          "category": "next_question_algorithmic_development",
+          "dataset": "Four manually authored development query cases using X_train/y_train-derived symptom frequencies",
+          "method": "Expected information-gain ranking diagnostics; simulated exclusions after No/Skip",
+          "source": "docs/next_question_evaluation.json",
+          "unit": "candidates"
+        }
+      },
+      "edge_cases": {
+        "all_features_selected": {
+          "status": "no_unasked_candidates",
+          "suggestion_count": 0
+        },
+        "degenerate_single_class_distribution": {
+          "status": "no_useful_candidate",
+          "suggestion_count": 0
+        }
+      },
+      "training_statistics_source": {
+        "X_train": "data/processed/X_train.pkl",
+        "feature_count": 174,
+        "held_out_test_split_read": false,
+        "sample_count": 79892,
+        "y_train": "data/processed/y_train.pkl"
+      },
+      "scope": "Algorithmic information-gain evaluation on hand-authored development queries; not clinical outcomes or classifier metrics."
+    }
+  }
+}

@@ -4,6 +4,7 @@ import ipaddress
 import json
 import os
 import re
+import time
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Set
 from urllib.parse import urlparse
@@ -241,8 +242,13 @@ def _display_symptom(value: str) -> str:
 class GroundedExplanationService:
     """Apply abstention/evidence gates, then validate every model-generated citation."""
 
-    def __init__(self, generator=None):
+    def __init__(self, generator=None, observer=None):
         self.generator = generator
+        self.observer = observer
+
+    def _record_llm(self, outcome: str, duration_seconds: float = 0.0) -> None:
+        if self.observer is not None:
+            self.observer.record_llm(outcome, duration_seconds)
 
     def explain(
         self,
@@ -259,14 +265,17 @@ class GroundedExplanationService:
         if prediction.get("decision_status") == "insufficient_evidence" or prediction.get(
             "insufficient_evidence"
         ):
+            self._record_llm("skipped")
             return self._result("abstained", _ABSTAINED_MESSAGE, evidence)
         if (
             not retrieval.get("supported")
             or not retrieval.get("sufficient_evidence")
             or not evidence
         ):
+            self._record_llm("skipped")
             return self._result("insufficient_evidence", _INSUFFICIENT_MESSAGE, evidence)
         if self.generator is None:
+            self._record_llm("unavailable")
             return self._result("llm_unavailable", _UNAVAILABLE_MESSAGE, evidence)
 
         payload = {
@@ -288,15 +297,23 @@ class GroundedExplanationService:
                 for item in evidence
             ],
         }
+        generation_started = time.perf_counter()
         try:
             raw_draft = self.generator.generate(payload)
-            draft = validate_grounded_draft(raw_draft, valid_ids)
         except GenerationUnavailable:
+            self._record_llm("unavailable", time.perf_counter() - generation_started)
             return self._result("llm_unavailable", _UNAVAILABLE_MESSAGE, evidence)
-        except (GenerationRejected, ValidationError, ValueError, TypeError):
-            return self._result("validation_failed", _REJECTED_MESSAGE, evidence)
         except Exception:
+            self._record_llm("failed", time.perf_counter() - generation_started)
             return self._result("llm_unavailable", _UNAVAILABLE_MESSAGE, evidence)
+
+        generation_duration = time.perf_counter() - generation_started
+        try:
+            draft = validate_grounded_draft(raw_draft, valid_ids)
+        except (GenerationRejected, ValidationError, ValueError, TypeError):
+            self._record_llm("failed", generation_duration)
+            return self._result("validation_failed", _REJECTED_MESSAGE, evidence)
+        self._record_llm("generated", generation_duration)
 
         if not draft.claims:
             return self._result("insufficient_evidence", _INSUFFICIENT_MESSAGE, evidence)

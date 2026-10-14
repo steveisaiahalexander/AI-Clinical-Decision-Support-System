@@ -5,6 +5,7 @@ import { evidencePresentation } from './evidencePresentation.js'
 import { groundedExplanationPresentation } from './groundedExplanationPresentation.js'
 import { resultPresentation } from './resultsPresentation.js'
 import { applyQuestionResponse, nextQuestionPanelPresentation } from './questioningPresentation.js'
+import SystemStatusPanel from './SystemStatusPanel.jsx'
 
 function labelFor(value, keepSymptomSuffix = false) {
   let label = value.replace(/^(?:rare_)?symptom_/, '').replace(/_rare$/, '')
@@ -498,6 +499,7 @@ function App() {
           <span className="disclaimer-icon"><ShieldAlert size={18} /></span>
           <p><strong>For decision support only.</strong> This educational demonstration is not a medical diagnosis and does not replace advice from a qualified clinician. If symptoms are severe or rapidly worsening, seek urgent medical care.</p>
         </section>
+        <SystemStatusPanel />
         <footer className="page-footer"><span>AI Clinical Decision Support System</span><span>Educational use only</span></footer>
       </main>
     </div>

@@ -1,0 +1,23 @@
+.system-status { margin-top: 24px; border-top: 1px solid var(--line, #d9dedb); color: var(--text, #25332f); }
+.system-status > summary { padding: 15px 0; color: var(--muted, #68746f); cursor: pointer; font-size: 13px; }
+.system-status-content { padding: 2px 0 18px; }
+.system-status-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.system-status-heading h3 { margin: 4px 0 12px; font-size: 17px; }
+.system-status .icon-button { display: grid; place-items: center; width: 34px; height: 34px; border: 1px solid var(--line, #d9dedb); border-radius: 6px; background: transparent; color: inherit; cursor: pointer; }
+.system-status .icon-button:disabled { opacity: .55; cursor: wait; }
+.overall-status, .status-message { display: flex; align-items: center; gap: 8px; margin: 8px 0 12px; font-size: 13px; }
+.status-ready { color: #25714d; }
+.status-degraded { color: #93620c; }
+.status-unavailable, .status-error { color: #a33d3d; }
+.component-status-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 24px; margin: 0; padding: 0; list-style: none; }
+.component-status-list li { display: grid; grid-template-columns: 1fr auto; gap: 4px 12px; padding: 9px 0; border-top: 1px solid var(--line, #e5e8e6); font-size: 12px; text-transform: capitalize; }
+.component-status-list li small { grid-column: 1 / -1; color: var(--muted, #68746f); text-transform: none; }
+.component-status-list li strong { font-size: 11px; text-transform: none; }
+.telemetry-summary { display: flex; flex-wrap: wrap; gap: 10px 20px; margin-top: 14px; padding: 12px 0; border-top: 1px solid var(--line, #e5e8e6); border-bottom: 1px solid var(--line, #e5e8e6); color: var(--muted, #68746f); font-size: 12px; }
+.telemetry-summary strong { color: var(--text, #25332f); font-weight: 600; }
+.evaluation-report-link { display: inline-block; margin-top: 12px; color: #236c61; font-size: 13px; }
+.status-disclaimer { margin: 12px 0 0; color: var(--muted, #68746f); font-size: 11px; line-height: 1.5; }
+@keyframes status-spin { to { transform: rotate(360deg); } }
+.status-spin { animation: status-spin 1s linear infinite; }
+@media (max-width: 520px) { .component-status-list { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .status-spin { animation: none; } }

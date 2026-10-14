@@ -1,6 +1,6 @@
 """Pydantic request and response schemas for the inference API."""
 
-from typing import List, Literal, Optional
+from typing import Any, Dict, List, Literal, Optional
 
 from pydantic import BaseModel, ConfigDict, Field, model_validator
 
@@ -225,4 +225,19 @@ class NextQuestionResponse(BaseModel):
     ]
     status_message: str
     suggestions: List[NextQuestionSuggestion]
+    disclaimer: str
+
+
+class ComponentStatus(BaseModel):
+    status: Literal["ready", "degraded", "unavailable"]
+    message: str
+    details: Dict[str, Any] = Field(default_factory=dict)
+
+
+class SystemStatusResponse(BaseModel):
+    overall_status: Literal["ready", "degraded", "unavailable"]
+    components: Dict[str, ComponentStatus]
+    observability: Dict[str, Any]
+    evaluation_report_available: bool
+    evaluation_report_url: Optional[str] = None
     disclaimer: str

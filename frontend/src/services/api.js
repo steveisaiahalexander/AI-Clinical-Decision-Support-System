@@ -70,3 +70,7 @@ export function fetchNextQuestions(symptoms, answeredNegativeSymptoms = [], skip
     }),
   })
 }
+
+export function fetchSystemStatus() {
+  return request('/system-status')
+}
